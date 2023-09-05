@@ -1,0 +1,40 @@
+{
+  "name": "pixi-safe-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "parcel src/index.html -p 8080",
+    "build": "parcel build src/index.html",
+    "lint": "eslint ./src --ext .ts",
+    "fix": "eslint ./src --ext .ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pixi.js": "^7.2.4"
+  },
+  "devDependencies": {
+    "@parcel/config-default": "^2.9.3",
+    "@types/lodash": "^4.14.191",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "eslint": "^8.34.0",
+    "lodash": "^4.17.21",
+    "parcel": "^2.9.3",
+    "parcel-plugin-clean-easy": "^1.0.2",
+    "parcel-reporter-static-files-copy": "^1.5.2",
+    "punycode": "^1.4.1",
+    "typescript": "^5.2.2",
+    "url": "^0.11.0"
+  },
+  "parcelCleanPaths": [
+    "dist"
+  ],
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
+  }
+}
