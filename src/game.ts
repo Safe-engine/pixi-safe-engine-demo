@@ -32,4 +32,3 @@ document.body.appendChild(app.view as never);
     bunny.rotation += 0.01;
   });
 })();
-

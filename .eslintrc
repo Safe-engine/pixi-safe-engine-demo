@@ -2,14 +2,25 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": [
+    "lodash-import-method",
     "@typescript-eslint"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": false,
+        "endOfLine": "auto"
+      }
+    ],
+    "lodash-import-method/submodule": "error",
     "no-multiple-empty-lines": [
       "error",
       {
