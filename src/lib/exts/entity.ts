@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ComponentType } from 'lib/gworld/components/EnhancedComponent'
+import { ComponentType } from '../gworld/components/EnhancedComponent'
 import { ComponentAddedEvent, ComponentRemovedEvent } from './event'
 import { Constructor } from './global'
 import { World } from './world'
@@ -82,24 +82,24 @@ export class EntityManager {
     return ett
   }
 
-  createOrGet(id: Integer, offset: Integer) {
-    const index = id + offset
-    if (this.valid(index)) {
-      return this.get(index)
-    }
-    if (index >= this.world.counter) {
-      this.world.counter = index + 1
-    }
-    const ett = new Entity(this.world, index)
-    this.world.entitiesMap[ett.id] = ett
-    return ett
-  }
+  // createOrGet(id: number, offset: number) {
+  //   const index = id + offset
+  //   if (this.valid(index)) {
+  //     return this.get(index)
+  //   }
+  //   if (index >= this.world.counter) {
+  //     this.world.counter = index + 1
+  //   }
+  //   const ett = new Entity(this.world, index)
+  //   this.world.entitiesMap[ett.id] = ett
+  //   return ett
+  // }
 
-  get(index: Integer) {
+  get(index: number) {
     return this.world.entitiesMap[index]
   }
 
-  valid(index: Integer) {
+  valid(index: number) {
     return this.world.entitiesMap[index]
   }
 

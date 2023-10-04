@@ -1,1 +1,1 @@
-export declare type Constructor<T = unknown> = new (...args: any[]) => T
+export declare type Constructor<T = unknown> = new (...args: unknown[]) => T

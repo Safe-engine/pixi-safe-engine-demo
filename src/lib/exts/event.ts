@@ -1,4 +1,4 @@
-import { ComponentType } from 'lib/gworld/components/EnhancedComponent'
+import { ComponentType } from '../gworld/components/EnhancedComponent'
 import { Entity } from './entity'
 import { Constructor } from './global'
 import { System } from './system'

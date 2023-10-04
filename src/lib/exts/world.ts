@@ -3,16 +3,16 @@ import { EventManager, EventMapData } from './event'
 import { SystemManager, SystemMapData } from './system'
 
 export class World {
-  public count = 0
+  public counter = 0
   public entitiesMap: EntityMapData = {}
   public systemsMap: SystemMapData = {}
   public eventsMap: EventMapData = {}
   entities: EntityManager
   systems: SystemManager
   events: EventManager
-  physicsManager: any
+  // physicsManager: any
   collisionManager = { enabled: false, enabledDebugDraw: false }
-  draw: cc.DrawNode
+  // draw: cc.DrawNode
   constructor() {
     this.entities = new EntityManager(this)
     this.systems = new SystemManager(this)

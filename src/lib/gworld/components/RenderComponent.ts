@@ -1,91 +1,88 @@
-import { EnhancedComponent, NodeComp } from './EnhancedComponent';
+import { Point, SpriteSource } from 'pixi.js'
+import { EnhancedComponent, NodeComp } from './EnhancedComponent'
 export class NodeRender extends EnhancedComponent {
-  nodeName: string;
+  nodeName: string
   constructor(name?: string) {
-    super();
-    this.nodeName = name;
+    super()
+    this.nodeName = name
   }
 }
 
 export class SpriteRender extends EnhancedComponent {
-  private frameName: string;
-  texType: number;
-  type: number;
-  fillType: number;
-  _fillRange: number;
-  fillCenter: cc.Vec2;
+  private frameName: SpriteSource
+  texType: number
+  type: number
+  fillType: number
+  _fillRange: number
+  fillCenter: Point
   static FillType = {
     HORIZONTAL: 0,
     VERTICAL: 1,
     RADIAL: 2,
-  };
-
-  constructor(frameName: string, texType?: number, type?: number,
-    fillType?: number, fillRange?: number, fillCenter?: cc.Vec2) {
-    super();
-    this.frameName = frameName;
-    this.texType = texType;
-    this.type = type;
-    this.fillType = fillType;
-    this._fillRange = fillRange;
-    this.fillCenter = fillCenter;
   }
 
-  set fillStart(val: number) {
-    if (this.node.instance instanceof cc.ProgressTimer) {
-      this.node.instance.setMidpoint(cc.v2(val, val));
-    }
+  constructor(frameName: SpriteSource, texType?: number, type?: number, fillType?: number, fillRange?: number, fillCenter?: Point) {
+    super()
+    this.frameName = frameName
+    this.texType = texType
+    this.type = type
+    this.fillType = fillType
+    this._fillRange = fillRange
+    this.fillCenter = fillCenter
   }
 
-  set fillRange(val: number) {
-    if (this.node.instance instanceof cc.ProgressTimer) {
-      this.node.instance.setPercentage(val * 100);
-    }
-  }
+  // set fillStart(val: number) {
+  //   if (this.node.instance instanceof cc.ProgressTimer) {
+  //     this.node.instance.setMidpoint(cc.v2(val, val));
+  //   }
+  // }
+
+  // set fillRange(val: number) {
+  //   if (this.node.instance instanceof cc.ProgressTimer) {
+  //     this.node.instance.setPercentage(val * 100);
+  //   }
+  // }
 
   get spriteFrame() {
-    return this.frameName;
+    return this.frameName
   }
 
   set spriteFrame(frame) {
-    this.frameName = frame;
-    if (this.node.instance instanceof cc.Sprite) {
-      this.node.instance.setTexture(frame);
-    } else if (this.node.instance instanceof ccui.ImageView) {
-      if (this.texType) {
-        this.node.instance.loadTexture(frame, this.texType);
-      } else {
-        this.node.instance.loadTexture(frame);
-      }
-      const sprite = new cc.Sprite(frame);
-      this.node.setContentSize(sprite.getContentSize());
-    } else if (this.node.instance instanceof ccui.Button) {
-      this.node.instance.loadTextureNormal(frame);
-    }
+    this.frameName = frame
+    // if (this.node.instance instanceof cc.Sprite) {
+    //   this.node.instance.setTexture(frame);
+    // } else if (this.node.instance instanceof ccui.ImageView) {
+    //   if (this.texType) {
+    //     this.node.instance.loadTexture(frame, this.texType);
+    //   } else {
+    //     this.node.instance.loadTexture(frame);
+    //   }
+    //   const sprite = new cc.Sprite(frame);
+    //   this.node.setContentSize(sprite.getContentSize());
+    // } else if (this.node.instance instanceof ccui.Button) {
+    //   this.node.instance.loadTextureNormal(frame);
+    // }
   }
 }
 
 export class ImageRender extends EnhancedComponent {
-  spriteFrame: string;
-  texType: number;
+  spriteFrame: string
+  texType: number
   constructor(spriteFrame: string, texType?: number) {
-    super();
-    this.spriteFrame = spriteFrame;
-    this.texType = texType;
+    super()
+    this.spriteFrame = spriteFrame
+    this.texType = texType
   }
-
 }
 
 export class MaskRender extends EnhancedComponent {
-  type: number;
-  segments: number;
-  inverted: boolean;
+  type: number
+  segments: number
+  inverted: boolean
   constructor(type: number, segments: number, inverted: boolean) {
-    super();
-    this.type = type;
-    this.segments = segments;
-    this.inverted = inverted;
+    super()
+    this.type = type
+    this.segments = segments
+    this.inverted = inverted
   }
-}
-
 }
