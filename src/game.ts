@@ -2,6 +2,7 @@ import { Application, Sprite, Assets, SpriteSource } from 'pixi.js'
 import { GameWorld } from './gworld'
 import { SpriteRender } from './lib/gworld/components/RenderComponent'
 import { NodeComp } from './lib/gworld/components/EnhancedComponent'
+import { Home } from './scene/Home'
 
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
@@ -33,15 +34,5 @@ document.body.appendChild(app.view as never)
   //   // each frame we spin the bunny around a bit
   //   bunny.rotation += 0.01
   // })
-  const world = GameWorld.Instance
-  world.entities.reset()
-  const root = world.entities.create()
-  const rootNode = root.assign(new NodeComp(app.stage, root))
-  const sprite = world.entities.create()
-  sprite.assign(new SpriteRender(texture))
-  const spriteNode = sprite.getComponent(NodeComp)
-  rootNode.addChild(spriteNode)
-  spriteNode.x = 100
-  spriteNode.y = 100
-  spriteNode.anchorY = 1
+  Home.boot(app.stage)
 })()
