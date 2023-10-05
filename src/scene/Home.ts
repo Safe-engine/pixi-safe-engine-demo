@@ -46,7 +46,7 @@ export class Home extends SceneComponent {
     spriteNode.x = 100
     spriteNode.y = 100
     spriteNode.anchorY = 1
-    const monster = new Monster().render()
+    const monster = Monster.render()
     rootNode.addChild(monster.node)
   }
 }

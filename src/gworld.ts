@@ -9,7 +9,7 @@ import { RenderSystem } from './lib/gworld/systems/RenderSystem'
 // ${customComponents.map(createImportSystem).join('\n')}
 
 export class GameWorld extends World {
-  listUpdate: System[] = []
+  listUpdate: (System | Constructor<System>)[] = []
   private constructor() {
     super()
     this.systems.add(RenderSystem)

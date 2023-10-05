@@ -47,8 +47,8 @@ devDependencies:
     specifier: ^1.5.2
     version: 1.5.2(@parcel/core@2.9.3)
   punycode:
-    specifier: ^2.3.0
-    version: 2.3.0
+    specifier: ^1.4.1
+    version: 1.4.1
   typescript:
     specifier: ^5.2.2
     version: 5.2.2

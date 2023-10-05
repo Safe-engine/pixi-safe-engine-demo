@@ -1,7 +1,7 @@
-import { Application, Sprite, Assets, SpriteSource } from 'pixi.js'
+import { Application, Assets, Sprite, SpriteSource } from 'pixi.js'
+import { Monster } from './components/Monster'
 import { GameWorld } from './gworld'
-import { SpriteRender } from './lib/gworld/components/RenderComponent'
-import { NodeComp } from './lib/gworld/components/EnhancedComponent'
+import { registerSystem } from './helper/utils'
 import { Home } from './scene/Home'
 
 // The application will create a renderer using WebGL, if possible,
@@ -34,6 +34,7 @@ document.body.appendChild(app.view as never)
   //   // each frame we spin the bunny around a bit
   //   bunny.rotation += 0.01
   // })
+  registerSystem(Monster)
   GameWorld.Instance.systems.configure()
   Home.boot(app.stage)
 })()
