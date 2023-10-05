@@ -34,5 +34,6 @@ document.body.appendChild(app.view as never)
   //   // each frame we spin the bunny around a bit
   //   bunny.rotation += 0.01
   // })
+  GameWorld.Instance.systems.configure()
   Home.boot(app.stage)
 })()

@@ -1,3 +1,5 @@
+import { Constructor } from './lib/exts/global'
+import { System } from './lib/exts/system'
 import { World } from './lib/exts/world'
 // import { PhysicsSystem } from './lib/gworld/systems/PhysicsSystem'
 // import { CollideSystem } from 'lib/gworld/systems/CollideSystem'
@@ -7,6 +9,7 @@ import { RenderSystem } from './lib/gworld/systems/RenderSystem'
 // ${customComponents.map(createImportSystem).join('\n')}
 
 export class GameWorld extends World {
+  listUpdate: System[] = []
   private constructor() {
     super()
     this.systems.add(RenderSystem)
@@ -15,7 +18,7 @@ export class GameWorld extends World {
     // this.systems.add(GUISystem)
     // this.systems.add(AnimationSystem)
     // ${customComponents.map(createAddSystemTS).join('\n')}
-    this.systems.configure()
+    // this.systems.configure()
   }
 
   update(dt: number) {
@@ -23,6 +26,9 @@ export class GameWorld extends World {
     // this.systems.update(CollideSystem, dt)
     // this.systems.update(AnimationSystem, dt)
     // ${customComponents.map(createUpdateSystemTS).join('\n')}
+    this.listUpdate.forEach((system) => {
+      this.systems.update(system, dt)
+    })
   }
 
   private static _instance: GameWorld
