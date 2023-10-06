@@ -38,7 +38,7 @@
     "dist"
   ],
   "staticFiles": {
-    "staticPath": "public",
+    "staticPath": "res",
     "watcherGlob": "**"
   }
 }
