@@ -5,6 +5,7 @@ import { NodeComp } from '../lib/gworld/components/EnhancedComponent'
 import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 import { SceneComponent } from '../lib/gworld/core/Scene'
 import { Monster } from '../components/Monster'
+import { Hero } from '../components/Hero'
 
 export class Home extends SceneComponent {
   score = 0
@@ -46,7 +47,9 @@ export class Home extends SceneComponent {
     spriteNode.x = 100
     spriteNode.y = 100
     spriteNode.anchorY = 1
-    const monster = Monster.render()
+    const monster = Monster.create()
     rootNode.addChild(monster.node)
+    const hero = Hero.create()
+    rootNode.addChild(hero.node)
   }
 }

@@ -15,7 +15,7 @@ export class Monster extends EnhancedComponent {
   //   bullet.active(true)
   // }
 
-  static render() {
+  static create() {
     const world = GameWorld.Instance
     const root = world.entities.create()
     // const rootNode = root.getComponent(NodeComp)
