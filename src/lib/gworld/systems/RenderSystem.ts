@@ -39,10 +39,11 @@ export class RenderSystem implements System {
       case ComponentAddedEvent(SpriteRender): {
         console.log('SpriteRender', event)
         const spriteComp = event.entity.getComponent(SpriteRender)
-        const { spriteFrame, texType, type, fillType, _fillRange, fillCenter } = spriteComp
-        let node
+        // const { spriteFrame, texType, type, fillType, _fillRange, fillCenter } = spriteComp
+        // let node
         // if (type === SpriteTypes.ANIMATION) {
-        node = Sprite.from(spriteFrame)
+        // node = Sprite.from(spriteFrame)
+        const node = new Sprite()
         // } else if (type === SpriteTypes.FILLED) {
         //   const sprite = new cc.Sprite(spriteFrame)
         //   node = new cc.ProgressTimer(sprite)

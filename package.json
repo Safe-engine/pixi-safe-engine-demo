@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "parcel src/index.html -p 8080",
+    "dev": "parcel src/index.html -p 8080",
     "build": "parcel build src/index.html",
     "lint": "eslint ./src --ext .ts",
     "fix": "eslint ./src --ext .ts --fix"

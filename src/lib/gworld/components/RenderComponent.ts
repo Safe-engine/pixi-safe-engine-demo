@@ -1,4 +1,4 @@
-import { Point, SpriteSource } from 'pixi.js'
+import { Point, Sprite, SpriteSource, Texture, TextureSource } from 'pixi.js'
 import { EnhancedComponent, NodeComp } from './EnhancedComponent'
 export class NodeRender extends EnhancedComponent {
   nodeName: string
@@ -9,7 +9,7 @@ export class NodeRender extends EnhancedComponent {
 }
 
 export class SpriteRender extends EnhancedComponent {
-  private frameName: SpriteSource
+  private frameName: TextureSource
   texType: number
   type: number
   fillType: number
@@ -21,15 +21,15 @@ export class SpriteRender extends EnhancedComponent {
     RADIAL: 2,
   }
 
-  constructor(frameName: SpriteSource, texType?: number, type?: number, fillType?: number, fillRange?: number, fillCenter?: Point) {
-    super()
-    this.frameName = frameName
-    this.texType = texType
-    this.type = type
-    this.fillType = fillType
-    this._fillRange = fillRange
-    this.fillCenter = fillCenter
-  }
+  // constructor(frameName: SpriteSource, texType?: number, type?: number, fillType?: number, fillRange?: number, fillCenter?: Point) {
+  //   super()
+  //   this.frameName = frameName
+  //   this.texType = texType
+  //   this.type = type
+  //   this.fillType = fillType
+  //   this._fillRange = fillRange
+  //   this.fillCenter = fillCenter
+  // }
 
   // set fillStart(val: number) {
   //   if (this.node.instance instanceof cc.ProgressTimer) {
@@ -49,8 +49,9 @@ export class SpriteRender extends EnhancedComponent {
 
   set spriteFrame(frame) {
     this.frameName = frame
+    const sprite = this.node.instance as Sprite
     // if (this.node.instance instanceof cc.Sprite) {
-    //   this.node.instance.setTexture(frame);
+    sprite.texture = Texture.from(frame)
     // } else if (this.node.instance instanceof ccui.ImageView) {
     //   if (this.texType) {
     //     this.node.instance.loadTexture(frame, this.texType);
