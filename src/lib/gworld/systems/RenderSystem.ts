@@ -37,7 +37,7 @@ export class RenderSystem implements System {
       }
 
       case ComponentAddedEvent(SpriteRender): {
-        // cc.log('SpriteRender', event);
+        console.log('SpriteRender', event)
         const spriteComp = event.entity.getComponent(SpriteRender)
         const { spriteFrame, texType, type, fillType, _fillRange, fillCenter } = spriteComp
         let node

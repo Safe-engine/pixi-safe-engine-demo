@@ -6,19 +6,20 @@ import { System } from '../lib/exts/system'
 import { ComponentType, NodeComp } from '../lib/gworld/components/EnhancedComponent'
 
 export function instantiate(component: Constructor<ComponentType>) {
-  return component.render().node
+  return component.create().node
 }
 
 export function registerSystem(component) {
   class NewSystem implements System {
     configure(event_manager: EventManager) {
+      console.log('registerSystem', component.name)
       event_manager.subscribe(ComponentAddedEvent(component), this)
     }
 
     receive(type: string, event: EventReceive) {
       switch (type) {
         case ComponentAddedEvent(component): {
-          // cc.log('component', event);
+          console.log('ComponentAddedEvent', event)
           const ett = event.entity
           const newComp = ett.getComponent(component)
           newComp.node = ett.getComponent(NodeComp)
@@ -38,6 +39,7 @@ export function registerSystem(component) {
       }
     }
   }
+  Object.defineProperty(NewSystem, 'name', { value: `${component.name}System` })
   GameWorld.Instance.systems.add(NewSystem)
   GameWorld.Instance.listUpdate.push(NewSystem)
   return NewSystem
