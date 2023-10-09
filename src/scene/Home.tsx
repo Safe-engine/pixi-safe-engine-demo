@@ -6,11 +6,13 @@ import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 import { SceneComponent } from '../lib/gworld/core/Scene'
 import { Monster } from '../components/Monster'
 import { Hero } from '../components/Hero'
+import { app } from '../app'
+import { ButtonComp } from '../lib/gworld/components/GUIComponent'
 
 export class Home extends SceneComponent {
   score = 0
   // uiRef: UIController = null
-  // gameRef: GameController = null
+  hero: Hero = null
 
   // onStart(props: NodeProps) {
   //   schedule((dt) => {
@@ -30,26 +32,25 @@ export class Home extends SceneComponent {
   // }
 
   // onUpdate(dt: number) {}
-  // onPress(event) {
-  //   console.log('Clicked')
-  //   this.uiRef.showDialog(true)
-  // }
+  onPress(event) {
+    console.log('Clicked')
+    // this.uiRef.showDialog(true)
+  }
 
-  static boot(stage: Container) {
-    const world = GameWorld.Instance
-    world.entities.reset()
-    const root = world.entities.create()
-    const rootNode = root.assign(new NodeComp(stage, root))
-    const sprite = world.entities.create()
-    sprite.assign(new SpriteRender(SpriteSourceAssets.demo))
-    const spriteNode = sprite.getComponent(NodeComp)
-    rootNode.addChild(spriteNode)
-    spriteNode.x = 100
-    spriteNode.y = 100
-    spriteNode.anchorY = 1
-    const monster = Monster.create()
-    rootNode.addChild(monster.node)
-    const hero = Hero.create()
-    rootNode.addChild(hero.node)
+  static boot() {
+    // const world = GameWorld.Instance
+    // world.entities.reset()
+    // const root = world.entities.create()
+    // const rootNode = root.assign(new NodeComp(app.stage, root))
+    return (
+      <SceneComponent>
+        <NodeComp x={100} y={20} anchorY={1}>
+          <SpriteRender spriteFrame={SpriteSourceAssets.demo} />
+          <ButtonComp onPress="onPress" />
+        </NodeComp>
+        <Monster node={{ x: 10, y: 200 }}></Monster>
+        <Hero ref="hero" x={500} y={320}></Hero>
+      </SceneComponent>
+    )
   }
 }

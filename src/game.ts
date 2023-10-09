@@ -1,15 +1,14 @@
-import { Application, Assets, Sprite, SpriteSource } from 'pixi.js'
+import { Assets, Sprite, SpriteSource } from 'pixi.js'
+import { app } from './app'
+import { Hero } from './components/Hero'
 import { Monster } from './components/Monster'
 import { GameWorld } from './gworld'
 import { registerSystem } from './helper/utils'
 import { Home } from './scene/Home'
-import { Hero } from './components/Hero'
 
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
 // and the root stage PIXI.Container
-const app = new Application()
-
 // The application will create a canvas element for you that you
 // can then insert into the DOM
 document.body.appendChild(app.view as never)
@@ -38,5 +37,5 @@ document.body.appendChild(app.view as never)
   registerSystem(Monster)
   registerSystem(Hero)
   GameWorld.Instance.systems.configure()
-  Home.boot(app.stage)
+  Home.boot()
 })()

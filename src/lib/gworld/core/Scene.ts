@@ -1,1 +1,3 @@
-export class SceneComponent {}
+export class SceneComponent {
+  boot: () => void
+}
