@@ -41,10 +41,10 @@ export class Home extends SceneComponent {
     return (
       <SceneComponent>
         <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={SpriteSourceAssets.demo}>
-          <ButtonComp onPress="onPress" />
+          <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero ref="hero" node={{ x: 50, y: 130 }}></Hero>
+        <Hero $ref="hero" node={{ x: 50, y: 130 }}></Hero>
       </SceneComponent>
     )
   }

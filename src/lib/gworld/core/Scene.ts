@@ -9,6 +9,6 @@ export class SceneComponent {
     world.entities.reset()
     const root = world.entities.create()
     const rootNode = root.assign(new NodeComp(app.stage, root))
-    return rootNode
+    return { node: rootNode }
   }
 }
