@@ -38,18 +38,13 @@ export class Home extends SceneComponent {
   }
 
   static boot() {
-    // const world = GameWorld.Instance
-    // world.entities.reset()
-    // const root = world.entities.create()
-    // const rootNode = root.assign(new NodeComp(app.stage, root))
     return (
       <SceneComponent>
-        <NodeComp x={100} y={20} anchorY={1}>
-          <SpriteRender spriteFrame={SpriteSourceAssets.demo} />
+        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={SpriteSourceAssets.demo}>
           <ButtonComp onPress="onPress" />
-        </NodeComp>
-        <Monster node={{ x: 10, y: 200 }}></Monster>
-        <Hero ref="hero" x={500} y={320}></Hero>
+        </SpriteRender>
+        <Monster node={{ x: 10, y: 240 }}></Monster>
+        <Hero ref="hero" node={{ x: 50, y: 130 }}></Hero>
       </SceneComponent>
     )
   }

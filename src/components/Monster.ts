@@ -1,5 +1,4 @@
 import { SpriteSourceAssets } from '../assets'
-import { GameWorld } from '../gworld'
 import { EnhancedComponent } from '../lib/gworld/components/EnhancedComponent'
 import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 
@@ -16,11 +15,9 @@ export class Monster extends EnhancedComponent {
   // }
 
   static create() {
-    const world = GameWorld.Instance
-    const root = world.entities.create()
-    // const rootNode = root.getComponent(NodeComp)
-    const sprite = root.assign(new SpriteRender(SpriteSourceAssets.demo))
-    const monster = root.assign(new Monster())
+    const sprite = SpriteRender.create()
+    sprite.spriteFrame = SpriteSourceAssets.demo
+    const monster = sprite.addComponent<Monster>(new Monster())
     monster.sprite = sprite
     return monster
   }

@@ -4,9 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "parcel src/index.html -p 8080",
-    "build": "parcel build src/index.html",
-    "lint": "eslint ./src --ext .ts",
+    "start": "parcel src/index.html -p 8080",
+    "dev": "parcel src/index.html -p 8080 --no-cache",
+    "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",
     "fix": "eslint ./src --ext .ts --fix"
   },
   "keywords": [],

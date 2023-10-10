@@ -1,6 +1,5 @@
-import { GameWorld } from '../gworld'
 import { SpriteSourceAssets } from '../assets'
-import { EnhancedComponent, NodeComp } from '../lib/gworld/components/EnhancedComponent'
+import { EnhancedComponent } from '../lib/gworld/components/EnhancedComponent'
 import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 
 export class Hero extends EnhancedComponent {
@@ -16,10 +15,6 @@ export class Hero extends EnhancedComponent {
   }
 
   static create() {
-    return (
-      <NodeComp x={100} y={240}>
-        <SpriteRender ref="sprite" spriteFrame={SpriteSourceAssets.demo} />
-      </NodeComp>
-    )
+    return <SpriteRender node={{ x: 100, y: 240 }} ref="sprite" spriteFrame={SpriteSourceAssets.demo}></SpriteRender>
   }
 }

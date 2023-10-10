@@ -38,7 +38,8 @@ export class RenderSystem implements System {
 
       case ComponentAddedEvent(SpriteRender): {
         console.log('SpriteRender', event)
-        const spriteComp = event.entity.getComponent(SpriteRender)
+        const ett = event.entity
+        const spriteComp = ett.getComponent(SpriteRender)
         // const { spriteFrame, texType, type, fillType, _fillRange, fillCenter } = spriteComp
         // let node
         // if (type === SpriteTypes.ANIMATION) {
@@ -62,7 +63,7 @@ export class RenderSystem implements System {
         //   ;(node as ccui.ImageView).setContentSize(sprite.getContentSize())
         //   // node.ignoreContentAdaptWithSize(true);
         // }
-        const ett = event.entity
+        console.log('spriteComp', spriteComp)
         spriteComp.node = ett.assign(new NodeComp(node, ett))
         break
       }

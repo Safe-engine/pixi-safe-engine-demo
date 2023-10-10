@@ -1,5 +1,6 @@
 import { Point, Sprite, SpriteSource, Texture, TextureSource } from 'pixi.js'
 import { EnhancedComponent, NodeComp } from './EnhancedComponent'
+import { GameWorld } from '../../../gworld'
 export class NodeRender extends EnhancedComponent {
   nodeName: string
   constructor(name?: string) {
@@ -63,6 +64,12 @@ export class SpriteRender extends EnhancedComponent {
     // } else if (this.node.instance instanceof ccui.Button) {
     //   this.node.instance.loadTextureNormal(frame);
     // }
+  }
+  static create() {
+    const world = GameWorld.Instance
+    const root = world.entities.create()
+    const sprite = root.assign(new SpriteRender())
+    return sprite
   }
 }
 

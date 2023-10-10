@@ -1,1 +1,1 @@
-export class NodeComponent {}
+export class Transform {}
