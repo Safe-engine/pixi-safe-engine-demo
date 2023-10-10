@@ -4,6 +4,7 @@ import { System } from '../../exts/system'
 import { NodeComp } from '../components/EnhancedComponent'
 import { Graphics, ImageRender, MaskRender, NodeRender, SpineSkeleton, SpriteRender } from '../components/RenderComponent'
 import { Container, Sprite, Assets, SpriteSource } from 'pixi.js'
+import { SceneComponent } from '../core/Scene'
 
 enum SpriteTypes {
   SIMPLE,
@@ -16,6 +17,7 @@ enum SpriteTypes {
 
 export class RenderSystem implements System {
   configure(event_manager: EventManager) {
+    event_manager.subscribe(ComponentAddedEvent(SceneComponent), this)
     event_manager.subscribe(ComponentAddedEvent(NodeRender), this)
     event_manager.subscribe(ComponentAddedEvent(SpriteRender), this)
     // event_manager.subscribe(ComponentAddedEvent(ImageRender), this)
@@ -27,11 +29,17 @@ export class RenderSystem implements System {
 
   receive(type: string, event: EventReceive) {
     switch (type) {
+      case ComponentAddedEvent(SceneComponent): {
+        const ett = event.entity
+        const sceneComp = ett.getComponent(SceneComponent)
+        sceneComp.node = ett.getComponent(NodeComp)
+        break
+      }
       case ComponentAddedEvent(NodeRender): {
         // cc.log('NodeRender', event);
-        const nodeRenderComp = event.entity.getComponent(NodeRender)
-        const node = new Container()
         const ett = event.entity
+        const nodeRenderComp = ett.getComponent(NodeRender)
+        const node = new Container()
         nodeRenderComp.node = ett.assign(new NodeComp(node, ett))
         break
       }
