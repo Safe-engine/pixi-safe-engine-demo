@@ -4,6 +4,7 @@ import { SpriteRender } from '../components/RenderComponent'
 import { EntityManager } from '../../exts/entity'
 import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
+import { Button } from '@pixi/ui'
 
 export class GUISystem implements System {
   configure(event_manager: EventManager) {
@@ -16,15 +17,19 @@ export class GUISystem implements System {
   receive(type: string, event: EventReceive) {
     switch (type) {
       case ComponentAddedEvent(ButtonComp): {
-        // cc.log(event);
-        const button = event.entity.getComponent(ButtonComp)
-        const { normalImage, selectedImage, disableImage, texType, zoomScale } = button
-        const node = new ccui.Button(normalImage, selectedImage, disableImage, texType)
+        console.log('ComponentAddedEvent', event)
         const ett = event.entity
-        node.setZoomScale(zoomScale - 1)
-        button.node = ett.assign(new NodeComp(node, ett))
-        const sprite = (event.entity.components[SpriteRender.name] = new SpriteRender(normalImage, texType))
-        sprite.node = button.node
+        const button = ett.getComponent(ButtonComp)
+        const nodeComp = ett.getComponent(NodeComp)
+        // const { normalImage, selectedImage, disableImage, texType, zoomScale } = button
+        const node = new Button(nodeComp.instance)
+        // node.setZoomScale(zoomScale - 1)
+        button.node = nodeComp
+        // button.node = ett.assign(new NodeComp(node, ett))
+        node.onPress.connect(() => {
+          console.log('onPress.connect')
+          button.onPress()
+        })
         break
       }
       // case ComponentAddedEvent(LoadingBarComp): {

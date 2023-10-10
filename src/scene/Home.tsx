@@ -1,13 +1,9 @@
-import { Container } from 'pixi.js'
 import { SpriteSourceAssets } from '../assets'
-import { GameWorld } from '../gworld'
-import { NodeComp } from '../lib/gworld/components/EnhancedComponent'
+import { Hero } from '../components/Hero'
+import { Monster } from '../components/Monster'
+import { ButtonComp } from '../lib/gworld/components/GUIComponent'
 import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 import { SceneComponent } from '../lib/gworld/core/Scene'
-import { Monster } from '../components/Monster'
-import { Hero } from '../components/Hero'
-import { app } from '../app'
-import { ButtonComp } from '../lib/gworld/components/GUIComponent'
 
 export class Home extends SceneComponent {
   score = 0
@@ -40,11 +36,11 @@ export class Home extends SceneComponent {
   static boot() {
     return (
       <SceneComponent>
-        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={SpriteSourceAssets.demo}>
+        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={SpriteSourceAssets.crash}>
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref="hero" node={{ x: 50, y: 130 }}></Hero>
+        <Hero $ref="hero" node={{ x: 550, y: 130 }}></Hero>
       </SceneComponent>
     )
   }

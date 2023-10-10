@@ -4,7 +4,7 @@ import { World } from './lib/exts/world'
 // import { PhysicsSystem } from './lib/gworld/systems/PhysicsSystem'
 // import { CollideSystem } from 'lib/gworld/systems/CollideSystem'
 import { RenderSystem } from './lib/gworld/systems/RenderSystem'
-// import { GUISystem } from './lib/gworld/systems/GUISystem'
+import { GUISystem } from './lib/gworld/systems/GUISystem'
 // import { AnimationSystem } from './lib/gworld/systems/AnimationSystem'
 // ${customComponents.map(createImportSystem).join('\n')}
 
@@ -15,7 +15,7 @@ export class GameWorld extends World {
     this.systems.add(RenderSystem)
     // ${(isUsePhysics) ? '    this.systems.add(PhysicsSystem);' : ''}
     // this.systems.add(CollideSystem)
-    // this.systems.add(GUISystem)
+    this.systems.add(GUISystem)
     // this.systems.add(AnimationSystem)
     // ${customComponents.map(createAddSystemTS).join('\n')}
     // this.systems.configure()

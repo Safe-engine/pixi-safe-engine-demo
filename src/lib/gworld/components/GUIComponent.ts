@@ -6,6 +6,7 @@ export class ButtonComp extends EnhancedComponent {
   selectedImage: string
   disableImage: string
   zoomScale: number
+  onPress
   // texType: ccui.Widget.TextureType
   // clickEvents = []
 
@@ -107,4 +108,4 @@ export class LabelComp extends EnhancedComponent {
     }
   }
 }
-export class BlockInputEventsComp extends EnhancedComponent {}
+export class BlockInputEventsComp extends EnhancedComponent { }

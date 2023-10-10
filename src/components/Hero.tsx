@@ -15,6 +15,6 @@ export class Hero extends EnhancedComponent {
   }
 
   static create() {
-    return <SpriteRender node={{ x: 100, y: 240 }} ref="sprite" spriteFrame={SpriteSourceAssets.demo}></SpriteRender>
+    return <SpriteRender node={{ x: 500, y: 240 }} ref="sprite" spriteFrame={SpriteSourceAssets.thanhmau2}></SpriteRender>
   }
 }
