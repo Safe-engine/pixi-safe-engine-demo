@@ -1,5 +1,6 @@
 import { Text } from 'pixi.js'
 import { EnhancedComponent, NodeComp } from './EnhancedComponent'
+import { GameWorld } from '../../../gworld'
 
 export class ButtonComp extends EnhancedComponent {
   normalImage: string
@@ -87,25 +88,38 @@ interface FontResource {
   srcs: Array<string>
 }
 export class LabelComp extends EnhancedComponent {
-  font: FontResource
+  // font: FontResource
   text: string
-  size: number
-  constructor(font: FontResource, size: number, string?: string) {
-    super()
-    this.font = font
-    this.size = size
-    this.text = string
-  }
+  // size: number
 
   get string() {
-    return this.text
+    return (this.node.instance as Text).text
   }
 
   set string(val: string) {
     this.text = val
     if (this.node.instance instanceof Text) {
-      this.node.instance.setString(val)
+      this.node.instance.text = val
     }
   }
+
+  get size() {
+    return (this.node.instance as Text).style.fontSize
+  }
+  set size(val) {
+    ;(this.node.instance as Text).style.fontSize = val
+  }
+
+  get font() {
+    return (this.node.instance as Text).style.fontFamily
+  }
+  set font(val) {
+    ;(this.node.instance as Text).style.fontFamily = val
+  }
+  static create() {
+    const root = GameWorld.Instance.entities.create()
+    const label = root.assign(new LabelComp())
+    return label
+  }
 }
-export class BlockInputEventsComp extends EnhancedComponent { }
+export class BlockInputEventsComp extends EnhancedComponent {}

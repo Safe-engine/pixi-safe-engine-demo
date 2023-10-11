@@ -1,13 +1,8 @@
 import { GameWorld } from '../gworld'
 import { EntityManager } from '../lib/exts/entity'
-import { EventManager, ComponentAddedEvent, EventReceive } from '../lib/exts/event'
-import { Constructor } from '../lib/exts/global'
+import { ComponentAddedEvent, EventManager, EventReceive } from '../lib/exts/event'
 import { System } from '../lib/exts/system'
-import { ComponentType, NodeComp } from '../lib/gworld/components/EnhancedComponent'
-
-export function instantiate(component: Constructor<ComponentType>) {
-  return component.create().node
-}
+import { NodeComp } from '../lib/gworld/components/EnhancedComponent'
 
 export function registerSystem(component) {
   class NewSystem implements System {
@@ -21,7 +16,7 @@ export function registerSystem(component) {
         case ComponentAddedEvent(component): {
           console.log('ComponentAddedEvent', event)
           const ett = event.entity
-          const newComp = ett.getComponent(component)
+          const newComp: any = ett.getComponent(component)
           newComp.node = ett.getComponent(NodeComp)
           break
         }

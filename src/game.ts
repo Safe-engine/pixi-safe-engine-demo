@@ -15,6 +15,10 @@ document.body.appendChild(app.view as never)
 ;(async () => {
   // load the texture we need
   const texture = await Assets.load<SpriteSource>('dialog-name.png')
+  Assets.addBundle('fonts', {
+    LilitaOne: 'LilitaOne-Regular.ttf',
+  })
+  await Assets.loadBundle('fonts')
 
   // This creates a texture from a 'bunny.png' image
   const bunny = Sprite.from(texture)

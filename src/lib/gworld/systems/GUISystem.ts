@@ -5,13 +5,14 @@ import { EntityManager } from '../../exts/entity'
 import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
 import { Button } from '@pixi/ui'
+import { Text } from 'pixi.js'
 
 export class GUISystem implements System {
   configure(event_manager: EventManager) {
     event_manager.subscribe(ComponentAddedEvent(ButtonComp), this)
     // event_manager.subscribe(ComponentAddedEvent(ProgressBarComp), this);
     // event_manager.subscribe(ComponentAddedEvent(LoadingBarComp), this);
-    // event_manager.subscribe(ComponentAddedEvent(LabelComp), this);
+    event_manager.subscribe(ComponentAddedEvent(LabelComp), this)
     // event_manager.subscribe(ComponentAddedEvent(BlockInputEventsComp), this);
   }
   receive(type: string, event: EventReceive) {
@@ -56,17 +57,16 @@ export class GUISystem implements System {
       //   }
       //   break
       // }
-      // case ComponentAddedEvent(LabelComp): {
-      //   // cc.log(event);
-      //   const ett = event.entity
-      //   const label = ett.getComponent(LabelComp)
-      //   const { string, font, size } = label
-      //   const fontName = cc.sys.isNative ? font.srcs[0] : font.name
-      //   const node = new ccui.Text(string, fontName, size)
-      //   node.setTextVerticalAlignment(cc.VERTICAL_TEXT_ALIGNMENT_BOTTOM)
-      //   label.node = ett.assign(new NodeComp(node, ett))
-      //   break
-      // }
+      case ComponentAddedEvent(LabelComp): {
+        // cc.log(event);
+        const ett = event.entity
+        const label = ett.getComponent(LabelComp)
+        // const { string, font, size } = label
+        const node = new Text()
+        node.style.fill = '#fff'
+        label.node = ett.assign(new NodeComp(node, ett))
+        break
+      }
 
       default:
         break
