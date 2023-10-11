@@ -1,7 +1,9 @@
+import { Vec2 } from 'planck'
 import { SpriteSourceAssets } from '../assets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
 import { ButtonComp, LabelComp } from '../lib/gworld/components/GUIComponent'
+import { BoxCollider } from '../lib/gworld/components/PhysicsComponent'
 import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 import { SceneComponent } from '../lib/gworld/core/Scene'
 
@@ -36,12 +38,14 @@ export class Home extends SceneComponent {
   static boot() {
     return (
       <SceneComponent>
-        <LabelComp string="hello" font="LilitaOne" />
+        <LabelComp node={{ x: 106, y: 240 }} string="hello" font="LilitaOne" />
         <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={SpriteSourceAssets.crash}>
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref="hero" node={{ x: 550, y: 130 }}></Hero>
+        <Hero $ref="hero" node={{ x: 550, y: 130 }}>
+          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+        </Hero>
       </SceneComponent>
     )
   }

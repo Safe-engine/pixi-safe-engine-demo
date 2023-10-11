@@ -15,7 +15,8 @@
   "dependencies": {
     "@pixi/ui": "^0.9.0",
     "lodash": "^4.17.21",
-    "pixi.js": "^7.2.4"
+    "pixi.js": "^7.2.4",
+    "planck": "1.0.0-beta.16"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
