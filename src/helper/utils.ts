@@ -14,7 +14,7 @@ export function registerSystem(component) {
     receive(type: string, event: EventReceive) {
       switch (type) {
         case ComponentAddedEvent(component): {
-          console.log('ComponentAddedEvent', event)
+          console.log('Component Added', event.component)
           const ett = event.entity
           const newComp: any = ett.getComponent(component)
           newComp.node = ett.getComponent(NodeComp)
