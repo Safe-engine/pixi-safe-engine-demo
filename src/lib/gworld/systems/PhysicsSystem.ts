@@ -4,8 +4,8 @@ import { BoxCollider, CircleCollider, Collider, PolygonCollider, SpriteComp, Rig
 import { Entity, EntityManager } from '../../exts/entity'
 import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
-import { World, Vec2, Box, Contact, Manifold, Body, Fixture, Shape } from 'planck'
-import { Container, Graphics, Sprite } from 'pixi.js'
+import { World, Vec2, Box, Contact, Manifold, Body, Fixture, Shape, Settings } from 'planck'
+import { Container, Graphics } from 'pixi.js'
 
 export class PhysicsSystem implements System {
   world: World
@@ -14,7 +14,10 @@ export class PhysicsSystem implements System {
   listRemoveShape: Shape[] = []
 
   configure(event_manager: EventManager) {
-    this.world = new World()
+    // Settings.lengthUnitsPerMeter = 100
+    this.world = new World({
+      gravity: Vec2(0, 1),
+    })
     // event_manager.world.physicsManager = this
     // event_manager.subscribe(ComponentAddedEvent(RigidBody), this);
     event_manager.subscribe(ComponentAddedEvent(BoxCollider), this)
@@ -25,7 +28,6 @@ export class PhysicsSystem implements System {
     this.world.on('end-contact', this.contactEnd.bind(this))
     this.world.on('pre-solve', this.preSolve.bind(this))
     this.world.on('post-solve', this.postSolve.bind(this))
-    this.world.setGravity(Vec2(0, 1))
   }
 
   receive(type: string, event: EventReceive) {
@@ -37,18 +39,20 @@ export class PhysicsSystem implements System {
       // }
 
       case ComponentAddedEvent(BoxCollider): {
-        console.log('ComponentAddedEvent BoxCollider', event);
+        console.log('ComponentAddedEvent BoxCollider', event)
         const ett = event.entity
         const rigidBody = ett.getComponent(RigidBody)
         const box = ett.getComponent(BoxCollider)
         const node = ett.getComponent(NodeComp)
         const body = this.world.createBody({
-          position: Vec2(110, 22), // the body's origin position.
+          position: node.position as any, // the body's origin position.
           angle: 0.25 * Math.PI, // the body's angle in radians.
           userData: ett,
-          type: 'kinematic',
+          type: 'dynamic',
         })
-        const { density, width, height, offset, restitution, friction, tag } = box
+        body.setMassData({ mass: 1 } as any)
+        const { width, height, offset, tag } = box
+        const { density, restitution, friction } = rigidBody
         // const { x, y } = offset
         const shape = new Box(width, height)
         const myFixture = body.createFixture({
@@ -108,12 +112,13 @@ export class PhysicsSystem implements System {
     const node = ett.getComponent(NodeComp)
     node.x = body.getPosition().x
     node.y = body.getPosition().y
+    // console.log('renderBody body', body.getPosition())
   }
 
   renderFixture(fixture: Fixture) {
     // Render or update fixture rendering
     const shape = fixture.getShape()
-    console.log('renderFixture shape', shape.m_type)
+    // console.log('renderFixture shape', shape.m_type)
   }
 
   renderJoint(joint) {
@@ -144,11 +149,9 @@ export class PhysicsSystem implements System {
         event2.emit('onContactBegin', contact, phys2, phys1)
       }
     }
-    return false
   }
 
   preSolve(contact: Contact, oldManifold: Manifold) {
-    // log('preSolve');
     // log('preSolve');
   }
 
@@ -174,7 +177,6 @@ export class PhysicsSystem implements System {
         event2.emit('onContactEnd', contact, ett2.getComponent(Collider), ett1.getComponent(Collider))
       }
     }
-    return true
   }
 
   setupDebugNode(currentScene: Container) {
