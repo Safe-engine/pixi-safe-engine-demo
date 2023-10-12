@@ -1,4 +1,4 @@
-import { Container, Ticker, Point, Sprite, Color, ColorSource } from 'pixi.js'
+import { Container, Ticker, Point, Sprite, Color, ColorSource, RAD_TO_DEG, DEG_TO_RAD } from 'pixi.js'
 import { Entity } from '../../exts/entity'
 import { Constructor } from '../../exts/global'
 import remove from 'lodash/remove'
@@ -143,11 +143,11 @@ export class NodeComp {
   }
 
   get angle() {
-    return -this.instance.rotation
+    return this.instance.angle
   }
 
   set angle(val: number) {
-    this.instance.rotation = -val
+    this.instance.angle = val
   }
 
   get color() {

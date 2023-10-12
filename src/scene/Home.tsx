@@ -3,7 +3,7 @@ import { SpriteSourceAssets } from '../assets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
 import { ButtonComp, LabelComp } from '../lib/gworld/components/GUIComponent'
-import { BoxCollider } from '../lib/gworld/components/PhysicsComponent'
+import { BoxCollider, RigidBody } from '../lib/gworld/components/PhysicsComponent'
 import { SpriteRender } from '../lib/gworld/components/RenderComponent'
 import { SceneComponent } from '../lib/gworld/core/Scene'
 
@@ -44,6 +44,7 @@ export class Home extends SceneComponent {
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
         <Hero $ref="hero" node={{ x: 550, y: 130 }}>
+          <RigidBody type="dynamic" />
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
       </SceneComponent>

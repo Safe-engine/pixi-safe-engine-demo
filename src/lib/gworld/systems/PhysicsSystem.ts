@@ -1,6 +1,14 @@
 import { colliderMatrix, groupList } from '../../../settings'
 import { NodeComp } from '../components/EnhancedComponent'
-import { BoxCollider, CircleCollider, Collider, PolygonCollider, SpriteComp, RigidBody } from '../components/PhysicsComponent'
+import {
+  BoxCollider,
+  CircleCollider,
+  Collider,
+  PolygonCollider,
+  SpriteComp,
+  RigidBody,
+  PhysicsMaterial,
+} from '../components/PhysicsComponent'
 import { Entity, EntityManager } from '../../exts/entity'
 import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
@@ -31,7 +39,6 @@ export class PhysicsSystem implements System {
   }
 
   receive(type: string, event: EventReceive) {
-    // const currentScene = director.getRunningScene();
     switch (type) {
       // case ComponentAddedEvent(SpriteComp): {
       //   log(event);
@@ -42,24 +49,39 @@ export class PhysicsSystem implements System {
         console.log('ComponentAddedEvent BoxCollider', event)
         const ett = event.entity
         const rigidBody = ett.getComponent(RigidBody)
+        const physicsMaterial = ett.getComponent(PhysicsMaterial)
         const box = ett.getComponent(BoxCollider)
         const node = ett.getComponent(NodeComp)
-        const body = this.world.createBody({
+        const bodyDef = {
           position: node.position as any, // the body's origin position.
           angle: 0.25 * Math.PI, // the body's angle in radians.
           userData: ett,
-          type: 'dynamic',
-        })
-        body.setMassData({ mass: 1 } as any)
+          type: rigidBody.type,
+          gravityScale: 0,
+        }
+        if (rigidBody) {
+          const { gravityScale } = rigidBody
+          bodyDef.gravityScale = gravityScale
+        }
+        const body = this.world.createBody(bodyDef)
+        rigidBody.body = body
+        // body.setMassData({ mass: 1 } as any)
         const { width, height, offset, tag } = box
-        const { density, restitution, friction } = rigidBody
-        // const { x, y } = offset
+        // const { density, restitution, friction } = physicsMaterial
+        const { x, y } = offset
         const shape = new Box(width, height)
         const myFixture = body.createFixture({
           shape,
           density: 1,
+          isSensor: true,
         })
-        const physicsCollide = ett.assign(new Collider(tag, offset, density, restitution, friction))
+        const debugBox = new Graphics()
+        // const { x, y } = node.position
+        // shape.m_vertices
+        debugBox.beginFill(0xff0000, 0.3)
+        debugBox.drawRect(x, y, width, height)
+        node.instance.addChild(debugBox)
+        const physicsCollide = ett.assign(new Collider(tag, offset))
         physicsCollide.node = node
         box.node = node
         break
@@ -112,6 +134,7 @@ export class PhysicsSystem implements System {
     const node = ett.getComponent(NodeComp)
     node.x = body.getPosition().x
     node.y = body.getPosition().y
+    node.angle = body.getAngle()
     // console.log('renderBody body', body.getPosition())
   }
 
