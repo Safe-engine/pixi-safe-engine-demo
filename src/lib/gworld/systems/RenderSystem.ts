@@ -45,7 +45,7 @@ export class RenderSystem implements System {
       }
 
       case ComponentAddedEvent(SpriteRender): {
-        console.log('SpriteRender', event)
+        console.log('ComponentAddedEvent SpriteRender', event)
         const ett = event.entity
         const spriteComp = ett.getComponent(SpriteRender)
         // const { spriteFrame, texType, type, fillType, _fillRange, fillCenter } = spriteComp
@@ -71,7 +71,6 @@ export class RenderSystem implements System {
         //   ;(node as ccui.ImageView).setContentSize(sprite.getContentSize())
         //   // node.ignoreContentAdaptWithSize(true);
         // }
-        console.log('spriteComp', spriteComp)
         spriteComp.node = ett.assign(new NodeComp(node, ett))
         break
       }
