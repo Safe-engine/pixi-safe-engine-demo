@@ -16,11 +16,13 @@ import { Home } from './scene/Home'
 // can then insert into the DOM
 async function start() {
   const gameDiv = document.getElementById('game')
-  // gameDiv.style.width = '360px'
-  // gameDiv.style.height = '760px'
-  // app.resizeTo = gameDiv
-  // app.renderer.view.width = 360
-  // app.renderer.view.height = 760
+  const width = window.innerWidth
+  const height = window.innerHeight
+  Object.assign(app.view.style, {
+    width: `${width}px`,
+    height: `${height}px`,
+    overflow: 'hidden',
+  })
   gameDiv.appendChild(app.view as never)
   // load the texture we need
   await Assets.load<SpriteSource>('dialog-name.png')
