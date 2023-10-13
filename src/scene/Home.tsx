@@ -47,7 +47,7 @@ export class Home extends SceneComponent {
           <RigidBody type="dynamic" />
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 240 }} data={SpineAssets.boss01} animation="Dead" />
+        <SpineSkeleton node={{ x: 306, y: 940 }} data={SpineAssets.boss01} animation="Walk" loop={true} />
       </SceneComponent>
     )
   }
