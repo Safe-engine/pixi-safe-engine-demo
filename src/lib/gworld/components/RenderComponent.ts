@@ -94,3 +94,25 @@ export class MaskRender extends EnhancedComponent {
     this.inverted = inverted
   }
 }
+
+export class SpineSkeleton extends EnhancedComponent {
+  data: any
+  skin: string
+  animation: string
+  loop: boolean
+  timeScale: number
+  constructor({ data, skin, animation, loop, timeScale }) {
+    super()
+    this.data = data
+    this.skin = skin
+    this.animation = animation
+    this.loop = loop
+    this.timeScale = timeScale
+  }
+  static create(data) {
+    const world = GameWorld.Instance
+    const root = world.entities.create()
+    const sprite = root.assign(new SpineSkeleton(data))
+    return sprite
+  }
+}

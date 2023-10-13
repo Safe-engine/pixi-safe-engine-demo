@@ -5,6 +5,7 @@ import { NodeComp } from '../components/EnhancedComponent'
 import { Graphics, ImageRender, MaskRender, NodeRender, SpineSkeleton, SpriteRender } from '../components/RenderComponent'
 import { Container, Sprite, Assets, SpriteSource } from 'pixi.js'
 import { SceneComponent } from '../core/Scene'
+import { Spine } from 'pixi-spine'
 
 enum SpriteTypes {
   SIMPLE,
@@ -22,7 +23,7 @@ export class RenderSystem implements System {
     event_manager.subscribe(ComponentAddedEvent(SpriteRender), this)
     // event_manager.subscribe(ComponentAddedEvent(ImageRender), this)
     // event_manager.subscribe(ComponentAddedEvent(MaskRender), this)
-    // event_manager.subscribe(ComponentAddedEvent(SpineSkeleton), this)
+    event_manager.subscribe(ComponentAddedEvent(SpineSkeleton), this)
     // event_manager.subscribe(ComponentAddedEvent(Graphics), this)
     // event_manager.subscribe(ComponentRemovedEvent(NodeRender), this);
   }
@@ -36,7 +37,7 @@ export class RenderSystem implements System {
         break
       }
       case ComponentAddedEvent(NodeRender): {
-        // cc.log('NodeRender', event);
+        console.log('NodeRender', event)
         const ett = event.entity
         const nodeRenderComp = ett.getComponent(NodeRender)
         const node = new Container()
@@ -76,47 +77,48 @@ export class RenderSystem implements System {
       }
 
       // case ComponentAddedEvent(ImageRender): {
-      //   // cc.log('ImageRender', event);
+      //   console.log('ImageRender', event);
       //   const imageComp = event.entity.getComponent(ImageRender)
       //   const { spriteFrame, texType } = imageComp
       //   const node = new ccui.ImageView(spriteFrame, texType)
       //   const ett = event.entity
       //   node.setScale9Enabled(true)
-      //   imageComp.node = ett.assign(NodeComp, new NodeComp(node, ett))
+      //   imageComp.node = ett.assign(new NodeComp(node, ett))
       //   break
       // }
 
       // case ComponentAddedEvent(MaskRender): {
-      //   // cc.log('MaskRender', event.component);
+      //   console.log('MaskRender', event.component);
       //   const ett = event.entity
       //   const maskComp = event.entity.getComponent(MaskRender)
       //   const { type, segments, inverted } = maskComp
       //   const node = new cc.ClippingNode()
       //   node.setInverted(inverted)
-      //   maskComp.node = ett.assign(NodeComp, new NodeComp(node, ett))
+      //   maskComp.node = ett.assign(new NodeComp(node, ett))
       //   break
       // }
 
-      // case ComponentAddedEvent(SpineSkeleton): {
-      //   // cc.log('MaskRender', event.component);
-      //   const ett = event.entity
-      //   const spine = event.entity.getComponent(SpineSkeleton)
-      //   const { data, skin, _animation, loop, timeScale } = spine
-      //   const atlas = data.replace('.json', '.atlas')
-      //   // cc.log(data, atlas);
-      //   const node = sp.SkeletonAnimation.createWithJsonFile(data, atlas, timeScale)
-      //   if (skin) {
-      //     node.setSkin(skin)
-      //   }
-      //   if (_animation) {
-      //     node.setAnimation(0, _animation, loop)
-      //   }
-      //   spine.node = ett.assign(NodeComp, new NodeComp(node, ett))
-      //   break
-      // }
+      case ComponentAddedEvent(SpineSkeleton): {
+        console.log('SpineSkeleton', event.component)
+        const ett = event.entity
+        const spine = ett.getComponent(SpineSkeleton)
+        const { data, skin, animation, loop, timeScale } = spine
+        const node = new Spine(data)
+        if (skin) {
+          node.skeleton.setSkinByName(skin)
+        }
+        if (animation) {
+          node.state.setAnimation(0, animation, loop)
+        }
+        if (timeScale) {
+          node.state.timeScale = timeScale
+        }
+        spine.node = ett.assign(new NodeComp(node, ett))
+        break
+      }
 
       // case ComponentAddedEvent(Graphics): {
-      //   // cc.log('MaskRender', event.component);
+      //   console.log('MaskRender', event.component);
       //   const ett = event.entity
       //   const graphics = event.entity.getComponent(Graphics)
       //   const { lineWidth, strokeColor, fillColor } = graphics
@@ -124,7 +126,7 @@ export class RenderSystem implements System {
       //   node.setColor(strokeColor)
       //   node.setDrawColor(fillColor)
       //   node.setLineWidth(lineWidth)
-      //   graphics.node = ett.assign(NodeComp, new NodeComp(node, ett))
+      //   graphics.node = ett.assign(new NodeComp(node, ett))
       //   break
       // }
 
