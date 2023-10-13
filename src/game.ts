@@ -1,12 +1,13 @@
 import 'pixi-spine'
-import { Assets, Sprite, SpriteSource } from 'pixi.js'
+import { Assets, SpriteSource } from 'pixi.js'
 import { app } from './app'
+import { SpineAssets } from './assets'
 import { Hero } from './components/Hero'
 import { Monster } from './components/Monster'
 import { GameWorld } from './gworld'
 import { registerSystem } from './helper/utils'
+import { actionManager } from './lib/action'
 import { Home } from './scene/Home'
-import { SpineAssets } from './assets'
 
 // The application will create a renderer using WebGL, if possible,
 // with a fallback to a canvas render. It will also setup the ticker
@@ -14,9 +15,15 @@ import { SpineAssets } from './assets'
 // The application will create a canvas element for you that you
 // can then insert into the DOM
 async function start() {
-  document.body.appendChild(app.view as never)
+  const gameDiv = document.getElementById('game')
+  // gameDiv.style.width = '360px'
+  // gameDiv.style.height = '760px'
+  // app.resizeTo = gameDiv
+  // app.renderer.view.width = 360
+  // app.renderer.view.height = 760
+  gameDiv.appendChild(app.view as never)
   // load the texture we need
-  const texture = await Assets.load<SpriteSource>('dialog-name.png')
+  await Assets.load<SpriteSource>('dialog-name.png')
   Assets.addBundle('fonts', {
     LilitaOne: 'LilitaOne-Regular.ttf',
   })
@@ -29,6 +36,7 @@ async function start() {
   app.ticker.add(() => {
     // each frame we spin the bunny around a bit
     GameWorld.Instance.update(app.ticker.deltaTime)
+    actionManager.update(app.ticker.deltaTime / 60)
   })
   registerSystem(Monster)
   registerSystem(Hero)

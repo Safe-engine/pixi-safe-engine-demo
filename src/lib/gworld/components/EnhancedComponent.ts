@@ -1,31 +1,38 @@
-import { Container, Ticker, Point, Sprite, Color, ColorSource, RAD_TO_DEG, DEG_TO_RAD } from 'pixi.js'
+import remove from 'lodash/remove'
+import { ColorSource, Container, Point, Sprite } from 'pixi.js'
 import { Entity } from '../../exts/entity'
 import { Constructor } from '../../exts/global'
-import remove from 'lodash/remove'
-// import { groupList } from 'settings'
+import { Action, CallFunc, DelayTime, Repeat, Sequence, actionManager } from '../../../lib/action'
 
 export class EnhancedComponent {
   node: NodeComp
+  actionsMap: { [key: string]: Action } = {}
   addComponent<T extends ComponentType>(instance): T {
     return this.node.addComponent(instance)
   }
   getComponent<T extends ComponentType>(component: Constructor<T>): T {
     return this.node.getComponent(component)
   }
-  schedule(callback: (dt?: number) => void, interval: number, repeat: number = cc.macro.REPEAT_FOREVER, delay: number = 0) {
-    Ticker.shared.add(callback)
-    // this.node.instance.schedule(callback.bind(this), interval, repeat, delay)
+  schedule(callback: (dt?: number) => void, interval: number, repeat: number = -1, delay: number = 0, key?: string) {
+    const action = new Sequence(new DelayTime(interval), new CallFunc(callback))
+    const repeatAct = new Repeat(action, repeat)
+    const seq = new Sequence(new DelayTime(delay), repeatAct)
+    const animation = actionManager.runAction(this.node.instance, seq)
+    this.actionsMap[key] = animation
   }
-  unschedule(callback: (arg?: unknown) => void) {
+  unschedule(callback: (arg?: unknown) => void, key?: string) {
     // this.node.instance.unschedule(callback.bind(this))
-    Ticker.shared.remove(callback)
+    this.actionsMap[key].stop()
   }
   unscheduleAllCallbacks() {
-    this.node.instance.unscheduleAllCallbacks()
+    Object.values(this.actionsMap).forEach((action: Action) => {
+      action.stop()
+    })
   }
   scheduleOnce(callback: (arg?: unknown) => void, delay: number, key?: string) {
-    this.node.instance.scheduleOnce(callback, delay, key)
-    Ticker.shared.addOnce(callback)
+    const action = new Sequence(new DelayTime(delay), new CallFunc(callback))
+    this.actionsMap[key] = action
+    actionManager.runAction(this.node.instance, action)
   }
   getComponentsInChildren<T extends ComponentType>(component: Constructor<T>): T[] {
     return this.node.getComponentsInChildren(component)
@@ -123,7 +130,7 @@ export class NodeComp {
   }
 
   set anchorX(val: number) {
-    ;(this.instance as Sprite).anchor.x = val
+    ; (this.instance as Sprite).anchor.x = val
   }
 
   get anchorY() {
@@ -131,7 +138,7 @@ export class NodeComp {
   }
 
   set anchorY(val: number) {
-    ;(this.instance as Sprite).anchor.y = val
+    ; (this.instance as Sprite).anchor.y = val
   }
 
   get rotation() {
@@ -155,7 +162,7 @@ export class NodeComp {
   }
 
   set color(val: ColorSource) {
-    ;(this.instance as Sprite).tint = val
+    ; (this.instance as Sprite).tint = val
   }
 
   get opacity() {
@@ -342,13 +349,14 @@ export class NodeComp {
   //   this.instance.setScale(scaleX, scaleY || scaleX)
   // }
 
-  // runAction(atc: cc.ActionInterval) {
-  //   this.instance.runAction(atc)
-  // }
+  runAction(atc: Action) {
+    actionManager.runAction(this.instance, atc)
+  }
 
-  // stopAllActions() {
-  //   this.instance.stopAllActions()
-  // }
+  stopAllActions() {
+    // this.instance.stopAllActions()
+    // actionManager.cancelAction
+  }
 
   // pauseAllActions() {
   //   this.instance.pause()
@@ -375,15 +383,6 @@ export class NodeComp {
     this.children.push(child)
     this.instance.addChild(child.instance)
     // child.instance.tag = tag;
-    // if (this.name !== 'rootECSFireScene') {
-    //   const { width, height } = this.instance.getContentSize();
-    //   const newOffset = cc.v2(width, height).mul(0.5);
-    //   const vx = child.instance.getPositionX() - child.offset.x;
-    //   child.instance.setPositionX(vx + newOffset.x);
-    //   const vy = child.instance.getPositionY() - child.offset.y;
-    //   child.instance.setPositionY(vy + newOffset.y);
-    //   child.offset = newOffset;
-    // }
   }
 
   removeAllChildren(cleanup?) {
