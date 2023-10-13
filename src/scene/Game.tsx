@@ -6,9 +6,9 @@ import { ButtonComp, LabelComp } from '../lib/gworld/components/GUIComponent'
 import { BoxCollider, RigidBody } from '../lib/gworld/components/PhysicsComponent'
 import { SpineSkeleton, SpriteRender } from '../lib/gworld/components/RenderComponent'
 import { SceneComponent } from '../lib/gworld/core/Scene'
-import { Game } from './Game'
+import { Home } from './Home'
 
-export class Home extends SceneComponent {
+export class Game extends SceneComponent {
   score = 0
   // uiRef: UIController = null
   hero: Hero = null
@@ -34,13 +34,13 @@ export class Home extends SceneComponent {
   onPress(event) {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
-    Game.boot()
+    Home.boot()
   }
 
   static boot() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="hello" font="LilitaOne" />
+        <LabelComp node={{ x: 106, y: 240 }} string="Game" font="LilitaOne" />
         <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={SpriteSourceAssets.crash}>
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
@@ -49,7 +49,7 @@ export class Home extends SceneComponent {
           <RigidBody type="dynamic" />
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 1540 }} data={SpineAssets.boss01} animation="Walk" loop={true} />
+        <SpineSkeleton node={{ x: 306, y: 940 }} data={SpineAssets.boss01} animation="Walk" loop={true} />
       </SceneComponent>
     )
   }

@@ -132,10 +132,12 @@ export class PhysicsSystem implements System {
     // Render or update body rendering
     const ett: Entity = body.getUserData() as Entity
     const node = ett.getComponent(NodeComp)
-    node.x = body.getPosition().x
-    node.y = body.getPosition().y
-    node.angle = body.getAngle()
-    // console.log('renderBody body', body.getPosition())
+    if (node) {
+      node.x = body.getPosition().x
+      node.y = body.getPosition().y
+      node.angle = body.getAngle()
+      // console.log('renderBody body', body.getPosition())
+    }
   }
 
   renderFixture(fixture: Fixture) {
