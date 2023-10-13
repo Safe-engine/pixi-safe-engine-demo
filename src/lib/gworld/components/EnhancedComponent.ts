@@ -2,7 +2,8 @@ import remove from 'lodash/remove'
 import { ColorSource, Container, Point, Sprite } from 'pixi.js'
 import { Entity } from '../../exts/entity'
 import { Constructor } from '../../exts/global'
-import { Action, CallFunc, DelayTime, Repeat, Sequence, actionManager } from '../../../lib/action'
+import { Action, actionManager } from '../../../lib/action'
+import { callFuncAction, delayTimeAction, repeatAction, sequenceAction } from '../core/Actions'
 
 export class EnhancedComponent {
   node: NodeComp
@@ -14,9 +15,9 @@ export class EnhancedComponent {
     return this.node.getComponent(component)
   }
   schedule(callback: (dt?: number) => void, interval: number, repeat: number = -1, delay: number = 0, key?: string) {
-    const action = new Sequence(new DelayTime(interval), new CallFunc(callback))
-    const repeatAct = new Repeat(action, repeat)
-    const seq = new Sequence(new DelayTime(delay), repeatAct)
+    const action = sequenceAction(delayTimeAction(interval), callFuncAction(callback))
+    const repeatAct = repeatAction(action, repeat)
+    const seq = sequenceAction(delayTimeAction(delay), repeatAct)
     const animation = actionManager.runAction(this.node.instance, seq)
     this.actionsMap[key] = animation
   }
@@ -30,7 +31,7 @@ export class EnhancedComponent {
     })
   }
   scheduleOnce(callback: (arg?: unknown) => void, delay: number, key?: string) {
-    const action = new Sequence(new DelayTime(delay), new CallFunc(callback))
+    const action = sequenceAction(delayTimeAction(delay), callFuncAction(callback))
     this.actionsMap[key] = action
     actionManager.runAction(this.node.instance, action)
   }

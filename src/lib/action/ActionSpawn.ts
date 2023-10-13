@@ -2,7 +2,7 @@ import Action from './Action'
 
 export class Spawn extends Action {
   actions: any
-  constructor(actions) {
+  constructor(...actions) {
     super()
     this.actions = actions
 
