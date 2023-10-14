@@ -45,11 +45,11 @@ export class Home extends SceneComponent {
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref="hero" node={{ x: 550, y: 130 }}>
+        <Hero $ref="hero" node={{ x: 550, y: 1130 }}>
           <RigidBody type="dynamic" />
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 1540 }} data={SpineAssets.boss01} animation="Walk" loop={true} />
+        <SpineSkeleton node={{ x: 306, y: 140 }} data={SpineAssets.boss01} animation="Walk" loop={true} />
       </SceneComponent>
     )
   }

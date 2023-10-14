@@ -24,7 +24,7 @@ export class PhysicsSystem implements System {
   configure(event_manager: EventManager) {
     // Settings.lengthUnitsPerMeter = 100
     this.world = new World({
-      gravity: Vec2(0, 1),
+      gravity: Vec2(0, -1),
     })
     // event_manager.world.physicsManager = this
     // event_manager.subscribe(ComponentAddedEvent(RigidBody), this);

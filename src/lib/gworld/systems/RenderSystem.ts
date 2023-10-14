@@ -25,6 +25,7 @@ export class RenderSystem implements System {
     // event_manager.subscribe(ComponentAddedEvent(MaskRender), this)
     event_manager.subscribe(ComponentAddedEvent(SpineSkeleton), this)
     // event_manager.subscribe(ComponentAddedEvent(Graphics), this)
+    event_manager.subscribe(ComponentAddedEvent(NodeComp), this)
     event_manager.subscribe(ComponentRemovedEvent(NodeComp), this)
   }
 
@@ -129,6 +130,13 @@ export class RenderSystem implements System {
       //   graphics.node = ett.assign(new NodeComp(node, ett))
       //   break
       // }
+      case ComponentAddedEvent(NodeComp): {
+        const node = event.component as NodeComp
+        if (node) {
+          node.instance.scale.y = -1
+        }
+        break
+      }
       case ComponentRemovedEvent(NodeComp): {
         const node = event.component as NodeComp
         if (node) {

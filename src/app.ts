@@ -5,3 +5,6 @@ export const app = new Application({
   antialias: true,
   resolution: window.devicePixelRatio,
 })
+
+app.stage.position.y = app.renderer.height / app.renderer.resolution
+app.stage.scale.y = -1
