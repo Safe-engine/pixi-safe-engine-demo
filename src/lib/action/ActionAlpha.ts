@@ -35,7 +35,7 @@ export class AlphaBy extends Action {
   time: number
   alpha: any
   _time: any
-  talpha: null
+  talpha = null
   constructor(alpha, time) {
     super()
     this.time = time * 1000

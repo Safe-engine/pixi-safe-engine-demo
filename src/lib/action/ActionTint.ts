@@ -35,7 +35,7 @@ export class TintBy extends Action {
   time: number
   tint: any
   _time: any
-  ttint: null
+  ttint = null
   constructor(tint, time) {
     super()
     this.time = time * 1000

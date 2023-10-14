@@ -42,8 +42,8 @@ export class SkewBy extends Action {
   x: any
   y: any
   _time: any
-  tx: null
-  ty: null
+  tx = null
+  ty = null
   constructor(x, y, time) {
     super()
     this.time = time * 1000

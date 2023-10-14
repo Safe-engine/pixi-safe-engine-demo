@@ -36,7 +36,7 @@ export class RotateBy extends Action {
   time: number
   rotation: any
   _time: any
-  trotation: null
+  trotation = null
   constructor(rotation, time) {
     super()
     this.time = time * 1000
