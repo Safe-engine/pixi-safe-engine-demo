@@ -1,7 +1,7 @@
 {
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "[handlebars]": {
     "editor.formatOnSave": false
   },

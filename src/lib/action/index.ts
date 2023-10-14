@@ -16,6 +16,7 @@ import { DelayTime } from './ActionDelay'
 import { CallFunc } from './ActionCallFunc'
 import { default as Action } from './Action'
 
+export { Action }
 export const actionManager = new ActionManager()
 
 export function moveToAction(x: number, y: number, t: number) {

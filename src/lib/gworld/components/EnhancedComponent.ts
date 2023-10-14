@@ -2,8 +2,7 @@ import remove from 'lodash/remove'
 import { ColorSource, Container, Point, Sprite } from 'pixi.js'
 import { Entity } from '../../exts/entity'
 import { Constructor } from '../../exts/global'
-import { Action, actionManager } from '../../../lib/action'
-import { callFuncAction, delayTimeAction, repeatAction, sequenceAction } from '../core/Actions'
+import { Action, actionManager, callFuncAction, delayTimeAction, repeatAction, sequenceAction } from '../../../lib/action'
 
 export class EnhancedComponent {
   node: NodeComp
@@ -131,7 +130,7 @@ export class NodeComp {
   }
 
   set anchorX(val: number) {
-    ; (this.instance as Sprite).anchor.x = val
+    ;(this.instance as Sprite).anchor.x = val
   }
 
   get anchorY() {
@@ -139,7 +138,7 @@ export class NodeComp {
   }
 
   set anchorY(val: number) {
-    ; (this.instance as Sprite).anchor.y = val
+    ;(this.instance as Sprite).anchor.y = val
   }
 
   get rotation() {
@@ -163,7 +162,7 @@ export class NodeComp {
   }
 
   set color(val: ColorSource) {
-    ; (this.instance as Sprite).tint = val
+    ;(this.instance as Sprite).tint = val
   }
 
   get opacity() {
