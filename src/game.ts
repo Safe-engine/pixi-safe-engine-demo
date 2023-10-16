@@ -20,7 +20,7 @@ async function start() {
   const height = window.innerHeight
   Object.assign(app.view.style, {
     width: `${width}px`,
-    height: `${height}px`,
+    // height: `${height}px`,
     overflow: 'hidden',
   })
   gameDiv.appendChild(app.view as never)
