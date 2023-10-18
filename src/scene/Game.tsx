@@ -45,8 +45,12 @@ export class Game extends SceneComponent {
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref="hero" node={{ x: 550, y: 130 }}>
+        <Hero $ref="hero" node={{ x: 550, y: 430 }}>
           <RigidBody type="dynamic" />
+          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+        </Hero>
+        <Hero $ref="hero" node={{ x: 550, y: 130, rotation: 180 }}>
+          <RigidBody type="static" />
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
         <SpineSkeleton node={{ x: 306, y: 940 }} data={SpineAssets.boss01} animation="Walk" loop={true} />

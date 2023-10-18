@@ -29,7 +29,9 @@ export class GUISystem implements System {
         // button.node = ett.assign(new NodeComp(node, ett))
         node.onPress.connect(() => {
           console.log('onPress.connect')
-          button.onPress()
+          if (Object.prototype.hasOwnProperty.call(button, 'onPress')) {
+            button.onPress()
+          }
         })
         break
       }

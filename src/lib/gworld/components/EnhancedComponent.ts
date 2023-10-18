@@ -59,7 +59,7 @@ export class NodeComp {
   // offset: cc.Point = cc.v2(0, 0);
   name: string
   private lastMove: { x: number; y: number }
-  private _group
+  private _group = 0
 
   static EventType = {
     TOUCH_START: 'NODE_TOUCH_START',

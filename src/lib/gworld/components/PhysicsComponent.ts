@@ -68,7 +68,7 @@ export class Collider extends EnhancedComponent {
   tag: number
   group: number
   offset: Vec2
-
+  _onCollisionEnter: (other: Collider) => void
   enabled: boolean = true
 
   constructor(tag: number, offset: Vec2) {
@@ -87,6 +87,16 @@ export class BoxCollider extends Collider {
     super(tag, offset)
     this.width = width
     this.height = height
+  }
+
+  set onCollisionEnter(val) {
+    const phys1 = this.getComponent(Collider)
+    phys1._onCollisionEnter = val
+  }
+
+  get onCollisionEnter() {
+    const phys1 = this.getComponent(Collider)
+    return phys1._onCollisionEnter
   }
 }
 

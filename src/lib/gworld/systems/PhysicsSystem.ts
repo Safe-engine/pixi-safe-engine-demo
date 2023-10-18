@@ -1,19 +1,17 @@
-import { colliderMatrix, groupList } from '../../../settings'
-import { NodeComp } from '../components/EnhancedComponent'
-import {
-  BoxCollider,
-  CircleCollider,
-  Collider,
-  PolygonCollider,
-  SpriteComp,
-  RigidBody,
-  PhysicsMaterial,
-} from '../components/PhysicsComponent'
+import { Container, Graphics } from 'pixi.js'
+import { Body, Box, Contact, Fixture, Manifold, Shape, Vec2, World } from 'planck'
+import { colliderMatrix } from '../../../settings'
 import { Entity, EntityManager } from '../../exts/entity'
 import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
-import { World, Vec2, Box, Contact, Manifold, Body, Fixture, Shape, Settings } from 'planck'
-import { Container, Graphics } from 'pixi.js'
+import { NodeComp } from '../components/EnhancedComponent'
+import { BoxCollider, CircleCollider, Collider, PhysicsMaterial, PolygonCollider, RigidBody } from '../components/PhysicsComponent'
+
+Fixture.prototype.shouldCollide = function (other) {
+  const nodeThis: NodeComp = this.getBody().getUserData()
+  const nodeOther: NodeComp = other.getBody().getUserData()
+  return colliderMatrix[nodeOther.group][nodeThis.group]
+}
 
 export class PhysicsSystem implements System {
   world: World
@@ -52,10 +50,14 @@ export class PhysicsSystem implements System {
         const physicsMaterial = ett.getComponent(PhysicsMaterial)
         const box = ett.getComponent(BoxCollider)
         const node = ett.getComponent(NodeComp)
+        const { width, height, offset, tag } = box
+        ett.assign(new Collider(tag, offset))
+        // const { density, restitution, friction } = physicsMaterial
+        const { x, y } = offset
         const bodyDef = {
           position: node.position as any, // the body's origin position.
           angle: 0.25 * Math.PI, // the body's angle in radians.
-          userData: ett,
+          userData: node,
           type: rigidBody.type,
           gravityScale: 0,
         }
@@ -66,14 +68,12 @@ export class PhysicsSystem implements System {
         const body = this.world.createBody(bodyDef)
         rigidBody.body = body
         // body.setMassData({ mass: 1 } as any)
-        const { width, height, offset, tag } = box
-        // const { density, restitution, friction } = physicsMaterial
-        const { x, y } = offset
+
         const shape = new Box(width, height)
-        const myFixture = body.createFixture({
+        body.createFixture({
           shape,
           density: 1,
-          isSensor: true,
+          isSensor: false,
         })
         const debugBox = new Graphics()
         // const { x, y } = node.position
@@ -151,8 +151,8 @@ export class PhysicsSystem implements System {
   }
 
   contactBegin(contact: Contact) {
-    const ett1: Entity = contact.getFixtureA().getBody().getUserData() as Entity
-    const ett2: Entity = contact.getFixtureB().getBody().getUserData() as Entity
+    const ett1: NodeComp = contact.getFixtureA().getBody().getUserData() as NodeComp
+    const ett2: NodeComp = contact.getFixtureB().getBody().getUserData() as NodeComp
     // this.world.addPostStepCallback(() => {
     //   // log('addPostStepCallback');
     //   this.listRemoveShape.forEach((s) => this.world.removeShape(s))
@@ -160,18 +160,14 @@ export class PhysicsSystem implements System {
     //   this.listRemoveBody = []
     //   this.listRemoveShape = []
     // })
-    const event1 = ett1.getComponent(NodeComp)
     const phys1 = ett1.getComponent(Collider)
     const phys2 = ett2.getComponent(Collider)
-    const event2 = ett2.getComponent(NodeComp)
-    if (event1) {
-      if (phys1 && phys2) {
-        event1.emit('onContactBegin', contact, phys1, phys2)
+    if (phys1 && phys2) {
+      if (Object.prototype.hasOwnProperty.call(phys1, '_onCollisionEnter')) {
+        phys1._onCollisionEnter(phys2)
       }
-    }
-    if (event2) {
-      if (phys1 && phys2) {
-        event2.emit('onContactBegin', contact, phys2, phys1)
+      if (Object.prototype.hasOwnProperty.call(phys2, '_onCollisionEnter')) {
+        phys2._onCollisionEnter(phys1)
       }
     }
   }
@@ -194,12 +190,12 @@ export class PhysicsSystem implements System {
     const event2 = ett2.getComponent(NodeComp)
     if (event1) {
       if (phys1 && phys2) {
-        event1.emit('onContactEnd', contact, ett1.getComponent(Collider), ett2.getComponent(Collider))
+        event1.emit('onCollisionExit', contact, ett1.getComponent(Collider), ett2.getComponent(Collider))
       }
     }
     if (event2) {
       if (phys1 && phys2) {
-        event2.emit('onContactEnd', contact, ett2.getComponent(Collider), ett1.getComponent(Collider))
+        event2.emit('onCollisionExit', contact, ett2.getComponent(Collider), ett1.getComponent(Collider))
       }
     }
   }
