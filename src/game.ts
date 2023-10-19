@@ -4,9 +4,7 @@ import { app } from './app'
 import { SpineAssets } from './assets'
 import { Hero } from './components/Hero'
 import { Monster } from './components/Monster'
-import { GameWorld } from './lib/gworld'
-import { registerSystem } from './lib/helper/utils'
-import { actionManager } from './lib/action'
+import { GameWorld, registerSystem, actionManager } from './lib/safex'
 import { Home } from './scene/Home'
 
 // The application will create a renderer using WebGL, if possible,

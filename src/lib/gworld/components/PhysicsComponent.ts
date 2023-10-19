@@ -21,13 +21,13 @@ import { EnhancedComponent } from './EnhancedComponent'
 //   static,
 // }
 export class RigidBody extends EnhancedComponent {
-  type: BodyType
+  type: BodyType | string
   density: number
   restitution: number
   friction: number
   body: Body
   gravityScale = 1
-  constructor(type: BodyType) {
+  constructor(type: BodyType | string) {
     super()
     this.type = type
   }

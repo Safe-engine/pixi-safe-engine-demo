@@ -2,10 +2,7 @@ import { Vec2 } from 'planck'
 import { SpineAssets, SpriteSourceAssets } from '../assets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
-import { ButtonComp, LabelComp } from '../lib/gworld/components/GUIComponent'
-import { BoxCollider, RigidBody } from '../lib/gworld/components/PhysicsComponent'
-import { SpineSkeleton, SpriteRender } from '../lib/gworld/components/RenderComponent'
-import { SceneComponent } from '../lib/gworld/core/Scene'
+import { BoxCollider, ButtonComp, LabelComp, RigidBody, SceneComponent, SpineSkeleton, SpriteRender } from '../lib/safex'
 import { Home } from './Home'
 
 export class Game extends SceneComponent {
@@ -31,7 +28,7 @@ export class Game extends SceneComponent {
   }
 
   // onUpdate(dt: number) {}
-  onPress(event) {
+  onPress(event: ButtonComp) {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
     Home.boot()

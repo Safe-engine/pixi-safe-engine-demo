@@ -1,6 +1,5 @@
 import { SpriteSourceAssets } from '../assets'
-import { EnhancedComponent } from '../lib/gworld/components/EnhancedComponent'
-import { SpriteRender } from '../lib/gworld/components/RenderComponent'
+import { EnhancedComponent, SpriteRender } from '../lib/safex'
 
 export class Hero extends EnhancedComponent {
   hp = 100
