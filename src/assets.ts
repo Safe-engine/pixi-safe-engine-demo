@@ -8,3 +8,7 @@ export const SpriteSourceAssets = {
 export const SpineAssets = {
   boss01: 'Boss01/boss01.json',
 }
+
+export const SpineAtlas = {
+  boss01: 'Boss01/boss01.atlas',
+}

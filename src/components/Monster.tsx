@@ -14,7 +14,7 @@ export class Monster extends EnhancedComponent {
   //   bullet.active(true)
   // }
 
-  static create() {
+  static create(): Monster {
     const sprite = SpriteRender.create()
     sprite.spriteFrame = SpriteSourceAssets.demo
     const monster = sprite.addComponent<Monster>(new Monster())
