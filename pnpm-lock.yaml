@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@pixi/ui':
     specifier: ^0.9.0
@@ -36,6 +40,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.6.0
     version: 6.6.0(eslint@8.48.0)(typescript@5.2.2)
+  babel-plugin-safe-x-transform:
+    specifier: ^1.0.1
+    version: 1.0.1(@babel/core@7.23.0)
   eslint:
     specifier: ^8.34.0
     version: 8.48.0
@@ -2147,6 +2154,15 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /babel-plugin-safe-x-transform@1.0.1(@babel/core@7.23.0):
+    resolution: {integrity: sha512-lAKewr1j5H9/cC6AlVnv82PGriy7FozdGMTCH8dB56enpVWaozgzdT8lpuWi872zfiVvOnokIHnph03ooXtL8w==}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.23.0
+      '@babel/helper-plugin-utils': 7.22.5
+    dev: true
+
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -3916,7 +3932,3 @@ packages:
     name: stage-js
     version: 1.0.0-alpha.1
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
