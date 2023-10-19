@@ -1,6 +1,6 @@
 import { Text } from 'pixi.js'
 import { EnhancedComponent, NodeComp } from './EnhancedComponent'
-import { GameWorld } from '../../../gworld'
+import { GameWorld } from '..'
 
 export class ButtonComp extends EnhancedComponent {
   normalImage: string

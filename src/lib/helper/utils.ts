@@ -1,8 +1,8 @@
 import { GameWorld } from '../gworld'
-import { EntityManager } from '../lib/exts/entity'
-import { ComponentAddedEvent, EventManager, EventReceive } from '../lib/exts/event'
-import { System } from '../lib/exts/system'
-import { NodeComp } from '../lib/gworld/components/EnhancedComponent'
+import { EntityManager } from '../exts/entity'
+import { ComponentAddedEvent, EventManager, EventReceive } from '../exts/event'
+import { System } from '../exts/system'
+import { NodeComp } from '../gworld/components/EnhancedComponent'
 
 export function registerSystem(component) {
   class NewSystem implements System {

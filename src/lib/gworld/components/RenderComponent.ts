@@ -1,6 +1,6 @@
 import { Point, Sprite, SpriteSource, Texture, TextureSource } from 'pixi.js'
 import { EnhancedComponent, NodeComp } from './EnhancedComponent'
-import { GameWorld } from '../../../gworld'
+import { GameWorld } from '..'
 export class NodeRender extends EnhancedComponent {
   nodeName: string
   constructor(name?: string) {

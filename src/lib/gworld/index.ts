@@ -1,9 +1,9 @@
-import { Constructor } from './lib/exts/global'
-import { System } from './lib/exts/system'
-import { World } from './lib/exts/world'
-import { PhysicsSystem } from './lib/gworld/systems/PhysicsSystem'
-import { RenderSystem } from './lib/gworld/systems/RenderSystem'
-import { GUISystem } from './lib/gworld/systems/GUISystem'
+import { Constructor } from '../exts/global'
+import { System } from '../exts/system'
+import { World } from '../exts/world'
+import { PhysicsSystem } from './systems/PhysicsSystem'
+import { RenderSystem } from './systems/RenderSystem'
+import { GUISystem } from './systems/GUISystem'
 
 export class GameWorld extends World {
   listUpdate: (System | Constructor<System>)[] = []

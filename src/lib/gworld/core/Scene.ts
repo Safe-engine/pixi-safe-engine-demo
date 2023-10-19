@@ -1,5 +1,5 @@
 import { app } from '../../../app'
-import { GameWorld } from '../../../gworld'
+import { GameWorld } from '..'
 import { EnhancedComponent, NodeComp } from '../components/EnhancedComponent'
 
 export class SceneComponent extends EnhancedComponent {
