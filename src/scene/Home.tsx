@@ -38,7 +38,7 @@ export class Home extends SceneComponent {
     console.log(other.tag)
   }
 
-  static boot() {
+  static boot(): Home {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="hello" font="LilitaOne" />

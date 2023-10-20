@@ -34,7 +34,7 @@ export class Game extends SceneComponent {
     Home.boot()
   }
 
-  static boot() {
+  static boot(): Game {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Game" font="LilitaOne" />
