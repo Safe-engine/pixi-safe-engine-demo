@@ -5,6 +5,10 @@ export const SpriteSourceAssets = {
   thanhmau3: 'thanhmau3.png',
 }
 
+export const FontAssets = {
+  defaultFont: 'LilitaOne-Regular.ttf',
+}
+
 export const SpineAssets = {
   boss01: 'Boss01/boss01.json',
 }
