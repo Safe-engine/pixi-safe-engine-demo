@@ -31,14 +31,14 @@ export class Home extends SceneComponent {
   onPress(event: ButtonComp) {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
-    Game.boot()
+    Game.create()
   }
 
   onCollisionEnter(other: Collider) {
     console.log(other.tag)
   }
 
-  static boot(): Home {
+  static create(): Home {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="hello" font="LilitaOne" />

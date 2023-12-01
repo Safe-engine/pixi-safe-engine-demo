@@ -1,5 +1,5 @@
 import { EntityManager } from './entity'
-import { EventReceive, EventManager } from './event'
+import { EventManager, EventReceive } from './event'
 import { Constructor } from './global'
 import { World } from './world'
 
@@ -15,6 +15,18 @@ export class SystemManager {
   world: World
   constructor(world: World) {
     this.world = world
+  }
+
+  isRegistered(name: string) {
+    return this.world.systemsMap[name]
+  }
+
+  get<T extends System>(sys: Constructor<T>): T {
+    return this.world.systemsMap[sys.name] as T
+  }
+
+  configureOnce<T extends System>(sys: Constructor<T>) {
+    return this.world.systemsMap[sys.name].configure(this.world.events)
   }
 
   add<T extends System>(sys: Constructor<T>) {

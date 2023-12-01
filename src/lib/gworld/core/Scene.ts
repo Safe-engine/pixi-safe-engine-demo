@@ -1,6 +1,7 @@
-import { app } from '../../../app'
+import { app } from '../../app'
 import { GameWorld } from '..'
-import { EnhancedComponent, NodeComp } from '../components/EnhancedComponent'
+import { EnhancedComponent } from '../components/EnhancedComponent'
+import { NodeComp } from '../components/NodeComp'
 
 export class SceneComponent extends EnhancedComponent {
   static boot: () => void
@@ -8,8 +9,9 @@ export class SceneComponent extends EnhancedComponent {
     const world = GameWorld.Instance
     world.entities.reset()
     const root = world.entities.create()
-    root.assign(new NodeComp(app.stage, root))
+    const node = root.assign(new NodeComp(app.stage, root))
     const sceneComponent = root.assign(new SceneComponent())
+    sceneComponent.node = node
     return sceneComponent
   }
 }

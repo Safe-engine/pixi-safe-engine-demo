@@ -1,16 +1,30 @@
 import { Container, Graphics } from 'pixi.js'
 import { Body, Box, Contact, Fixture, Manifold, Shape, Vec2, World } from 'planck'
-import { colliderMatrix } from '../../../settings'
+
 import { Entity, EntityManager } from '../../exts/entity'
 import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
-import { NodeComp } from '../components/EnhancedComponent'
-import { BoxCollider, CircleCollider, Collider, PhysicsMaterial, PolygonCollider, RigidBody } from '../components/PhysicsComponent'
+import { GameWorld, instantiate, NodeComp } from '../../safex'
+import {
+  BoxColliderPhysics,
+  CircleColliderPhysics,
+  ColliderPhysics,
+  PhysicsMaterial,
+  PolygonColliderPhysics,
+  RigidBody,
+} from '../components/PhysicsComponent'
+import { PhysicsSprite } from '../core/PhysicsSprite'
 
 Fixture.prototype.shouldCollide = function (other) {
   const nodeThis: NodeComp = this.getBody().getUserData()
-  const nodeOther: NodeComp = other.getBody().getUserData()
+  const nodeOther = other.getBody().getUserData() as NodeComp
+  const { colliderMatrix } = GameWorld.Instance.systems.get(PhysicsSystem)
   return colliderMatrix[nodeOther.group][nodeThis.group]
+}
+
+export function setColliderMatrix(colliderMatrix = [[true]]) {
+  const physicsSystem = GameWorld.Instance.systems.get(PhysicsSystem)
+  physicsSystem.colliderMatrix = colliderMatrix
 }
 
 export class PhysicsSystem implements System {
@@ -18,6 +32,7 @@ export class PhysicsSystem implements System {
   _debugNode: Graphics
   listRemoveBody: Body[] = []
   listRemoveShape: Shape[] = []
+  colliderMatrix = [[true]]
 
   configure(event_manager: EventManager) {
     // Settings.lengthUnitsPerMeter = 100
@@ -26,9 +41,9 @@ export class PhysicsSystem implements System {
     })
     // event_manager.world.physicsManager = this
     // event_manager.subscribe(ComponentAddedEvent(RigidBody), this);
-    event_manager.subscribe(ComponentAddedEvent(BoxCollider), this)
-    event_manager.subscribe(ComponentAddedEvent(CircleCollider), this)
-    event_manager.subscribe(ComponentAddedEvent(PolygonCollider), this)
+    event_manager.subscribe(ComponentAddedEvent(BoxColliderPhysics), this)
+    event_manager.subscribe(ComponentAddedEvent(CircleColliderPhysics), this)
+    event_manager.subscribe(ComponentAddedEvent(PolygonColliderPhysics), this)
     event_manager.subscribe(ComponentRemovedEvent(NodeComp), this)
     this.world.on('begin-contact', this.contactBegin.bind(this))
     this.world.on('end-contact', this.contactEnd.bind(this))
@@ -43,15 +58,19 @@ export class PhysicsSystem implements System {
       //   break;
       // }
 
-      case ComponentAddedEvent(BoxCollider): {
-        console.log('ComponentAddedEvent BoxCollider', event)
+      case ComponentAddedEvent(BoxColliderPhysics): {
+        console.log('ComponentAddedEvent BoxColliderPhysics', event)
         const ett = event.entity
-        const rigidBody = ett.getComponent(RigidBody)
+        let rigidBody = ett.getComponent(RigidBody)
+        if (!rigidBody) {
+          rigidBody = instantiate(RigidBody)
+          ett.assign(rigidBody)
+        }
         const physicsMaterial = ett.getComponent(PhysicsMaterial)
-        const box = ett.getComponent(BoxCollider)
+        const box = ett.getComponent(BoxColliderPhysics)
         const node = ett.getComponent(NodeComp)
         const { width, height, offset, tag } = box
-        ett.assign(new Collider(tag, offset))
+        // ett.assign(instantiate(ColliderPhysics, { tag, offset }))
         // const { density, restitution, friction } = physicsMaterial
         const { x, y } = offset
         const bodyDef = {
@@ -68,12 +87,12 @@ export class PhysicsSystem implements System {
         const body = this.world.createBody(bodyDef)
         rigidBody.body = body
         // body.setMassData({ mass: 1 } as any)
-
+        const physicsNode: any = new PhysicsSprite(node.instance, body)
         const shape = new Box(width, height)
         body.createFixture({
           shape,
           density: 1,
-          isSensor: false,
+          isSensor: true,
         })
         const debugBox = new Graphics()
         // const { x, y } = node.position
@@ -81,21 +100,22 @@ export class PhysicsSystem implements System {
         debugBox.beginFill(0xff0000, 0.3)
         debugBox.drawRect(x, y, width, height)
         node.instance.addChild(debugBox)
-        const physicsCollide = ett.assign(new Collider(tag, offset))
+        const physicsCollide = ett.assign(instantiate(ColliderPhysics, { tag, offset }))
+        physicsCollide.instance = physicsNode
         physicsCollide.node = node
         box.node = node
         break
       }
-      case ComponentAddedEvent(CircleCollider):
-      case ComponentAddedEvent(PolygonCollider): {
-        // log('BoxCollider', event);
+      case ComponentAddedEvent(CircleColliderPhysics):
+      case ComponentAddedEvent(PolygonColliderPhysics): {
+        // log('BoxColliderPhysics', event);
         // create(type, event, this.world)
         break
       }
 
       case ComponentRemovedEvent(NodeComp): {
         // log('ComponentRemovedEvent NodeComp', event);
-        const node = event.entity.getComponent(NodeComp)
+        // const node = event.entity.getComponent(NodeComp)
         // if (node.instance instanceof Sprite) {
         //   const body = node.instance.getBody()
         //   this.listRemoveShape.push(...body.shapeList)
@@ -131,18 +151,17 @@ export class PhysicsSystem implements System {
   renderBody(body: Body) {
     // Render or update body rendering
     const ett: Entity = body.getUserData() as Entity
-    const node = ett.getComponent(NodeComp)
-    if (node) {
-      node.x = body.getPosition().x
-      node.y = body.getPosition().y
-      node.angle = body.getAngle()
+    const collider = ett.getComponent(ColliderPhysics)
+    if (collider) {
+      collider.instance.position = body.getPosition()
+      collider.instance.angle = body.getAngle()
       // console.log('renderBody body', body.getPosition())
     }
   }
 
   renderFixture(fixture: Fixture) {
     // Render or update fixture rendering
-    const shape = fixture.getShape()
+    // const shape = fixture.getShape()
     // console.log('renderFixture shape', shape.m_type)
   }
 
@@ -160,8 +179,8 @@ export class PhysicsSystem implements System {
     //   this.listRemoveBody = []
     //   this.listRemoveShape = []
     // })
-    const phys1 = ett1.getComponent(Collider)
-    const phys2 = ett2.getComponent(Collider)
+    const phys1 = ett1.getComponent(ColliderPhysics)
+    const phys2 = ett2.getComponent(ColliderPhysics)
     if (phys1 && phys2) {
       if (Object.prototype.hasOwnProperty.call(phys1, '_onCollisionEnter')) {
         phys1._onCollisionEnter(phys2)
@@ -185,17 +204,17 @@ export class PhysicsSystem implements System {
     const ett1: Entity = contact.getFixtureA().getBody().getUserData() as Entity
     const ett2: Entity = contact.getFixtureB().getBody().getUserData() as Entity
     const event1 = ett1.getComponent(NodeComp)
-    const phys1 = ett1.getComponent(Collider)
-    const phys2 = ett2.getComponent(Collider)
+    const phys1 = ett1.getComponent(ColliderPhysics)
+    const phys2 = ett2.getComponent(ColliderPhysics)
     const event2 = ett2.getComponent(NodeComp)
     if (event1) {
       if (phys1 && phys2) {
-        event1.emit('onCollisionExit', contact, ett1.getComponent(Collider), ett2.getComponent(Collider))
+        event1.emit('onCollisionExit', contact, ett1.getComponent(ColliderPhysics), ett2.getComponent(ColliderPhysics))
       }
     }
     if (event2) {
       if (phys1 && phys2) {
-        event2.emit('onCollisionExit', contact, ett2.getComponent(Collider), ett1.getComponent(Collider))
+        event2.emit('onCollisionExit', contact, ett2.getComponent(ColliderPhysics), ett1.getComponent(ColliderPhysics))
       }
     }
   }

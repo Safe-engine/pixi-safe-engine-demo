@@ -16,3 +16,7 @@ export const SpineAssets = {
 export const SpineAtlas = {
   boss01: 'Boss01/boss01.atlas',
 }
+export const JsonAssets = {}
+export const AudioAssets = {
+  // Button: 'audio/Button.mp3',
+}

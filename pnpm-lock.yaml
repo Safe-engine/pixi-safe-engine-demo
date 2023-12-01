@@ -8,9 +8,15 @@ dependencies:
   '@pixi/ui':
     specifier: ^0.9.0
     version: 0.9.0(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/events@7.2.4)(@pixi/graphics@7.2.4)(@pixi/sprite@7.2.4)(@pixi/text-bitmap@7.2.4)(@pixi/text-html@7.2.4)(@pixi/text@7.2.4)
+  howler-pixi-loader-middleware:
+    specifier: ^4.0.0
+    version: 4.0.0(howler@2.2.4)(pixi.js@7.2.4)
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  pixi-action-ease:
+    specifier: ^1.0.12
+    version: 1.0.12(@pixi/utils@7.2.4)
   pixi-spine:
     specifier: ^4.0.4
     version: 4.0.4(@pixi/assets@7.2.4)(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/graphics@7.2.4)(@pixi/mesh-extras@7.2.4)(@pixi/mesh@7.2.4)(@pixi/sprite@7.2.4)
@@ -41,8 +47,8 @@ devDependencies:
     specifier: ^6.6.0
     version: 6.6.0(eslint@8.48.0)(typescript@5.2.2)
   babel-plugin-safe-x-transform:
-    specifier: ^1.0.1
-    version: 1.0.1(@babel/core@7.23.0)
+    specifier: ^1.0.11
+    version: 1.0.11(@babel/core@7.23.0)
   eslint:
     specifier: ^8.34.0
     version: 8.48.0
@@ -2154,8 +2160,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /babel-plugin-safe-x-transform@1.0.1(@babel/core@7.23.0):
-    resolution: {integrity: sha512-lAKewr1j5H9/cC6AlVnv82PGriy7FozdGMTCH8dB56enpVWaozgzdT8lpuWi872zfiVvOnokIHnph03ooXtL8w==}
+  /babel-plugin-safe-x-transform@1.0.11(@babel/core@7.23.0):
+    resolution: {integrity: sha512-aAwHTgD0Jt3C/6s5QQlTGUBa1wBWWXneb1rddPQ/GxfQAIR5S0amcUywb8H6GPJopatesmC0GZx8/p8q66GjQA==}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -2830,6 +2836,20 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
+  /howler-pixi-loader-middleware@4.0.0(howler@2.2.4)(pixi.js@7.2.4):
+    resolution: {integrity: sha512-6JMNBzM/e6/Gibx2ySAMvxiEb9qTgqLlpM0/OJgr+M1VGCfca7zB+l9ObPCRiYxZ23cZ7xqZMoyk2laGtDxx1A==}
+    peerDependencies:
+      howler: ^2.0.0
+      pixi.js: ^7.0.0
+    dependencies:
+      howler: 2.2.4
+      pixi.js: 7.2.4(@pixi/utils@7.2.4)
+    dev: false
+
+  /howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
+    dev: false
+
   /htmlnano@2.0.4(svgo@2.8.0)(typescript@5.2.2):
     resolution: {integrity: sha512-WGCkyGFwjKW1GeCBsPYacMvaMnZtFJ0zIRnC2NCddkA+IOEhTqskXrS7lep+3yYZw/nQ3dW1UAX4yA/GJyR8BA==}
     peerDependencies:
@@ -3474,6 +3494,14 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /pixi-action-ease@1.0.12(@pixi/utils@7.2.4):
+    resolution: {integrity: sha512-QpMUIPhRlfU2H9RzWVYKkQaaVYnli4KNPlRqgt9OveLDmO2f0GSHejJ2peCUSHRQ6748EZTQfsCCz9cFe7cYAA==}
+    dependencies:
+      pixi.js: 7.2.4(@pixi/utils@7.2.4)
+    transitivePeerDependencies:
+      - '@pixi/utils'
+    dev: false
 
   /pixi-spine@4.0.4(@pixi/assets@7.2.4)(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/graphics@7.2.4)(@pixi/mesh-extras@7.2.4)(@pixi/mesh@7.2.4)(@pixi/sprite@7.2.4):
     resolution: {integrity: sha512-XRq1yARVoi4av7RXnd9+P37SWI9+e4/f5yTScZPJGB+sY5VcRYN6BYkBQ+y8nUKI1aJIjlms9z+pGxqikm+eFQ==}

@@ -10,9 +10,6 @@ export class World {
   entities: EntityManager
   systems: SystemManager
   events: EventManager
-  // physicsManager: any
-  collisionManager = { enabled: false, enabledDebugDraw: false }
-  // draw: cc.DrawNode
   constructor() {
     this.entities = new EntityManager(this)
     this.systems = new SystemManager(this)

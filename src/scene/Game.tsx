@@ -31,10 +31,10 @@ export class Game extends SceneComponent {
   onPress(event: ButtonComp) {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
-    Home.boot()
+    Home.create()
   }
 
-  static boot(): Game {
+  static create(): Game {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Game" font="LilitaOne" />

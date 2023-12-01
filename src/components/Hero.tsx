@@ -1,7 +1,7 @@
 import { SpriteSourceAssets } from '../assets'
-import { EnhancedComponent, SpriteRender } from '../lib/safex'
+import { ComponentX, SpriteRender } from '../lib/safex'
 
-export class Hero extends EnhancedComponent {
+export class Hero extends ComponentX {
   hp = 100
   sprite: SpriteRender = null
 

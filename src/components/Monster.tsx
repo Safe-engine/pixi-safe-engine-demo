@@ -1,7 +1,7 @@
 import { SpriteSourceAssets } from '../assets'
-import { EnhancedComponent, SpriteRender } from '../lib/safex'
+import { ComponentX, SpriteRender } from '../lib/safex'
 
-export class Monster extends EnhancedComponent {
+export class Monster extends ComponentX {
   hp = 100
   sprite: SpriteRender = null
 
@@ -14,8 +14,9 @@ export class Monster extends EnhancedComponent {
   // }
 
   static create(): Monster {
-    const sprite = SpriteRender.create()
-    sprite.spriteFrame = SpriteSourceAssets.demo
+    const sprite = SpriteRender.create({
+      spriteFrame: SpriteSourceAssets.demo,
+    }) as SpriteRender
     const monster = sprite.addComponent<Monster>(new Monster())
     monster.sprite = sprite
     return monster

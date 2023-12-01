@@ -29,7 +29,7 @@ export class Entity {
   //   return comp;
   // }
 
-  getComponent = <T extends ComponentType>(component: Constructor<T> | string): T => {
+  getComponent = <T extends ComponentType>(component: Constructor<T>): T => {
     if (typeof component === 'string') {
       return this.components[component]
     }
@@ -71,11 +71,15 @@ export class Entity {
 
 export class EntityManager {
   world: World
+  entitiesPool: Entity[] = []
   constructor(world: World) {
     this.world = world
   }
 
   create() {
+    if (this.entitiesPool.length > 0) {
+      return this.entitiesPool.pop()
+    }
     const id = this.world.counter++
     const ett = new Entity(this.world, id)
     this.world.entitiesMap[ett.id] = ett
@@ -112,7 +116,8 @@ export class EntityManager {
     if (ett) {
       ett.removeAllComponent()
     }
-    delete this.world.entitiesMap[id]
+    this.entitiesPool.push(ett)
+    // delete this.world.entitiesMap[id]
   }
 
   reset() {

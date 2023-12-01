@@ -1,6 +1,8 @@
-import { Body, BodyType, Vec2 } from 'planck'
+import { Body, Vec2 } from 'planck'
+
 import { Group } from '../../../settings'
-import { EnhancedComponent } from './EnhancedComponent'
+import { NoRenderComponentX } from '../core/decorator'
+import { PhysicsSprite } from '../core/PhysicsSprite'
 
 // export class SpriteComp extends EnhancedComponent {
 //   path: string
@@ -15,23 +17,15 @@ import { EnhancedComponent } from './EnhancedComponent'
 //     this.group = group
 //   }
 // }
-// export enum BodyType {
-//   kinematic,
-//   dynamic,
-//   static,
-// }
-export class RigidBody extends EnhancedComponent {
-  type: BodyType | string
-  density: number
-  restitution: number
-  friction: number
-  body: Body
-  gravityScale = 1
-  constructor(type: BodyType | string) {
-    super()
-    this.type = type
-  }
+export type BodyType = 'kinematic' | 'dynamic' | 'static'
 
+export class RigidBody extends NoRenderComponentX {
+  type: BodyType = 'dynamic'
+  density = 1
+  restitution = 0
+  friction = 0
+  body: Body
+  gravityScale = 0
   // set linearVelocity(vel: Vec2) {
   //   if (!this.node) {
   //     return
@@ -52,68 +46,40 @@ export class RigidBody extends EnhancedComponent {
   // }
 }
 
-export class PhysicsMaterial extends EnhancedComponent {
-  density: number
-  restitution: number
-  friction: number
-  constructor({ density, restitution, friction }) {
-    super()
-    this.density = density
-    this.restitution = restitution
-    this.friction = friction
-  }
+export class PhysicsMaterial extends NoRenderComponentX {
+  density = 1
+  restitution = 0
+  friction = 0
 }
 
-export class Collider extends EnhancedComponent {
-  tag: number
-  group: number
-  offset: Vec2
-  _onCollisionEnter: (other: Collider) => void
-  enabled: boolean = true
-
-  constructor(tag: number, offset: Vec2) {
-    super()
-    this.tag = tag
-    this.offset = offset
-    this.group = Group.Default
-  }
+export class ColliderPhysics extends NoRenderComponentX {
+  tag = 0
+  group: number = Group.Default
+  offset: Vec2 = Vec2.zero()
+  _onCollisionEnter: (other: ColliderPhysics) => void
+  enabled = true
+  instance: PhysicsSprite
 }
 
-export class BoxCollider extends Collider {
+export class BoxColliderPhysics extends ColliderPhysics {
   width: number
   height: number
 
-  constructor({ tag = 0, offset = Vec2.zero(), width, height }) {
-    super(tag, offset)
-    this.width = width
-    this.height = height
-  }
-
   set onCollisionEnter(val) {
-    const phys1 = this.getComponent(Collider)
+    const phys1 = this.getComponent(ColliderPhysics)
     phys1._onCollisionEnter = val
   }
 
   get onCollisionEnter() {
-    const phys1 = this.getComponent(Collider)
+    const phys1 = this.getComponent(ColliderPhysics)
     return phys1._onCollisionEnter
   }
 }
 
-export class CircleCollider extends Collider {
+export class CircleColliderPhysics extends ColliderPhysics {
   radius: number
-
-  constructor({ tag, offset, radius }) {
-    super(tag, offset)
-    this.radius = radius
-  }
 }
 
-export class PolygonCollider extends Collider {
+export class PolygonColliderPhysics extends ColliderPhysics {
   points: number[]
-
-  constructor({ tag, offset, points }) {
-    super(tag, offset)
-    this.points = points
-  }
 }

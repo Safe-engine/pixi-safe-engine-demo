@@ -1,36 +1,20 @@
-import { Point, Sprite, SpriteSource, Texture, TextureSource } from 'pixi.js'
-import { EnhancedComponent, NodeComp } from './EnhancedComponent'
-import { GameWorld } from '..'
-export class NodeRender extends EnhancedComponent {
-  nodeName: string
-  constructor(name?: string) {
-    super()
-    this.nodeName = name
-  }
+import { ColorSource, Point, Sprite, Texture, TextureSource } from 'pixi.js'
+
+import { ComponentX } from '../core/decorator'
+import { LoadingBar, LoadingBarMode } from '../core/LoadingBar'
+import { SpriteTypes } from '../systems/RenderSystem'
+
+export class NodeRender extends ComponentX {
+  nodeName?: string
 }
 
-export class SpriteRender extends EnhancedComponent {
-  private frameName: TextureSource
-  texType: number
-  type: number
-  fillType: number
-  _fillRange: number
-  fillCenter: Point
-  static FillType = {
-    HORIZONTAL: 0,
-    VERTICAL: 1,
-    RADIAL: 2,
-  }
-
-  // constructor(frameName: SpriteSource, texType?: number, type?: number, fillType?: number, fillRange?: number, fillCenter?: Point) {
-  //   super()
-  //   this.frameName = frameName
-  //   this.texType = texType
-  //   this.type = type
-  //   this.fillType = fillType
-  //   this._fillRange = fillRange
-  //   this.fillCenter = fillCenter
-  // }
+export class SpriteRender extends ComponentX {
+  private spriteFrame: TextureSource
+  private type: SpriteTypes
+  private fillType: LoadingBarMode = LoadingBarMode.BAR
+  private fillRange = 1
+  private fillCenter: Point
+  loadingBar: LoadingBar
 
   // set fillStart(val: number) {
   //   if (this.node.instance instanceof cc.ProgressTimer) {
@@ -38,21 +22,22 @@ export class SpriteRender extends EnhancedComponent {
   //   }
   // }
 
-  // set fillRange(val: number) {
-  //   if (this.node.instance instanceof cc.ProgressTimer) {
-  //     this.node.instance.setPercentage(val * 100);
-  //   }
-  // }
-
-  get spriteFrame() {
-    return this.frameName
+  setFillRange(val: number) {
+    if (this.loadingBar) {
+      this.loadingBar.progress = val
+    }
   }
 
-  set spriteFrame(frame) {
-    this.frameName = frame
+  getSpriteFrame() {
+    return this.spriteFrame
+  }
+
+  setSpriteFrame(frame) {
+    this.spriteFrame = frame
     const sprite = this.node.instance as Sprite
     // if (this.node.instance instanceof cc.Sprite) {
     sprite.texture = Texture.from(frame)
+    // sprite.texture.rotate = 8
     // } else if (this.node.instance instanceof ccui.ImageView) {
     //   if (this.texType) {
     //     this.node.instance.loadTexture(frame, this.texType);
@@ -65,54 +50,24 @@ export class SpriteRender extends EnhancedComponent {
     //   this.node.instance.loadTextureNormal(frame);
     // }
   }
-  static create() {
-    const world = GameWorld.Instance
-    const root = world.entities.create()
-    const sprite = root.assign(new SpriteRender())
-    return sprite
-  }
 }
 
-export class ImageRender extends EnhancedComponent {
-  spriteFrame: string
-  texType: number
-  constructor(spriteFrame: string, texType?: number) {
-    super()
-    this.spriteFrame = spriteFrame
-    this.texType = texType
-  }
+export class GraphicsRender extends ComponentX {
+  lineWidth = 2
+  strokeColor: ColorSource
+  fillColor: ColorSource
 }
 
-export class MaskRender extends EnhancedComponent {
+export class MaskRender extends ComponentX {
   type: number
   segments: number
   inverted: boolean
-  constructor(type: number, segments: number, inverted: boolean) {
-    super()
-    this.type = type
-    this.segments = segments
-    this.inverted = inverted
-  }
 }
 
-export class SpineSkeleton extends EnhancedComponent {
+export class SpineSkeleton extends ComponentX {
   data: any
   skin: string
   animation: string
   loop: boolean
   timeScale: number
-  constructor({ data, skin, animation, loop, timeScale }) {
-    super()
-    this.data = data
-    this.skin = skin
-    this.animation = animation
-    this.loop = loop
-    this.timeScale = timeScale
-  }
-  static create(data) {
-    const world = GameWorld.Instance
-    const root = world.entities.create()
-    const sprite = root.assign(new SpineSkeleton(data))
-    return sprite
-  }
 }

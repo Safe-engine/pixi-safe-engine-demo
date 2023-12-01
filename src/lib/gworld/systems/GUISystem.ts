@@ -1,24 +1,25 @@
-import { NodeComp } from '../components/EnhancedComponent'
-import { ButtonComp, ProgressBarComp, LoadingBarComp, LabelComp, BlockInputEventsComp } from '../components/GUIComponent'
-import { SpriteRender } from '../components/RenderComponent'
-import { EntityManager } from '../../exts/entity'
-import { ComponentAddedEvent, ComponentRemovedEvent, EventManager, EventReceive } from '../../exts/event'
+import { Button, ScrollBox } from '@pixi/ui'
+import { Sprite, Text } from 'pixi.js'
+import { CallFunc, EaseBackIn, ScaleTo, Sequence } from 'pixi-action-ease'
+
+import { ComponentAddedEvent, EventManager, EventReceive } from '../../exts/event'
 import { System } from '../../exts/system'
-import { Button } from '@pixi/ui'
-import { Text } from 'pixi.js'
+import { NodeComp, SpriteRender } from '../../safex'
+import { ButtonComp, LabelComp, ProgressBarComp, ScrollView } from '../components/GUIComponent'
+import { LoadingBar } from '../core/LoadingBar'
 
 export class GUISystem implements System {
   configure(event_manager: EventManager) {
     event_manager.subscribe(ComponentAddedEvent(ButtonComp), this)
-    // event_manager.subscribe(ComponentAddedEvent(ProgressBarComp), this);
-    // event_manager.subscribe(ComponentAddedEvent(LoadingBarComp), this);
+    event_manager.subscribe(ComponentAddedEvent(ProgressBarComp), this)
+    event_manager.subscribe(ComponentAddedEvent(ScrollView), this)
     event_manager.subscribe(ComponentAddedEvent(LabelComp), this)
     // event_manager.subscribe(ComponentAddedEvent(BlockInputEventsComp), this);
   }
   receive(type: string, event: EventReceive) {
     switch (type) {
       case ComponentAddedEvent(ButtonComp): {
-        console.log('ComponentAddedEvent', event)
+        console.log('ComponentAddedEvent ButtonComp', event)
         const ett = event.entity
         const button = ett.getComponent(ButtonComp)
         const nodeComp = ett.getComponent(NodeComp)
@@ -28,45 +29,57 @@ export class GUISystem implements System {
         button.node = nodeComp
         // button.node = ett.assign(new NodeComp(node, ett))
         node.onPress.connect(() => {
-          console.log('onPress.connect')
-          if (Object.prototype.hasOwnProperty.call(button, 'onPress')) {
-            button.onPress()
-          }
+          // console.log('onPress.connect')
+          const scale = ScaleTo.create(0.12, 1.2)
+          const scaleDown = ScaleTo.create(0.12, 1)
+          const seq = Sequence.create(
+            scale,
+            CallFunc.create(() => {
+              if (Object.prototype.hasOwnProperty.call(button, 'onPress')) {
+                button.onPress(button)
+              }
+            }),
+            scaleDown,
+          )
+          const ease = EaseBackIn.create(seq)
+          button.node.runAction(ease)
         })
         break
       }
-      // case ComponentAddedEvent(LoadingBarComp): {
-      //   // cc.log(event);
-      //   const ett = event.entity
-      //   const bar = ett.getComponent(LoadingBarComp)
-      //   const { texture, texType } = bar
-      //   const node = new ccui.LoadingBar()
-      //   node.loadTexture(texture, texType || ccui.Widget.LOCAL_TEXTURE)
-      //   bar.node = ett.assign(new NodeComp(node, ett))
-      //   break
-      // }
-      // case ComponentAddedEvent(ProgressBarComp): {
-      //   const bar = event.entity.getComponent(ProgressBarComp)
-      //   // bar.progress = 50;
-      //   break
-      // }
-      // case ComponentAddedEvent(BlockInputEventsComp): {
-      //   // cc.log('BlockInputEventsComp', event);
-      //   const node = event.entity.getComponent(NodeComp)
-      //   if (node.instance instanceof ccui.ImageView) {
-      //     node.instance.setTouchEnabled(true)
-      //     node.instance.setScale9Enabled(true)
-      //   }
-      //   break
-      // }
+      case ComponentAddedEvent(ProgressBarComp): {
+        console.log('ComponentAddedEvent ProgressBarComp', event)
+        const ett = event.entity
+        const bar = ett.getComponent(ProgressBarComp)
+        const spriteComp = ett.getComponent(SpriteRender)
+        if (!spriteComp) throw Error('ProgressBarComp need SpriteRender')
+        const { progress, mode } = bar
+        const node = new LoadingBar(mode, spriteComp.node.instance as Sprite)
+        spriteComp.node.instance.mask = node
+        bar.node = ett.assign(new NodeComp(node, ett))
+        node.progress = progress
+        break
+      }
+      case ComponentAddedEvent(ScrollView): {
+        console.log('ComponentAddedEvent ScrollView', event)
+        const ett = event.entity
+        const scroll = event.component as ScrollView
+        const { width, height } = scroll
+        const view = new ScrollBox({ width, height })
+        scroll.node = ett.assign(new NodeComp(view, ett))
+        break
+      }
       case ComponentAddedEvent(LabelComp): {
-        // cc.log(event);
+        console.log('ComponentAddedEvent LabelComp', event)
         const ett = event.entity
         const label = ett.getComponent(LabelComp)
-        // const { string, font, size } = label
         const node = new Text()
+        node.texture.rotate = 8
         node.style.fill = '#fff'
         label.node = ett.assign(new NodeComp(node, ett))
+        const { string = '', font = '', size } = label
+        if (font) label.setFont(font)
+        label.setSize(size)
+        label.setString(string)
         break
       }
 
@@ -74,7 +87,7 @@ export class GUISystem implements System {
         break
     }
   }
-  update(entities: EntityManager, events: EventManager, dt: number) {
+  update() {
     // throw new Error('Method not implemented.');
   }
 }
