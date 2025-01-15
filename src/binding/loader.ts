@@ -1,7 +1,11 @@
 import HowlerLoaderParser from 'howler-pixi-loader-middleware'
-import { Assets, extensions, SpriteSource } from 'pixi.js'
+import { Assets, extensions, Sprite } from 'pixi.js'
 
-import { AudioAssets, FontAssets, JsonAssets, SpineAssets, SpriteSourceAssets } from '../assets'
+import * as AudioAssets from '../assets/AudioAssets'
+import * as FontAssets from '../assets/FontAssets'
+import * as SpineAssets from '../assets/SpineAssets'
+import * as TextureAssets from '../assets/TextureAssets'
+
 extensions.add(HowlerLoaderParser)
 
 export function loadAssets(cb: (progress: number) => void) {
@@ -25,9 +29,9 @@ export function loadAssets(cb: (progress: number) => void) {
         AudioAssets[key] = audioResource
       })
     }),
-    ...Object.values(JsonAssets).map(loadJsonAsync),
+    // ...Object.values(JsonAssets).map(loadJsonAsync),
   ]).then(() => {
-    Assets.load<SpriteSource>(Object.values(SpriteSourceAssets), cb)
+    Assets.load<Sprite>(Object.values(TextureAssets), cb)
   })
 }
 

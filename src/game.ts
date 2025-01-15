@@ -1,24 +1,35 @@
-import 'pixi-spine'
+import { addGameCanvasTo, app, GUISystem, RenderSystem, setupResolution, startGameWithSystems } from '@safe-engine/pixi'
+import { extensions, ResizePlugin, TickerPlugin } from 'pixi.js'
 
-import { addGameCanvasTo, initWorld, enabledDebugDraw, setColliderMatrix, setupResolution } from './lib/safex'
-import { Home } from './scene/Home'
+import { Boot } from './scene/Boot'
 import { settings } from './settings'
-import { loadAssets } from './binding/loader'
 
-// The application will create a renderer using WebGL, if possible,
-// with a fallback to a canvas render. It will also setup the ticker
-// and the root stage PIXI.Container
-// The application will create a canvas element for you that you
-// can then insert into the DOM
-const { colliderMatrix, designedResolution } = settings
-initWorld()
-setupResolution(designedResolution)
-setColliderMatrix(colliderMatrix)
-enabledDebugDraw(false)
-addGameCanvasTo('game')
-loadAssets((p) => {
-  console.log(p)
-  if (p >= 1) {
-    Home.create()
-  }
-})
+const { designedResolution } = settings
+const systemsList = [RenderSystem, GUISystem]
+
+async function start() {
+  await addGameCanvasTo()
+  Object.assign(app.canvas.style, {
+    width: `${window.innerWidth}px`,
+    height: `${window.innerHeight}px`,
+    overflow: 'visible',
+  })
+  setupResolution(designedResolution)
+  startGameWithSystems(systemsList)
+  Boot.create()
+}
+start()
+
+if (module.hot) {
+  module.hot.dispose(() => {
+    try {
+      extensions.remove(ResizePlugin)
+      extensions.remove(TickerPlugin)
+    } catch (error) {
+      console.log(error)
+    }
+  })
+  module.hot.accept(() => {
+    console.log('hot accept is needed')
+  })
+}

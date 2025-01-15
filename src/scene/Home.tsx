@@ -1,8 +1,12 @@
+import { ButtonComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { BoxCollider, Collider } from '@safe-engine/pixi-collider'
+import { SpineSkeleton } from '@safe-engine/pixi-spine'
 import { Vec2 } from 'planck'
-import { SpineAssets, SpriteSourceAssets } from '../assets'
+import { defaultFont } from '../assets/FontAssets'
+import { sp_boss_01 } from '../assets/SpineAssets'
+import { sf_crash } from '../assets/TextureAssets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
-import { Collider, BoxCollider, ButtonComp, LabelComp, RigidBody, SceneComponent, SpineSkeleton, SpriteRender } from '../lib/safex'
 import { Game } from './Game'
 
 export class Home extends SceneComponent {
@@ -41,20 +45,18 @@ export class Home extends SceneComponent {
   static create(): Home {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="hello" font="LilitaOne" />
-        <SpriteRender node={{ x: 200, y: 1200, anchorY: 1 }} spriteFrame={SpriteSourceAssets.crash}>
+        <LabelComp node={{ x: 106, y: 240 }} string="hello" font={defaultFont} />
+        <SpriteRender node={{ x: 200, y: 1200, anchorY: 1 }} spriteFrame={sf_crash}>
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
         <Hero $ref="hero" node={{ x: 550, y: 1130 }}>
-          <RigidBody type="dynamic" />
           <BoxCollider $onCollisionEnter="onCollisionEnter" width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
         <Hero $ref="hero" node={{ x: 550, y: 930, rotation: 180 }}>
-          <RigidBody type="static" />
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 140 }} data={SpineAssets.boss01} animation="Walk" loop={true} />
+        <SpineSkeleton node={{ x: 306, y: 140 }} data={sp_boss_01} animation="Walk" loop={true} />
       </SceneComponent>
     )
   }

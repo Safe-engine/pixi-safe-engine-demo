@@ -1,5 +1,6 @@
-import { SpriteSourceAssets } from '../assets'
-import { ComponentX, SpriteRender } from '../lib/safex'
+import { ComponentX, SpriteRender } from "@safe-engine/pixi"
+import { sf_dialog_name } from "../assets/TextureAssets"
+
 
 export class Monster extends ComponentX {
   hp = 100
@@ -15,7 +16,7 @@ export class Monster extends ComponentX {
 
   static create(): Monster {
     const sprite = SpriteRender.create({
-      spriteFrame: SpriteSourceAssets.demo,
+      spriteFrame: sf_dialog_name,
     }) as SpriteRender
     const monster = sprite.addComponent<Monster>(new Monster())
     monster.sprite = sprite

@@ -1,0 +1,8 @@
+export const sf_thanhmau_3 = 'thanhmau3.png'
+export const sf_thanhmau_2 = 'thanhmau2.png'
+export const sf_dialog_name = 'dialog-name.png'
+export const sf_crash = 'crash.png'
+export const sf_bitmap_2_yellow = 'bitmap2-yellow.png'
+export const sf_anim = 'ChienBinhCo/anim.png'
+export const sf_boss_02 = 'Boss02/boss02.png'
+export const sf_boss_01 = 'Boss01/boss01.png'
