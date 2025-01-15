@@ -43,7 +43,7 @@ export class Home extends SceneComponent {
   static create(): Home {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="hello" font={defaultFont} />
+        <LabelComp node={{ x: 606, y: 240 }} string="hello" font={defaultFont} />
         <SpriteRender node={{ x: 200, y: 1200, anchorY: 1 }} spriteFrame={sf_crash}>
           <ButtonComp $onPress="onPress" />
         </SpriteRender>

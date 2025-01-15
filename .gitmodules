@@ -1,3 +1,9 @@
 [submodule "packages/safex-pixi-spine"]
 	path = packages/safex-pixi-spine
 	url = git@github.com:Safe-engine/safex-pixi-spine.git
+[submodule "packages/safex-pixi"]
+	path = packages/safex-pixi
+	url = git@github.com:Safe-engine/safex-pixi.git
+[submodule "packages/pixi-action-ease"]
+	path = packages/pixi-action-ease
+	url = git@github.com:Safe-engine/pixi-action-ease.git
