@@ -1,4 +1,4 @@
-import { Collider, CollideSystem, GameWorld, NodeComp } from '../lib/safex'
+import { NodeComp } from "@safe-engine/pixi"
 
 export class NodePool {
   items: NodeComp[] = []

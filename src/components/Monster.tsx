@@ -4,7 +4,7 @@ import { sf_dialog_name } from "../assets/TextureAssets"
 
 export class Monster extends ComponentX {
   hp = 100
-  sprite: SpriteRender = null
+  sprite: SpriteRender
 
   // attack() {
   //   this.spine.play('attack')

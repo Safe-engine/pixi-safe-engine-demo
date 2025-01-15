@@ -1,9 +1,8 @@
-import { AudioAssets } from '../assets'
-import { getEffect, getMusic, setMusic } from '../data/GameDataManager'
+import { button_sfx } from '../assets/AudioAssets'
 
 export default class AudioController {
   private static _instance: AudioController
-  private constructor() {}
+  private constructor() { }
   public static get Instance() {
     if (!AudioController._instance) {
       AudioController._instance = new AudioController()
@@ -12,12 +11,10 @@ export default class AudioController {
   }
 
   playEffectSound(type: any) {
-    if (getEffect()) {
-      type.play()
-    }
+    type.play()
   }
 
   playButtonClickSound() {
-    this.playEffectSound(AudioAssets.Button)
+    this.playEffectSound(button_sfx)
   }
 }

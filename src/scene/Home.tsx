@@ -1,9 +1,8 @@
-import { ButtonComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { ButtonComp, LabelComp, SceneComponent, SpriteRender, v2 } from '@safe-engine/pixi'
 import { BoxCollider, Collider } from '@safe-engine/pixi-collider'
 import { SpineSkeleton } from '@safe-engine/pixi-spine'
-import { Vec2 } from 'planck'
 import { defaultFont } from '../assets/FontAssets'
-import { sp_boss_01 } from '../assets/SpineAssets'
+import { sp_spineboy_pro } from '../assets/SpineAssets'
 import { sf_crash } from '../assets/TextureAssets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
@@ -11,8 +10,7 @@ import { Game } from './Game'
 
 export class Home extends SceneComponent {
   score = 0
-  // uiRef: UIController = null
-  hero: Hero = null
+  hero: Hero
 
   onStart() {
     //   schedule((dt) => {
@@ -51,12 +49,12 @@ export class Home extends SceneComponent {
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
         <Hero $ref="hero" node={{ x: 550, y: 1130 }}>
-          <BoxCollider $onCollisionEnter="onCollisionEnter" width={100} height={100} offset={Vec2(10, 10)} />
+          <BoxCollider $onCollisionEnter="onCollisionEnter" width={100} height={100} offset={v2(10, 10)} />
         </Hero>
         <Hero $ref="hero" node={{ x: 550, y: 930, rotation: 180 }}>
-          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 140 }} data={sp_boss_01} animation="Walk" loop={true} />
+        <SpineSkeleton node={{ x: 306, y: 140 }} data={sp_spineboy_pro} animation="Walk" loop={true} />
       </SceneComponent>
     )
   }

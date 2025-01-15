@@ -1,1 +1,1 @@
-export const defaultFont = 'LilitaOne-Regular.ttf'
+export const defaultFont = 'Font/LilitaOne-Regular.ttf'

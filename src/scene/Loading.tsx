@@ -1,8 +1,7 @@
 import { ComponentX, ProgressTimerComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
-import { sf_bitmap_2_yellow, sf_crash, sf_thanhmau_2 } from '../assets/TextureAssets'
+import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets/TextureAssets'
 import { loadAssets } from '../binding/loader'
-import { Home } from './Home'
 
 export class Loading extends ComponentX {
   score = 0
@@ -17,7 +16,7 @@ export class Loading extends ComponentX {
     this.loadingSprite.setFillRange(p)
     if (p === 1) {
       setTimeout(() => {
-        Home.create()
+        // Home.create()
       }, 0)
     }
   }
@@ -27,7 +26,7 @@ export class Loading extends ComponentX {
       <SceneComponent>
         <SpriteRender node={{ x: 0, y: 0 }} spriteFrame={sf_bitmap_2_yellow}>
           <SpriteRender node={{ x: 40, y: 150 }} spriteFrame={sf_crash}>
-            <ProgressTimerComp $ref="loadingSprite" node={{ x: 10, y: 1118 }} spriteFrame={sf_thanhmau_2} fillRange={0} />
+            <ProgressTimerComp $ref="loadingSprite" node={{ x: 10, y: 1118 }} spriteFrame={sf_progress_bar} fillRange={0} />
           </SpriteRender>
         </SpriteRender>
       </SceneComponent>

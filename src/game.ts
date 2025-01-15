@@ -1,5 +1,4 @@
 import { addGameCanvasTo, app, GUISystem, RenderSystem, setupResolution, startGameWithSystems } from '@safe-engine/pixi'
-import { extensions, ResizePlugin, TickerPlugin } from 'pixi.js'
 
 import { Boot } from './scene/Boot'
 import { settings } from './settings'
@@ -20,16 +19,16 @@ async function start() {
 }
 start()
 
-if (module.hot) {
-  module.hot.dispose(() => {
-    try {
-      extensions.remove(ResizePlugin)
-      extensions.remove(TickerPlugin)
-    } catch (error) {
-      console.log(error)
-    }
-  })
-  module.hot.accept(() => {
-    console.log('hot accept is needed')
-  })
-}
+// if (module.hot) {
+//   module.hot.dispose(() => {
+//     try {
+//       extensions.remove(ResizePlugin)
+//       extensions.remove(TickerPlugin)
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   })
+//   module.hot.accept(() => {
+//     console.log('hot accept is needed')
+//   })
+// }

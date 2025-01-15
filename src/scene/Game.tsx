@@ -1,10 +1,8 @@
-import { ButtonComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { ButtonComp, LabelComp, SceneComponent, SpriteRender, v2 } from '@safe-engine/pixi'
 import { BoxCollider } from '@safe-engine/pixi-collider'
-import { RigidBody } from '@safe-engine/pixi-planck'
 import { SpineSkeleton } from '@safe-engine/pixi-spine'
-import { Point } from 'pixi.js'
 import { defaultFont } from '../assets/FontAssets'
-import { sp_boss_01 } from '../assets/SpineAssets'
+import { sp_spineboy_pro } from '../assets/SpineAssets'
 import { sf_crash } from '../assets/TextureAssets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
@@ -13,7 +11,7 @@ import { Home } from './Home'
 export class Game extends SceneComponent {
   score = 0
   // uiRef: UIController = null
-  hero: Hero = null
+  hero: Hero
 
   onStart() {
     //   schedule((dt) => {
@@ -48,14 +46,12 @@ export class Game extends SceneComponent {
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
         <Hero $ref="hero" node={{ x: 550, y: 430 }}>
-          <RigidBody type="dynamic" />
-          <BoxCollider width={100} height={100} offset={new Point(10, 10)} />
+          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
         <Hero $ref="hero" node={{ x: 550, y: 130, rotation: 180 }}>
-          <RigidBody type="static" />
-          <BoxCollider width={100} height={100} offset={new Point(10, 10)} />
+          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_boss_01} animation="Walk" loop={true} />
+        <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_spineboy_pro} animation="Walk" loop={true} />
       </SceneComponent>
     )
   }
