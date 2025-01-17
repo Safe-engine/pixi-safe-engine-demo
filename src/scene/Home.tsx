@@ -1,5 +1,4 @@
-import { ButtonComp, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
-import { Collider } from '@safe-engine/pixi-collider'
+import { ButtonComp, Collider, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { Spine } from './Spine'

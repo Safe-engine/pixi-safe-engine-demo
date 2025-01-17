@@ -16,11 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@esotericsoftware/spine-pixi-v8": "^4.2.70",
-    "@safe-engine/core": "workspace:*",
     "@safe-engine/pixi": "workspace:*",
-    "@safe-engine/pixi-collider": "workspace:*",
-    "@safe-engine/pixi-planck": "^1.0.0",
-    "@safe-engine/pixi-spine": "workspace:*",
     "howler-pixi-loader-middleware": "^5.0.0",
     "lodash": "^4.17.21",
     "pixi.js": "^8.6.6",

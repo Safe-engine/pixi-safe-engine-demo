@@ -1,15 +1,6 @@
-[submodule "packages/safex-pixi-spine"]
-	path = packages/safex-pixi-spine
-	url = git@github.com:Safe-engine/safex-pixi-spine.git
 [submodule "packages/safex-pixi"]
 	path = packages/safex-pixi
 	url = git@github.com:Safe-engine/safex-pixi.git
-[submodule "packages/safex-pixi-collider"]
-	path = packages/safex-pixi-collider
-	url = git@github.com:Safe-engine/safex-pixi-collider.git
 [submodule "packages/babel-plugin-safe-x-transform"]
 	path = packages/babel-plugin-safe-x-transform
 	url = git@github.com:Safe-engine/babel-plugin-safe-x-transform.git
-[submodule "packages/safe-engine-core"]
-	path = packages/safe-engine-core
-	url = git@github.com:Safe-engine/safe-engine-core.git
