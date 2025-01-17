@@ -21,8 +21,6 @@
     "@safe-engine/pixi-spine": "workspace:*",
     "howler-pixi-loader-middleware": "^5.0.0",
     "lodash": "^4.17.21",
-    "pixi-action-ease": "^3.0.6",
-    "pixi.js": "^8.6.6",
     "process": "^0.11.10"
   },
   "devDependencies": {
@@ -34,7 +32,7 @@
     "@types/lodash": "^4.17.14",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
     "@typescript-eslint/parser": "^8.20.0",
-    "babel-plugin-safe-x-transform": "^3.3.1",
+    "babel-plugin-safe-x-transform": "workspace:*",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-lodash-import-method": "^0.0.3",

@@ -7,3 +7,6 @@
 [submodule "packages/safex-pixi-collider"]
 	path = packages/safex-pixi-collider
 	url = git@github.com:Safe-engine/safex-pixi-collider.git
+[submodule "packages/babel-plugin-safe-x-transform"]
+	path = packages/babel-plugin-safe-x-transform
+	url = git@github.com:Safe-engine/babel-plugin-safe-x-transform.git
