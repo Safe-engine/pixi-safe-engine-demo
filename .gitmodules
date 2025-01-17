@@ -10,3 +10,6 @@
 [submodule "packages/babel-plugin-safe-x-transform"]
 	path = packages/babel-plugin-safe-x-transform
 	url = git@github.com:Safe-engine/babel-plugin-safe-x-transform.git
+[submodule "packages/safe-engine-core"]
+	path = packages/safe-engine-core
+	url = git@github.com:Safe-engine/safe-engine-core.git
