@@ -15,12 +15,12 @@
   "license": "ISC",
   "dependencies": {
     "@safe-engine/pixi": "^8.1.4",
-    "@safe-engine/pixi-collider": "^1.0.2",
+    "@safe-engine/pixi-collider": "*",
     "@safe-engine/pixi-planck": "^1.0.0",
     "@safe-engine/pixi-spine": "^2.0.2",
     "howler-pixi-loader-middleware": "^5.0.0",
     "lodash": "^4.17.21",
-    "pixi-action-ease": "^2.0.1",
+    "pixi-action-ease": "*",
     "pixi.js": "^8.6.6"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "@types/lodash": "^4.17.14",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
     "@typescript-eslint/parser": "^8.20.0",
-    "babel-plugin-safe-x-transform": "^3.2.1",
+    "babel-plugin-safe-x-transform": "^3.3.1",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-lodash-import-method": "^0.0.3",
