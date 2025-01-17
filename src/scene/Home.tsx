@@ -41,12 +41,12 @@ export class Home extends SceneComponent {
   static create(): Home {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="hello" font={defaultFont} />
+        <LabelComp node={{ x: 106, y: 240 }} string="hello safex" font={defaultFont} />
         {this.cases.map((name, j = 1) => (
-          <SpriteRender node={{ x: 200, y: 1200 - 30 * j, anchorY: 1 }} spriteFrame={sf_button}>
+          <SpriteRender node={{ x: 200, y: 120 - 30 * j, anchorY: 1 }} spriteFrame={sf_button}>
             <ButtonComp $onPress="onPress" />
             <LabelComp node={{ x: 220, y: 90 }} string={name} font={defaultFont} />
-            <ExtraDataComp key="id" value={4} />
+            <ExtraDataComp key="id" value={j} />
           </SpriteRender>
         ))}
       </SceneComponent>

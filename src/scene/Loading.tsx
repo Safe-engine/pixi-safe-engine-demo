@@ -1,12 +1,12 @@
 import { ComponentX, ProgressTimerComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
-import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets/TextureAssets'
+import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets'
 import { loadAssets } from '../binding/loader'
 import { Home } from './Home'
 
 export class Loading extends ComponentX {
   score = 0
-  loadingSprite: ProgressTimerComp = null
+  loadingSprite: ProgressTimerComp
 
   async start() {
     await loadAssets(this.onProgress.bind(this))
