@@ -4,6 +4,6 @@
 [submodule "packages/safex-pixi"]
 	path = packages/safex-pixi
 	url = git@github.com:Safe-engine/safex-pixi.git
-[submodule "packages/pixi-action-ease"]
-	path = packages/pixi-action-ease
-	url = git@github.com:Safe-engine/pixi-action-ease.git
+[submodule "packages/safex-pixi-collider"]
+	path = packages/safex-pixi-collider
+	url = git@github.com:Safe-engine/safex-pixi-collider.git
