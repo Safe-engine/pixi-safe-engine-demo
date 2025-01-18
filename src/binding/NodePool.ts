@@ -1,4 +1,4 @@
-import { NodeComp } from "@safe-engine/pixi"
+import { NodeComp } from "safex"
 
 export class NodePool {
   items: NodeComp[] = []

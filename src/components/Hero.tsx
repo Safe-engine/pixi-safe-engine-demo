@@ -1,4 +1,4 @@
-import { ComponentX, SpriteRender } from "@safe-engine/pixi"
+import { ComponentX, SpriteRender } from "safex"
 import { sf_progress_bg } from "../assets/TextureAssets"
 
 

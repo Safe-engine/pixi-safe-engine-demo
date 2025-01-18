@@ -1,4 +1,4 @@
-import { app } from '@safe-engine/pixi'
+import { app } from 'safex'
 
 export function pauseAll() {
   app.ticker.stop()

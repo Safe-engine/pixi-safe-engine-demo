@@ -1,4 +1,4 @@
-import { LabelComp, SceneComponent, SpineSkeleton } from "@safe-engine/pixi";
+import { LabelComp, SceneComponent, SpineSkeleton } from "safex";
 import { defaultFont, sp_spineboy_pro } from "../assets";
 
 export class Spine extends SceneComponent {

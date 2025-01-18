@@ -1,7 +1,8 @@
-import { ButtonComp, Collider, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { ButtonComp, Collider, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
-import { CYAN, ORANGE } from '../helper/constant'
+import { CYAN, ORANGE, Scenes } from '../helper/constant'
+import { DragonBonesScene } from './DragonBonesScene'
 import { Spine } from './Spine'
 
 export class Home extends SceneComponent {
@@ -17,8 +18,34 @@ export class Home extends SceneComponent {
   // onUpdate(dt: number) {}
   onPress(event: ButtonComp) {
     const id = event.node.getData<Integer>('id')
-    console.log('Clicked', id)
-    Spine.create()
+    console.log('Clicked', id, Scenes[id])
+    if (id === Scenes.Spine) {
+      Spine.create()
+    }
+    if (id === Scenes.DragonBones) {
+      DragonBonesScene.create()
+    }
+    if (id === Scenes.TouchEvents) {
+      // TouchEvents.create()
+    }
+    if (id === Scenes.Sprite) {
+      // Sprite.create()
+    }
+    if (id === Scenes.Button) {
+      // Button.create()
+    }
+    if (id === Scenes.Graphics) {
+      // Graphics.create()
+    }
+    if (id === Scenes.Collider) {
+      // Collider.create()
+    }
+    if (id === Scenes.Physics) {
+      // Physics.create()
+    }
+    if (id === Scenes.Game) {
+      // Game.create()
+    }
   }
 
   onCollisionEnter(other: Collider) {

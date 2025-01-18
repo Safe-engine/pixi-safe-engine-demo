@@ -1,4 +1,4 @@
-import { ComponentX, ProgressTimerComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { ComponentX, ProgressTimerComp, SceneComponent, SpriteRender } from 'safex'
 
 import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets'
 import { loadAssets } from '../binding/loader'

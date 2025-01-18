@@ -1,4 +1,4 @@
-import { Color4B } from '@safe-engine/pixi'
+import { Color4B } from 'safex'
 
 export const CYAN = Color4B(0, 255, 255, 255)
 export const RED = Color4B(255, 0, 0, 255)
@@ -29,3 +29,14 @@ export const DARK_LIME = Color4B(0, 128, 0, 255)
 export const DARK_AQUA = Color4B(0, 255, 255, 255)
 export const DARK_TEAL = Color4B(0, 100, 100, 255)
 
+export enum Scenes {
+  Spine = 1,
+  DragonBones,
+  TouchEvents,
+  Sprite,
+  Button,
+  Graphics,
+  Collider,
+  Physics,
+  Game,
+}

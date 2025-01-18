@@ -2,6 +2,7 @@ import HowlerLoaderParser from 'howler-pixi-loader-middleware'
 
 import { Assets, extensions, Texture } from 'pixi.js'
 import * as AudioAssets from '../assets/AudioAssets'
+import * as DragonBonesAssets from '../assets/DragonBonesAssets'
 import * as FontAssets from '../assets/FontAssets'
 import * as SpineAssets from '../assets/SpineAssets'
 import * as TextureAssets from '../assets/TextureAssets'
@@ -30,6 +31,11 @@ export function loadAssets(cb: (progress: number) => void) {
       return Assets.load(AudioAssets[key]).then((audioResource) => {
         AudioAssets[key] = audioResource
       })
+    }),
+    ...Object.entries(DragonBonesAssets).map(([key, value]) => {
+      // console.log(key, value)
+      const { skeleton, atlas } = value
+      return Assets.load([skeleton, atlas])
     }),
     // ...Object.values(JsonAssets).map(loadJsonAsync),
   ]).then(() => {

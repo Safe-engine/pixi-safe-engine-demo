@@ -1,4 +1,4 @@
-import { BoxCollider, ButtonComp, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from '@safe-engine/pixi'
+import { BoxCollider, ButtonComp, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from 'safex'
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'

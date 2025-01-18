@@ -1,4 +1,4 @@
-import { addGameCanvasTo, app, setupResolution, startGameSystems } from '@safe-engine/pixi'
+import { addGameCanvasTo, app, setupResolution, startGameSystems } from 'safex'
 
 import { Boot } from './scene/Boot'
 import { settings } from './settings'
