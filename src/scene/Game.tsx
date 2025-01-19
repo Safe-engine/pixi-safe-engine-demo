@@ -37,11 +37,11 @@ export class Game extends SceneComponent {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Game" font={defaultFont} />
-        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={sf_crash}>
+        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={sf_crash} >
           <ButtonComp $onPress="onPress" />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref="hero" node={{ x: 550, y: 430 }}>
+        <Hero $ref="hero" node={{ x: 550, y: 430 }}  >
           <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
         <Hero $ref="hero" node={{ x: 550, y: 130, rotation: 180 }}>

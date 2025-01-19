@@ -1,1 +1,2 @@
+export const db_mecha_1004_d = {"atlas":"DragonBones/mecha_1004d/mecha_1004d_show_tex.json","texture":"DragonBones/mecha_1004d/mecha_1004d_show_tex.png","skeleton":"DragonBones/mecha_1004d/mecha_1004d_show_ske.json"}
 export const db_mecha_1502_b = {"atlas":"DragonBones/mecha_1502b/mecha_1502b_tex.json","texture":"DragonBones/mecha_1502b/mecha_1502b_tex.png","skeleton":"DragonBones/mecha_1502b/mecha_1502b_ske.json"}

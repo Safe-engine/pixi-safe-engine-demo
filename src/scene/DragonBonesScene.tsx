@@ -1,5 +1,5 @@
 import { DragonBones, LabelComp, SceneComponent } from "safex";
-import { db_mecha_1502_b, defaultFont } from "../assets";
+import { db_mecha_1004_d, defaultFont } from "../assets";
 
 export class DragonBonesScene extends SceneComponent {
 
@@ -7,7 +7,7 @@ export class DragonBonesScene extends SceneComponent {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Hello safex dragon bones" font={defaultFont} />
-        <DragonBones node={{ x: 306, y: 1140 }} data={db_mecha_1502_b} animation="idle" loop={true} />
+        <DragonBones node={{ x: 406, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
       </SceneComponent>
     )
   }
