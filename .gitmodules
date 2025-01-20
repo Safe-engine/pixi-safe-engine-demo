@@ -4,3 +4,6 @@
 [submodule "packages/babel-plugin-safe-x-transform"]
 	path = packages/babel-plugin-safe-x-transform
 	url = git@github.com:Safe-engine/babel-plugin-safe-x-transform.git
+[submodule "packages/safex-cocos-ts"]
+	path = packages/safex-cocos-ts
+	url = git@github.com:Safe-engine/safex-cocos-ts.git
