@@ -1,9 +1,7 @@
-import { app } from 'safex'
-
 export function pauseAll() {
-  app.ticker.stop()
+  cc.director.pause()
 }
 
 export function resumeAll() {
-  app.ticker.start()
+  cc.director.resume()
 }

@@ -1,8 +1,10 @@
 {
   "name": "pixi-safe-engine-demo",
-  "version": "1.0.1",
+  "version": "2.0.1",
   "description": "show case and code examples",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "type": "module",
   "scripts": {
     "export": "safex build -p ios",
@@ -15,11 +17,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@safe-engine/pixi": "workspace:*",
-    "safex": "npm:@safe-engine/pixi",
-    "howler-pixi-loader-middleware": "^5.0.0",
-    "lodash": "^4.17.21",
-    "process": "^0.11.10"
+    "cocos-html5-ts": "latest",
+    "@safex/cocos": "workspace:*",
+    "safex": "npm:@safex/cocos",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -43,8 +44,13 @@
   "parcelCleanPaths": [
     "dist"
   ],
-  "staticFiles": {
-    "staticPath": "res",
-    "watcherGlob": "**"
-  }
+  "staticFiles": [
+    {
+      "staticPath": "res",
+      "watcherGlob": "**"
+    },
+    {
+      "staticPath": "project.json"
+    }
+  ]
 }
