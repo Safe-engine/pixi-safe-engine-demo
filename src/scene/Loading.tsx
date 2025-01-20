@@ -27,7 +27,7 @@ export class Loading extends ComponentX {
       <SceneComponent>
         <SpriteRender node={{ x: 0, y: 0 }} spriteFrame={sf_bitmap_2_yellow}>
           <SpriteRender node={{ x: 40, y: 150 }} spriteFrame={sf_crash}>
-            <ProgressTimerComp $ref="loadingSprite" node={{ x: 10, y: 1118 }} spriteFrame={sf_progress_bar} fillRange={0} />
+            <ProgressTimerComp $ref={this.loadingSprite} node={{ x: 10, y: 1118 }} spriteFrame={sf_progress_bar} fillRange={0} />
           </SpriteRender>
         </SpriteRender>
       </SceneComponent>

@@ -33,21 +33,21 @@ export class Game extends ComponentX {
     Home.create()
   }
 
-  static create(): Game {
+  render() {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Game" font={defaultFont} />
         <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={sf_crash} >
-          <ButtonComp $onPress="onPress" />
+          <ButtonComp onPress={this.onPress} />
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref="hero" node={{ x: 550, y: 430 }}  >
+        <Hero $ref={this.hero} node={{ x: 550, y: 430 }} gameNode={this.node} >
           <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
-        <Hero $ref="hero" node={{ x: 550, y: 130, rotation: 180 }}>
+        <Hero $ref={this.hero} node={{ x: 550, y: 130, rotation: 180 }}>
           <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_spineboy_pro} animation="Walk" loop={true} />
+        <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_spineboy_pro} animation="idle" loop={true} />
       </SceneComponent>
     )
   }
