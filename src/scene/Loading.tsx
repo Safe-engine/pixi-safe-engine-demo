@@ -13,7 +13,7 @@ export class Loading extends ComponentX {
   }
 
   onProgress(p: number) {
-    // console.log('onProgress', p)
+    console.log('onProgress', p)
     this.loadingSprite.setFillRange(p)
     if (p === 1) {
       setTimeout(() => {
@@ -22,7 +22,7 @@ export class Loading extends ComponentX {
     }
   }
 
-  static create() {
+  render() {
     return (
       <SceneComponent>
         <SpriteRender node={{ x: 0, y: 0 }} spriteFrame={sf_bitmap_2_yellow}>

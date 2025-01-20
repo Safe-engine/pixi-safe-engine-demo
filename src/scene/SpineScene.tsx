@@ -1,7 +1,7 @@
-import { LabelComp, SceneComponent, SpineSkeleton } from "safex";
+import { ComponentX, LabelComp, SceneComponent, SpineSkeleton } from "safex";
 import { defaultFont, sp_spineboy_pro } from "../assets";
 
-export class Spine extends SceneComponent {
+export class SpineScene extends ComponentX {
   // start() {
   //   console.log(sp_spineboy_pro)
   //   console.log(Assets.cache.get(sp_spineboy_pro.skeleton));

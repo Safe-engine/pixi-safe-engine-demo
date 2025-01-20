@@ -1,10 +1,10 @@
-import { BoxCollider, ButtonComp, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from 'safex'
+import { BoxCollider, ButtonComp, ComponentX, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from 'safex'
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
 import { Home } from './Home'
 
-export class Game extends SceneComponent {
+export class Game extends ComponentX {
   score = 0
   // uiRef: UIController = null
   hero: Hero

@@ -1,7 +1,7 @@
-import { DragonBones, LabelComp, SceneComponent } from "safex";
+import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
 import { db_mecha_1004_d, defaultFont } from "../assets";
 
-export class DragonBonesScene extends SceneComponent {
+export class DragonBonesScene extends ComponentX {
 
   static create() {
     return (

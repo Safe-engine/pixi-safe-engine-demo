@@ -1,11 +1,11 @@
-import { ButtonComp, Collider, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
+import { ButtonComp, Collider, ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
 import { DragonBonesScene } from './DragonBonesScene'
-import { Spine } from './Spine'
+import { SpineScene } from './SpineScene'
 
-export class Home extends SceneComponent {
+export class Home extends ComponentX {
   score = 0
   hero: Hero
 
@@ -20,7 +20,7 @@ export class Home extends SceneComponent {
     const id = event.node.getData<Integer>('id')
     console.log('Clicked', id, Scenes[id])
     if (id === Scenes.Spine) {
-      Spine.create()
+      SpineScene.create()
     }
     if (id === Scenes.DragonBones) {
       DragonBonesScene.create()
@@ -52,18 +52,20 @@ export class Home extends SceneComponent {
     console.log(other.tag)
   }
 
-  static create(): Home {
+  render() {
     return (
-      <SceneComponent>
+      <SceneComponent  >
         <LabelComp node={{ x: 406, y: 140, color: CYAN }} string="hello safex" font={defaultFont} />
-        {this.cases.map((name, j = 1) => (
-          <SpriteRender node={{ x: 200, y: 120 + 150 * j, with: 600, height: 100, color: ORANGE }} spriteFrame={sf_button}>
-            <ButtonComp $onPress="onPress" />
-            <LabelComp node={{ x: 20, y: -10 }} string={name} font={defaultFont} size={48} />
-            <ExtraDataComp key="id" value={j} />
-          </SpriteRender>
-        ))}
-      </SceneComponent>
+        {
+          Home.cases.map((name, j = 1) => (
+            <SpriteRender node={{ x: 200, y: 120 + 150 * j, width: 600, height: 100, color: ORANGE }} spriteFrame={sf_button}>
+              <ButtonComp $onPress="onPress" />
+              <LabelComp node={{ x: 20, y: -10 }} string={name} font={defaultFont} size={48} />
+              <ExtraDataComp key="id" value={j} />
+            </SpriteRender>
+          ))
+        }
+      </SceneComponent >
     )
   }
 }

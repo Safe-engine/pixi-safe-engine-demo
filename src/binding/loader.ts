@@ -1,6 +1,6 @@
 import HowlerLoaderParser from 'howler-pixi-loader-middleware'
 
-import { Assets, extensions, Texture } from 'pixi.js'
+import { Assets, extensions, Texture } from 'safex'
 import * as AudioAssets from '../assets/AudioAssets'
 import * as DragonBonesAssets from '../assets/DragonBonesAssets'
 import * as FontAssets from '../assets/FontAssets'
