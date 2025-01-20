@@ -30,7 +30,7 @@ class BootScene extends cc.Scene {
 }
 
 cc._isContextMenuEnable = true
-cc.game.onStart = function onStart() {
+function onStart() {
   const { designedResolution } = settings
   const { width, height } = designedResolution
   // Pass true to enable retina display, disabled by default to improve performance
@@ -45,4 +45,10 @@ cc.game.onStart = function onStart() {
   initWorld()
   cc.director.runScene(new BootScene())
 }
-cc.game.run()
+cc.game.run({
+  "debugMode": 1,
+  "showFPS": false,
+  "frameRate": 60,
+  "id": "gameCanvas",
+  "renderMode": 0
+}, onStart)

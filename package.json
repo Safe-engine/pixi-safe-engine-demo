@@ -1,6 +1,6 @@
 {
   "name": "pixi-safe-engine-demo",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "show case and code examples",
   "workspaces": [
     "packages/*"
@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cocos-html5-ts": "latest",
+    "cocos-html5-ts": "^*",
     "@safex/cocos": "workspace:*",
     "safex": "npm:@safex/cocos",
     "lodash": "^4.17.21"
@@ -35,7 +35,7 @@
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-lodash-import-method": "^0.0.3",
-    "eslint-plugin-prettier": "^5.2.2",
+    "eslint-plugin-prettier": "^5.2.3",
     "parcel": "^2.13.3",
     "parcel-plugin-clean-easy": "^1.0.2",
     "parcel-reporter-static-files-copy": "^1.5.3",
@@ -44,13 +44,8 @@
   "parcelCleanPaths": [
     "dist"
   ],
-  "staticFiles": [
-    {
-      "staticPath": "res",
-      "watcherGlob": "**"
-    },
-    {
-      "staticPath": "project.json"
-    }
-  ]
+  "staticFiles": {
+    "staticPath": "res",
+    "watcherGlob": "**"
+  }
 }
