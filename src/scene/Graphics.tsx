@@ -1,7 +1,7 @@
 import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
 import { db_mecha_1004_d, defaultFont } from "../assets";
 
-export class SpriteScene extends ComponentX {
+export class GraphicsScene extends ComponentX {
 
   dragon: DragonBones
 
