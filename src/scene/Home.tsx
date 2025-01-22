@@ -1,4 +1,4 @@
-import { ButtonComp, Collider, ComponentX, ExtraDataComp, LabelComp, NodeRender, SceneComponent, SpriteRender } from 'safex'
+import { ButtonComp, Collider, ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
@@ -59,12 +59,11 @@ export class Home extends ComponentX {
         <LabelComp node={{ x: 406, y: 140, color: CYAN }} string="hello safex" font={defaultFont} />
         {
           Home.cases.map((name, j = 1) => (
-            <NodeRender node={{ x: 200, y: 120 + 150 * j }} >
-              <SpriteRender node={{ width: 600, height: 100 }} spriteFrame={sf_button} />
+            <SpriteRender node={{ x: 200, y: 120 + 150 * j, width: 200, height: 60 }} spriteFrame={sf_button}  >
               <ButtonComp onPress={this.onPress} />
               <LabelComp node={{ x: 20, y: 10, color: ORANGE }} string={name} font={defaultFont} size={48} />
               <ExtraDataComp key="id" value={j} />
-            </NodeRender>
+            </SpriteRender>
           ))
         }
       </SceneComponent >
