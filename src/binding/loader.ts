@@ -8,15 +8,13 @@ import * as TextureAssets from '../assets/TextureAssets'
 export function loadAssets(cb: (progress: number) => void) {
   // load the texture we need
   const keys = []
-  Object.keys(SpineAssets).map((key) => {
-    const { skeleton, atlas } = SpineAssets[key]
+  Object.values(SpineAssets).map(({ skeleton, atlas }) => {
     keys.push(skeleton, atlas)
   });
-  Object.entries(DragonBonesAssets).map(([key, value]) => {
-    // console.log(key, value)
-    const { skeleton, atlas } = value
+  Object.values(DragonBonesAssets).map(({ skeleton, atlas }) => {
     keys.push(skeleton, atlas)
   })
+  // console.log('keys', keys)
   cc.loader.load(
     [
       ...keys,
