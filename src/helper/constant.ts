@@ -34,7 +34,7 @@ export enum Scenes {
   DragonBones,
   TouchEvents,
   Sprite,
-  Button,
+  Label,
   Graphics,
   Collider,
   Physics,

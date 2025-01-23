@@ -2,11 +2,11 @@ import { ButtonComp, Collider, ComponentX, ExtraDataComp, LabelComp, SceneCompon
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
-import { ButtonScene } from './Button'
 import { CollidersScene } from './Colliders'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './Graphics'
+import { LabelScene } from './Label'
 import { PhysicsScene } from './Physics'
 import { SpineScene } from './SpineScene'
 import { SpriteScene } from './Sprite'
@@ -16,7 +16,7 @@ export class Home extends ComponentX {
   score = 0
   hero: Hero
 
-  static cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Button', 'Graphics', 'Collider', 'Physics', 'Game']
+  static cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Label', 'Graphics', 'Collider', 'Physics', 'Game']
 
   onStart() {
     console.log('you win')
@@ -38,8 +38,8 @@ export class Home extends ComponentX {
     if (id === Scenes.Sprite) {
       SpriteScene.create()
     }
-    if (id === Scenes.Button) {
-      ButtonScene.create()
+    if (id === Scenes.Label) {
+      LabelScene.create()
     }
     if (id === Scenes.Graphics) {
       GraphicsScene.create()

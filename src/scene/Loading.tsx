@@ -13,7 +13,7 @@ export class Loading extends ComponentX {
   }
 
   onProgress(p: number) {
-    console.log('onProgress', p)
+    // console.log('onProgress', p)
     this.loadingSprite.setFillRange(p)
     if (p === 1) {
       setTimeout(() => {

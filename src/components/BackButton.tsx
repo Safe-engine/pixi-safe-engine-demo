@@ -8,7 +8,7 @@ export class BackButton extends ComponentX {
     Home.create()
   }
   render() {
-    return <SpriteRender node={{ x: 500, y: 240 }} spriteFrame={sf_home}>
+    return <SpriteRender node={{ x: 850, y: 40 }} spriteFrame={sf_home}>
       <ButtonComp onPress={this.onPress}></ButtonComp>
     </SpriteRender>
   }

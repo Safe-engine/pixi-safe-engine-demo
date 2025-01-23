@@ -11,7 +11,7 @@ export class Boot extends ComponentX {
       sf_progress_bar
     ]);
     // console.log('Boot start', sf_progress_bar)
-    console.log(Assets.cache.get(sf_progress_bar));
+    // console.log(Assets.cache.get(sf_progress_bar));
     Loading.create()
   }
 

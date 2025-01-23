@@ -1,5 +1,5 @@
-import { ComponentX, FederatedPointerEvent, LabelComp, SceneComponent, TouchEventRegister } from "safex";
-import { defaultFont } from "../assets";
+import { ComponentX, FederatedPointerEvent, LabelComp, SceneComponent, SpriteRender, TouchEventRegister } from "safex";
+import { defaultFont, sf_bg_home } from "../assets";
 import { BackButton } from "../components/BackButton";
 
 export class TouchEventsScene extends ComponentX {
@@ -22,11 +22,13 @@ export class TouchEventsScene extends ComponentX {
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Hello safex touch events" font={defaultFont} />
         <BackButton />
-        <TouchEventRegister
-          onTouchStart={this.onTouchStart}
-          onTouchEnd={this.onTouchEnd}
-          onTouchCancel={this.onTouchCancel}  // Not supported on iOS
-          onTouchMove={this.onTouchMove} />
+        <SpriteRender spriteFrame={sf_bg_home}>
+          <TouchEventRegister
+            onTouchStart={this.onTouchStart}
+            onTouchEnd={this.onTouchEnd}
+            onTouchCancel={this.onTouchCancel}  // Not supported on iOS
+            onTouchMove={this.onTouchMove} />
+        </SpriteRender>
       </SceneComponent>
     )
   }

@@ -1,3 +1,4 @@
+export const sf_bg_home = 'Texture/bg/bg_home.png'
 export const sf_progress_bg = 'Texture/progress_bg.png'
 export const sf_progress_bar = 'Texture/progress_bar.png'
 export const sf_home = 'Texture/home.png'
