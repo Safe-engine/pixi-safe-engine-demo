@@ -1,15 +1,15 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
-import { db_mecha_1004_d, defaultFont } from "../assets";
+import { ComponentX, LabelComp, SceneComponent, SpriteRender } from "safex";
+import { defaultFont, sf_crash } from "../assets";
+import { BackButton } from "../components/BackButton";
 
 export class SpriteScene extends ComponentX {
-
-  dragon: DragonBones
 
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex dragon bones" font={defaultFont} />
-        <DragonBones $ref={this.dragon} node={{ x: 406, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
+        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex Sprite" font={defaultFont} />
+        <BackButton />
+        <SpriteRender spriteFrame={sf_crash} />
       </SceneComponent>
     )
   }

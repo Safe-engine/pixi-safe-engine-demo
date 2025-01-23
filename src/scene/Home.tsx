@@ -2,9 +2,15 @@ import { ButtonComp, Collider, ComponentX, ExtraDataComp, LabelComp, SceneCompon
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
+import { ButtonScene } from './Button'
+import { CollidersScene } from './Colliders'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
+import { GraphicsScene } from './Graphics'
+import { PhysicsScene } from './Physics'
 import { SpineScene } from './SpineScene'
+import { SpriteScene } from './Sprite'
+import { TouchEventsScene } from './TouchEvents'
 
 export class Home extends ComponentX {
   score = 0
@@ -27,22 +33,22 @@ export class Home extends ComponentX {
       DragonBonesScene.create()
     }
     if (id === Scenes.TouchEvents) {
-      // TouchEvents.create()
+      TouchEventsScene.create()
     }
     if (id === Scenes.Sprite) {
-      // Sprite.create()
+      SpriteScene.create()
     }
     if (id === Scenes.Button) {
-      // Button.create()
+      ButtonScene.create()
     }
     if (id === Scenes.Graphics) {
-      // Graphics.create()
+      GraphicsScene.create()
     }
     if (id === Scenes.Collider) {
-      // Collider.create()
+      CollidersScene.create()
     }
     if (id === Scenes.Physics) {
-      // Physics.create()
+      PhysicsScene.create()
     }
     if (id === Scenes.Game) {
       Game.create()

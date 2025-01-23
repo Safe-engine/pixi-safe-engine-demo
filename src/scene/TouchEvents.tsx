@@ -1,15 +1,32 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
-import { db_mecha_1004_d, defaultFont } from "../assets";
+import { ComponentX, FederatedPointerEvent, LabelComp, SceneComponent, TouchEventRegister } from "safex";
+import { defaultFont } from "../assets";
+import { BackButton } from "../components/BackButton";
 
 export class TouchEventsScene extends ComponentX {
 
-  dragon: DragonBones
+  onTouchStart(event) {
+    console.log("onTouchStart")
+  }
+  onTouchMove(event: FederatedPointerEvent) {
+    console.log("onTouchMove", event.x, event.y)
+  }
+  onTouchEnd(event) {
+    console.log("onTouchEnd")
+  }
+  onTouchCancel(event) {
+    console.log("onTouchCancel")
+  }
 
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex dragon bones" font={defaultFont} />
-        <DragonBones $ref={this.dragon} node={{ x: 406, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
+        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex touch events" font={defaultFont} />
+        <BackButton />
+        <TouchEventRegister
+          onTouchStart={this.onTouchStart}
+          onTouchEnd={this.onTouchEnd}
+          onTouchCancel={this.onTouchCancel}  // Not supported on iOS
+          onTouchMove={this.onTouchMove} />
       </SceneComponent>
     )
   }

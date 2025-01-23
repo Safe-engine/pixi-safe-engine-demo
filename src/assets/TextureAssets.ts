@@ -1,5 +1,6 @@
 export const sf_progress_bg = 'Texture/progress_bg.png'
 export const sf_progress_bar = 'Texture/progress_bar.png'
+export const sf_home = 'Texture/home.png'
 export const sf_dialog_name = 'Texture/dialog-name.png'
 export const sf_crash = 'Texture/crash.png'
 export const sf_button = 'Texture/button.png'
