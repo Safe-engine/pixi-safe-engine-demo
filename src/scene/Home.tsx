@@ -1,4 +1,4 @@
-import { ButtonComp, Collider, ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
+import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
@@ -20,7 +20,6 @@ export class Home extends ComponentX {
 
   start() {
     console.log('you win')
-    PhysicsScene.create()
   }
 
   // onUpdate(dt: number) {}
@@ -54,10 +53,6 @@ export class Home extends ComponentX {
     if (id === Scenes.Game) {
       Game.create()
     }
-  }
-
-  onCollisionEnter(other: Collider) {
-    console.log(other.tag)
   }
 
   render() {

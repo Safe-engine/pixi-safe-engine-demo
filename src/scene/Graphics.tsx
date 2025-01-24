@@ -1,6 +1,6 @@
 import { ComponentX, GraphicsRender, LabelComp, PI_2, SceneComponent, Vec2 } from "safex";
 import { defaultFont } from "../assets";
-import { CYAN, PINK, PURPLE, YELLOW } from "../helper/constant";
+import { BLUE, CYAN, PINK, PURPLE, YELLOW } from "../helper/constant";
 
 export class GraphicsScene extends ComponentX {
 
@@ -9,6 +9,8 @@ export class GraphicsScene extends ComponentX {
   start() {
     this.graphics.drawRect(Vec2(100, 300), Vec2(200, 500), PURPLE)
     this.graphics.drawCircle(Vec2(400, 500), 50, PI_2, 64, true, 1, 1, YELLOW, 1)
+    const points = [{ "x": 540, "y": 1040 }, { "x": 540, "y": 1240 }, { "x": 740, "y": 1240 }, { "x": 740, "y": 1040 }].map(Vec2)
+    this.graphics.drawPoly(points, true, BLUE)
   }
 
   render() {
