@@ -1,15 +1,21 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
-import { db_mecha_1004_d, defaultFont } from "../assets";
+import { ComponentX, GraphicsRender, LabelComp, PI_2, SceneComponent, Vec2 } from "safex";
+import { defaultFont } from "../assets";
+import { CYAN, PINK, PURPLE, YELLOW } from "../helper/constant";
 
 export class GraphicsScene extends ComponentX {
 
-  dragon: DragonBones
+  graphics: GraphicsRender
+
+  start() {
+    this.graphics.drawRect(Vec2(100, 300), Vec2(200, 500), PURPLE)
+    this.graphics.drawCircle(Vec2(400, 500), 50, PI_2, 64, true, 1, 1, YELLOW, 1)
+  }
 
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex dragon bones" font={defaultFont} />
-        <DragonBones $ref={this.dragon} node={{ x: 406, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
+        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex Graphics" font={defaultFont} />
+        <GraphicsRender $ref={this.graphics} fillColor={CYAN} strokeColor={PINK} lineWidth={5} />
       </SceneComponent>
     )
   }

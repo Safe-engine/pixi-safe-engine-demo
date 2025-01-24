@@ -20,7 +20,7 @@ export class Home extends ComponentX {
 
   start() {
     console.log('you win')
-    LabelScene.create()
+    PhysicsScene.create()
   }
 
   // onUpdate(dt: number) {}
