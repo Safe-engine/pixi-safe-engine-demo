@@ -18,8 +18,9 @@ export class Home extends ComponentX {
 
   static cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Label', 'Graphics', 'Collider', 'Physics', 'Game']
 
-  onStart() {
+  start() {
     console.log('you win')
+    LabelScene.create()
   }
 
   // onUpdate(dt: number) {}
