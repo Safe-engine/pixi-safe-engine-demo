@@ -12,7 +12,7 @@ export class PhysicsScene extends ComponentX {
         <LabelComp node={{ x: 106, y: 240 }} string="Hello safex physics" font={defaultFont} />
         <BackButton />
         <DragonBones $ref={this.dragon} node={{ x: 640, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} >
-          <RigidBody friction={1} restitution={1}></RigidBody>
+          <RigidBody friction={0.5} restitution={0.5}></RigidBody>
           <CircleColliderPhysics radius={50} />
           <BoxColliderPhysics width={500} height={800} />
         </DragonBones>

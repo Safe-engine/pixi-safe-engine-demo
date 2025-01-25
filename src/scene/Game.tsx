@@ -1,5 +1,6 @@
 import { BoxCollider, ButtonComp, ComponentX, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, Vec2 } from 'safex'
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
+import { BackButton } from '../components/BackButton'
 import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
 import { Home } from './Home'
@@ -37,6 +38,7 @@ export class Game extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Game" font={defaultFont} />
+        <BackButton />
         <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={sf_crash} >
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>

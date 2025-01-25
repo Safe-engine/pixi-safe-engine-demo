@@ -1,5 +1,6 @@
 import { ComponentX, GraphicsRender, LabelComp, PI_2, SceneComponent, Vec2 } from "safex";
 import { defaultFont } from "../assets";
+import { BackButton } from "../components/BackButton";
 import { BLUE, CYAN, PINK, PURPLE, YELLOW } from "../helper/constant";
 
 export class GraphicsScene extends ComponentX {
@@ -17,6 +18,7 @@ export class GraphicsScene extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Hello safex Graphics" font={defaultFont} />
+        <BackButton />
         <GraphicsRender $ref={this.graphics} fillColor={CYAN} strokeColor={PINK} lineWidth={5} />
       </SceneComponent>
     )
