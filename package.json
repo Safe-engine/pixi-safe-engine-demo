@@ -2,9 +2,6 @@
   "name": "pixi-safe-engine-demo",
   "version": "1.0.1",
   "description": "show case and code examples",
-  "workspaces": [
-    "packages/*"
-  ],
   "type": "module",
   "scripts": {
     "export": "safex build -p ios",
