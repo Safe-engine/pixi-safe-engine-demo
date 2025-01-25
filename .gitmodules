@@ -1,6 +1,0 @@
-[submodule "packages/safex-pixi"]
-	path = packages/safex-pixi
-	url = git@github.com:Safe-engine/safex-pixi.git
-[submodule "packages/babel-plugin-safe-x-transform"]
-	path = packages/babel-plugin-safe-x-transform
-	url = git@github.com:Safe-engine/babel-plugin-safe-x-transform.git
