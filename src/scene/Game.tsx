@@ -1,4 +1,4 @@
-import { BoxCollider, ButtonComp, ComponentX, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, Vec2 } from 'safex'
+import { BoxCollider, ButtonComp, ComponentX, instantiate, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from 'safex'
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { Hero } from '../components/Hero'
@@ -31,7 +31,7 @@ export class Game extends ComponentX {
   onPress(event: ButtonComp) {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
-    Home.create()
+    instantiate(Home)
   }
 
   render() {
@@ -44,10 +44,10 @@ export class Game extends ComponentX {
         </SpriteRender>
         <Monster node={{ x: 10, y: 240 }}></Monster>
         <Hero $ref={this.hero} node={{ x: 550, y: 430 }} gameNode={this.node} >
-          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
         <Hero $ref={this.hero} node={{ x: 550, y: 130, rotation: 180 }}>
-          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
         <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_spineboy_pro} animation="idle" loop={true} />
       </SceneComponent>

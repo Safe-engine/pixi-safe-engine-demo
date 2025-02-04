@@ -1,4 +1,4 @@
-import { ComponentX, ProgressTimerComp, SceneComponent, SpriteRender } from 'safex'
+import { ComponentX, instantiate, ProgressTimerComp, SceneComponent, SpriteRender } from 'safex'
 
 import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets'
 import { loadAssets } from '../binding/loader'
@@ -17,8 +17,8 @@ export class Loading extends ComponentX {
     this.loadingSprite.setFillRange(p)
     if (p === 1) {
       setTimeout(() => {
-        Home.create()
-      }, 0)
+        instantiate(Home)
+      })
     }
   }
 
