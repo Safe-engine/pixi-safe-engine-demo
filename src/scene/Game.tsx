@@ -11,26 +11,12 @@ export class Game extends ComponentX {
   hero: Hero
 
   onStart() {
-    //   schedule((dt) => {
-    //     const monster = instantiate(Monster)
-    //     const box = monster.getComponent(BoxCollider)
-    //     box.width = 123
-    //     monster.on(DEATH, (point) => {
-    //       this.score += point
-    //       this.uiRef.updateScore(this.score)
-    //       if (this.score > 1000) {
     console.log('you win')
-    //         loadScene('game')
-    //       }
-    //     })
-    //     this.addChild(monster)
-    //   }, 2)
   }
 
   // onUpdate(dt: number) {}
   onPress(event: ButtonComp) {
     console.log('Clicked')
-    // this.uiRef.showDialog(true)
     instantiate(Home)
   }
 
