@@ -6,6 +6,7 @@ import { CollidersScene } from './Colliders'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './Graphics'
+import { GridScene } from './Grid'
 import { LabelScene } from './Label'
 import { PhysicsScene } from './Physics'
 import { SpineScene } from './SpineScene'
@@ -16,7 +17,7 @@ export class Home extends ComponentX {
   score = 0
   hero: Hero
 
-  static cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Label', 'Graphics', 'Collider', 'Physics', 'Game']
+  static cases = Object.keys(Scenes).filter(key => isNaN(Number(key)));
 
   start() {
     console.log('you win')
@@ -49,6 +50,9 @@ export class Home extends ComponentX {
     }
     if (id === Scenes.Physics) {
       loadScene(PhysicsScene)
+    }
+    if (id === Scenes.Grid) {
+      loadScene(GridScene)
     }
     if (id === Scenes.Game) {
       loadScene(Game)

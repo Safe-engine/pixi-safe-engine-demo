@@ -1,4 +1,4 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender, Touch, TouchEventRegister } from "safex";
+import { ComponentX, FederatedPointerEvent, LabelComp, SceneComponent, SpriteRender, TouchEventRegister } from "safex";
 import { defaultFont, sf_bg_home } from "../assets";
 import { BackButton } from "../components/BackButton";
 
@@ -7,8 +7,8 @@ export class TouchEventsScene extends ComponentX {
   onTouchStart(event) {
     console.log("onTouchStart")
   }
-  onTouchMove(event: Touch) {
-    console.log("onTouchMove", event.x, event.y)
+  onTouchMove(event: FederatedPointerEvent) {
+    console.log("onTouchMove", event.global)
   }
   onTouchEnd(event) {
     console.log("onTouchEnd")
