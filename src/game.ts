@@ -1,4 +1,4 @@
-import { addGameCanvasTo, app, instantiate, setupResolution, startGameSystems } from 'safex'
+import { addGameCanvasTo, app, loadScene, setupResolution, startGameSystems } from 'safex'
 
 import { Boot } from './scene/Boot'
 import { settings } from './settings'
@@ -14,7 +14,7 @@ async function start() {
   })
   setupResolution(designedResolution)
   startGameSystems()
-  instantiate(Boot)
+  loadScene(Boot)
 }
 start()
 

@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, ExtraDataComp, instantiate, LabelComp, SceneComponent, SpriteRender } from 'safex'
+import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
@@ -27,31 +27,31 @@ export class Home extends ComponentX {
     const id = event.node.getData<Integer>('id')
     console.log('Clicked', id, Scenes[id])
     if (id === Scenes.Spine) {
-      instantiate(SpineScene)
+      loadScene(SpineScene)
     }
     if (id === Scenes.DragonBones) {
-      instantiate(DragonBonesScene)
+      loadScene(DragonBonesScene)
     }
     if (id === Scenes.TouchEvents) {
-      instantiate(TouchEventsScene)
+      loadScene(TouchEventsScene)
     }
     if (id === Scenes.Sprite) {
-      instantiate(SpriteScene)
+      loadScene(SpriteScene)
     }
     if (id === Scenes.Label) {
-      instantiate(LabelScene)
+      loadScene(LabelScene)
     }
     if (id === Scenes.Graphics) {
-      instantiate(GraphicsScene)
+      loadScene(GraphicsScene)
     }
     if (id === Scenes.Collider) {
-      instantiate(CollidersScene)
+      loadScene(CollidersScene)
     }
     if (id === Scenes.Physics) {
-      instantiate(PhysicsScene)
+      loadScene(PhysicsScene)
     }
     if (id === Scenes.Game) {
-      instantiate(Game)
+      loadScene(Game)
     }
   }
 
