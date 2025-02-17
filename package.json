@@ -7,7 +7,6 @@
   ],
   "type": "module",
   "scripts": {
-    "export": "safex build -p ios",
     "start": "parcel src/index.html -p 8080",
     "dev": "parcel src/index.html -p 8080 --no-cache --no-hmr",
     "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",

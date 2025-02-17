@@ -10,7 +10,7 @@ export class Game extends ComponentX {
   // uiRef: UIController = null
   hero: Hero
 
-  onStart() {
+  start() {
     console.log('you win')
   }
 
