@@ -5,12 +5,13 @@ import {
   System
 } from 'entityx-ts';
 
-import { app, GameWorld, Graphics, instantiate, NodeComp } from 'safex';
+import { app, GameWorld, Graphics, instantiate, NodeComp, Vec2 } from 'safex';
 import { box2D } from '../game';
 import {
   BoxColliderPhysics,
   CircleColliderPhysics,
   ColliderPhysics,
+  PhysicsMaterial,
   PolygonColliderPhysics,
   RigidBody,
 } from './PhysicsComponent';
@@ -42,20 +43,20 @@ export class PhysicsSystem implements System {
   graphics: Graphics
 
   configure(event_manager: EventManager) {
-    const { b2BodyDef, b2_dynamicBody, b2_staticBody, b2PolygonShape, b2Vec2, b2World, getPointer, b2Draw } = box2D as typeof Box2D;
+    const { b2BodyDef, b2_dynamicBody, b2_staticBody, b2FixtureDef, b2PolygonShape, b2Vec2, b2World, getPointer, b2Draw } = box2D as typeof Box2D;
     const gravity = new b2Vec2(0, 10);
-    const world = new b2World(gravity);
-    this.world = world
+    this.world = new b2World(gravity);
+    console.log('configure world')
     // event_manager.world.physicsManager = this
     const graphics = new Graphics();
     this.graphics = graphics
     graphics.zIndex = 1000
     app.stage.addChild(graphics);
     const debugDraw = makeDebugDraw(graphics, pixelsPerMeter, box2D);
-    // const points = [{ "x": 540, "y": 1040 }, { "x": 540, "y": 1240 }, { "x": 740, "y": 1240 }, { "x": 740, "y": 1040 }].map(Vec2)
-    // graphics.poly(points, true)
-    // graphics.fill()
-    world.SetDebugDraw(debugDraw);
+    const points = [{ "x": 540, "y": 1040 }, { "x": 540, "y": 1240 }, { "x": 740, "y": 1240 }, { "x": 740, "y": 1040 }].map(Vec2)
+    graphics.poly(points, true)
+    graphics.fill()
+    this.world.SetDebugDraw(debugDraw);
     // event_manager.subscribe(ComponentAddedEvent(RigidBody), this);
     event_manager.subscribe(EventTypes.ComponentAdded, BoxColliderPhysics, ({ entity, component }) => {
       console.log('ComponentAddedEvent BoxColliderPhysics', component)
@@ -64,21 +65,22 @@ export class PhysicsSystem implements System {
         rigidBody = instantiate(RigidBody)
         entity.assign(rigidBody)
       }
-      const { type = 'dynamic', gravityScale = 1, density = 1, friction = 0.3, restitution = 0.5 } = rigidBody.props
-      // const physicsMaterial = entity.getComponent(PhysicsMaterial)
+      const { type = 'dynamic', gravityScale = 1, } = rigidBody.props
+      const physicsMaterial = entity.getComponent(PhysicsMaterial)
+      const { density = 1, friction = 0.3, restitution = 0.5 } = physicsMaterial?.props || {}
       const box = component
       const node = entity.getComponent(NodeComp)
       const { width, height, ...colliderProps } = box.props
       // ett.assign(instantiate(ColliderPhysics, { tag, offset }))
-      // const { density, restitution, friction } = physicsMaterial
       const { x = 0, y = 0 } = colliderProps.offset || {}
       const zero = new b2Vec2(0, 0);
       const position = new b2Vec2(node.x, node.y);
+      const offset = new b2Vec2(x, y);
 
       const bd = new b2BodyDef();
-      bd.set_type(type === 'dynamic' ? b2_dynamicBody : b2_staticBody);
+      // bd.set_type(type === 'dynamic' ? b2_dynamicBody : b2_staticBody);
       bd.set_position(zero);
-      // bd.set_gravityScale(gravityScale)
+      bd.set_gravityScale(gravityScale)
       const body = this.world.CreateBody(bd)
       rigidBody.body = body
       console.log('body', type, b2_dynamicBody, b2_staticBody, getPointer(body));
@@ -86,16 +88,18 @@ export class PhysicsSystem implements System {
       const physicsNode = new PhysicsSprite(node.instance, body)
       const square = new b2PolygonShape();
       square.SetAsBox(width / 2, height / 2);
-      body.CreateFixture(square, 1)
+      const fixtureDef = new b2FixtureDef();
+      fixtureDef.set_shape(square);
+      fixtureDef.set_density(density);
+      fixtureDef.set_friction(friction);
+      fixtureDef.set_restitution(restitution);
+      body.CreateFixture(fixtureDef);
       body.SetTransform(position, 0);
       body.SetLinearVelocity(zero);
       body.SetAwake(true);
       body.SetEnabled(true);
       metadata[getPointer(body)] = node
-      // const debugBox = new Graphics()
-      // debugBox.rect(x, y, width, height)
-      // debugBox.fill({ color: 0xff0000, alpha: 0.3 })
-      // node.instance.addChild(debugBox)
+
       const physicsCollide = entity.assign(instantiate(ColliderPhysics, colliderProps))
       physicsCollide.instance = physicsNode
       physicsCollide.node = node
@@ -120,10 +124,12 @@ export class PhysicsSystem implements System {
 
   update(entities: EntityManager, events: EventManager, dt: number) {
     if (this.world) {
-      this.graphics.clear()
       const clampedDelta = Math.min(dt, maxTimeStep);
       this.world.Step(clampedDelta, velocityIterations, positionIterations);
+      this.graphics.clear()
       this.world.DebugDraw();
+      this.graphics.fill();
+      // console.log('GetBodyCount', this.world.GetBodyCount());
     }
   }
 

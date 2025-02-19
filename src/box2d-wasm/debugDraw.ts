@@ -1,4 +1,4 @@
-import { Graphics } from "safex";
+import { Color4B, Graphics } from "safex";
 
 /**
  * Forked from Box2D.js
@@ -15,7 +15,7 @@ import { Graphics } from "safex";
  * @param {number} pixelsPerMeter
  * @param {typeof Box2D & EmscriptenModule} box2D
  */
-export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
+export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof Box2D) => {
   const {
     b2Color,
     b2Draw: { e_shapeBit },
@@ -23,14 +23,14 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
     b2Vec2,
     JSDraw,
     wrapPointer
-  } = box2D as typeof Box2D;
+  } = box2D;
 
   /**
    * to replace original C++ operator =
    * @param {Box2D.b2Vec2} vec
    * @returns {Box2D.b2Vec2}
    */
-  const copyVec2 = vec =>
+  const copyVec2 = (vec: Box2D.b2Vec2) =>
     new b2Vec2(vec.get_x(), vec.get_y());
 
   /**
@@ -39,27 +39,27 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
    * @param {number} scale
    * @returns {Box2D.b2Vec2}
    */
-  const scaledVec2 = (vec, scale) =>
+  const scaledVec2 = (vec: Box2D.b2Vec2, scale: number) =>
     new b2Vec2(scale * vec.get_x(), scale * vec.get_y());
 
   /**
    * @param {Box2D.b2Color} color
    * @returns {string}
    */
-  const getRgbStr = (color) => {
+  const getRgbStr = (color: Box2D.b2Color) => {
     const red = (color.get_r() * 255) | 0;
     const green = (color.get_g() * 255) | 0;
     const blue = (color.get_b() * 255) | 0;
-    return `${red},${green},${blue}`;
+    return Color4B(red, green, blue, 0.1);
   };
 
   /**
    * @param {string} rgbStr
    * @returns {void}
    */
-  const setCtxColor = (rgbStr) => {
-    graphics.fillStyle = `rgba(${rgbStr}, 0.3)`;
-    graphics.strokeStyle = { color: `rgb(${rgbStr})` };
+  const setCtxColor = (rgbStr: Color4B) => {
+    graphics.fillStyle = rgbStr;
+    graphics.strokeStyle = { color: rgbStr };
   };
 
   /**
@@ -68,10 +68,10 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
    * @returns {void}
    */
   const drawPolygon = (vertices, fill) => {
-    // console.log("drawPolygon", vertices, fill);
+    // console.log("drawPolygon", vertices[0].y, fill);
     // graphics.clear();
     graphics.poly(vertices, fill)
-    graphics.fill();
+    // graphics.fill()
   };
 
   /**
@@ -83,7 +83,6 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
    */
   const drawCircle = (center, radius, axis, fill) => {
     graphics.circle(center.x, center.y, radius)
-    graphics.fill();
   };
 
   /**
@@ -111,7 +110,6 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
       sizePixels,
       sizePixels
     );
-    graphics.fill();
   };
 
   /**
@@ -119,7 +117,7 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
    * @param {number} sizeMetres
    * @returns {void}
    */
-  const drawTransform = transform => {
+  const drawTransform = (transform: Box2D.b2Transform) => {
     const pos = transform.get_p();
     const rot = transform.get_q();
 
@@ -173,6 +171,7 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
       setCtxColor(getRgbStr(color));
       const vertices = reifyArray(vertices_p, vertexCount, sizeOfB2Vec, b2Vec2);
       drawPolygon(vertices, false);
+      console.log(`DrawPolygon`, getRgbStr(color).green, vertices[0].y)
     },
     /**
      * @param {number} vertices_p pointer to Array<{@link Box2D.b2Vec2}>
@@ -185,6 +184,8 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D) => {
       setCtxColor(getRgbStr(color));
       const vertices = reifyArray(vertices_p, vertexCount, sizeOfB2Vec, b2Vec2);
       drawPolygon(vertices, true);
+      graphics.fill(Color4B(255, 0, 0, 0.1))
+      graphics.stroke(getRgbStr(color))
     },
     /**
      * @param {number} center_p pointer to {@link Box2D.b2Vec2}
