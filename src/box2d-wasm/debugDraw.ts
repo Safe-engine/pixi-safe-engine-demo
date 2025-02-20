@@ -75,6 +75,7 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof 
     vertices.forEach((v) => {
       graphics.lineTo(v.x * pixelsPerMeter, v.y * pixelsPerMeter);
     })
+    graphics.fill()
   };
 
   /**
@@ -100,6 +101,7 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof 
       graphics.lineTo(center.x + x, center.y + y);
       angle += angleStep;
     }
+    graphics.fill()
   };
 
   /**

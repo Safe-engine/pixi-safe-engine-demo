@@ -5,8 +5,9 @@ import {
   System
 } from 'entityx-ts';
 
-import { app, GameWorld, Graphics, instantiate, NodeComp, Vec2 } from 'safex';
+import { app, GameWorld, Graphics, instantiate, NodeComp } from 'safex';
 import { box2D } from '../game';
+import { makeContactListener } from './ContactListener';
 import {
   BoxColliderPhysics,
   CircleColliderPhysics,
@@ -43,7 +44,7 @@ export class PhysicsSystem implements System {
   graphics: Graphics
 
   configure(event_manager: EventManager) {
-    const { b2BodyDef, b2_dynamicBody, b2_staticBody, b2FixtureDef, b2PolygonShape, b2Vec2, b2World, getPointer, b2Draw } = box2D as typeof Box2D;
+    const { b2BodyDef, b2_dynamicBody, b2_staticBody, b2FixtureDef, b2PolygonShape, b2Vec2, b2World, getPointer, b2ContactListener } = box2D as typeof Box2D;
     const gravity = new b2Vec2(0, 10);
     this.world = new b2World(gravity);
     console.log('configure world')
@@ -53,9 +54,6 @@ export class PhysicsSystem implements System {
     graphics.zIndex = 1000
     app.stage.addChild(graphics);
     const debugDraw = makeDebugDraw(graphics, pixelsPerMeter, box2D);
-    const points = [{ "x": 540, "y": 1040 }, { "x": 540, "y": 1240 }, { "x": 740, "y": 1240 }, { "x": 740, "y": 1040 }].map(Vec2)
-    graphics.poly(points, true)
-    graphics.fill()
     this.world.SetDebugDraw(debugDraw);
     // event_manager.subscribe(ComponentAddedEvent(RigidBody), this);
     event_manager.subscribe(EventTypes.ComponentAdded, BoxColliderPhysics, ({ entity, component }) => {
@@ -65,9 +63,9 @@ export class PhysicsSystem implements System {
         rigidBody = instantiate(RigidBody)
         entity.assign(rigidBody)
       }
-      const { type = 'dynamic', gravityScale = 1, } = rigidBody.props
+      const { type = 'static', gravityScale = 1, } = rigidBody.props
       const physicsMaterial = entity.getComponent(PhysicsMaterial)
-      const { density = 1, friction = 0.3, restitution = 0.5 } = physicsMaterial?.props || {}
+      const { density = 1, friction = 0.5, restitution = 0.3 } = physicsMaterial?.props || {}
       const box = component
       const node = entity.getComponent(NodeComp)
       const { width, height, ...colliderProps } = box.props
@@ -78,12 +76,12 @@ export class PhysicsSystem implements System {
       const offset = new b2Vec2(x, y);
 
       const bd = new b2BodyDef();
-      // bd.set_type(type === 'dynamic' ? b2_dynamicBody : b2_staticBody);
+      bd.set_type(type === 'dynamic' ? b2_dynamicBody : b2_staticBody);
       bd.set_position(zero);
       bd.set_gravityScale(gravityScale)
       const body = this.world.CreateBody(bd)
       rigidBody.body = body
-      console.log('body', type, b2_dynamicBody, b2_staticBody, getPointer(body));
+      // console.log('body', type, b2_dynamicBody, b2_staticBody, getPointer(body));
       // body.setMassData({ mass: 1 } as any)
       const physicsNode = new PhysicsSprite(node.instance, body)
       const square = new b2PolygonShape();
@@ -116,10 +114,8 @@ export class PhysicsSystem implements System {
       //   this.listRemoveBody.push(body)
       // }
     })
-    // this.world.on('begin-contact', this.contactBegin.bind(this))
-    // this.world.on('end-contact', this.contactEnd.bind(this))
-    // this.world.on('pre-solve', this.preSolve.bind(this))
-    // this.world.on('post-solve', this.postSolve.bind(this))
+    const listener = makeContactListener(this.world, metadata, box2D)
+    this.world.SetContactListener(listener)
   }
 
   update(entities: EntityManager, events: EventManager, dt: number) {
@@ -134,81 +130,9 @@ export class PhysicsSystem implements System {
     }
   }
 
-  renderBody(body: Box2D.b2Body) {
-    // Render or update body rendering
-    const ett = metadata[Box2D.getPointer(body)] as NodeComp
-    const collider = ett.getComponent(ColliderPhysics)
-    if (collider) {
-      collider.instance.node.position = body.GetPosition()
-      // collider.instance.angle = body.GetAngle()
-      // console.log('renderBody body', body.getPosition())
-    }
-  }
-
-  renderFixture(fixture: Box2D.b2Fixture) {
-    // Render or update fixture rendering
-    // const shape = fixture.getShape()
-    // console.log('renderFixture shape', shape.m_type)
-  }
-
-  renderJoint(joint) {
-    // Render or update joint rendering
-  }
-
-  contactBegin(contact: Box2D.b2Contact) {
-    console.log('contactBegin');
-    const { getPointer } = box2D as typeof Box2D;
-    const ett1: NodeComp = metadata[getPointer(contact.GetFixtureA().GetBody())]
-    const ett2: NodeComp = metadata[getPointer(contact.GetFixtureB().GetBody())]
-    // this.world.addPostStepCallback(() => {
-    //   // log('addPostStepCallback');
-    //   this.listRemoveShape.forEach((s) => this.world.removeShape(s))
-    //   this.listRemoveBody.forEach((b) => this.world.removeBody(b))
-    //   this.listRemoveBody = []
-    //   this.listRemoveShape = []
-    // })
-    const phys1 = ett1.getComponent(ColliderPhysics)
-    const phys2 = ett2.getComponent(ColliderPhysics)
-    if (phys1 && phys2) {
-      if (Object.prototype.hasOwnProperty.call(phys1, 'onCollisionEnter')) {
-        phys1.props.onCollisionEnter(phys2)
-      }
-      if (Object.prototype.hasOwnProperty.call(phys2, 'onCollisionEnter')) {
-        phys2.props.onCollisionEnter(phys1)
-      }
-    }
-  }
-
-  preSolve(contact: Box2D.b2Contact, oldManifold: Box2D.b2Manifold) {
-    console.log('preSolve');
-  }
-
-  postSolve(contact: Box2D.b2Contact, contactImpulse) {
-    console.log('collisionPost');
-  }
-
-  contactEnd(contact: Box2D.b2Contact) {
-    console.log('collisionSeparate');
-    const { getPointer } = box2D as typeof Box2D;
-    const ett1: NodeComp = metadata[getPointer(contact.GetFixtureA().GetBody())]
-    const ett2: NodeComp = metadata[getPointer(contact.GetFixtureB().GetBody())]
-    // const event1 = ett1.getComponent(NodeComp)
-    const phys1 = ett1.getComponent(ColliderPhysics)
-    const phys2 = ett2.getComponent(ColliderPhysics)
-    // const event2 = ett2.getComponent(NodeComp)
-    if (phys1 && phys2) {
-      if (Object.prototype.hasOwnProperty.call(phys1, 'onCollisionExit')) {
-        phys1.props.onCollisionExit(phys2)
-      }
-      if (Object.prototype.hasOwnProperty.call(phys2, 'onCollisionExit')) {
-        phys2.props.onCollisionExit(phys1)
-      }
-    }
-  }
-
   set enabled(val) {
     if (val) {
-      this.world.SetGravity(new Box2D.b2Vec2(0, 98))
+      this.world.SetGravity(new Box2D.b2Vec2(0, 9.8))
       // this.world.iterations = 60
       // this.world.collisionSlop = 0.5
     }
