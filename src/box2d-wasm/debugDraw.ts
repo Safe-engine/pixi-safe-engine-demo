@@ -69,9 +69,12 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof 
    */
   const drawPolygon = (vertices, fill) => {
     // console.log("drawPolygon", vertices[0].y, fill);
-    // graphics.clear();
-    graphics.poly(vertices, fill)
-    // graphics.fill()
+    // graphics.poly(vertices, fill)
+    graphics.moveTo(vertices[vertices.length - 1].x * pixelsPerMeter,
+      vertices[vertices.length - 1].y * pixelsPerMeter);
+    vertices.forEach((v) => {
+      graphics.lineTo(v.x * pixelsPerMeter, v.y * pixelsPerMeter);
+    })
   };
 
   /**
@@ -82,7 +85,21 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof 
    * @returns {void}
    */
   const drawCircle = (center, radius, axis, fill) => {
-    graphics.circle(center.x, center.y, radius)
+    // graphics.circle(center.x, center.y, radius)
+    let angle = 0;
+    const angleStep = 32;
+    const n = 360 / angleStep;
+    let x = radius * Math.cos(angle * Math.PI / 180);
+    let y = radius * Math.sin(angle * Math.PI / 180);
+    graphics.moveTo(center.x + x, center.y + y);
+    angle += angleStep;
+
+    for (let i = 0; i < n; i++) {
+      x = radius * Math.cos(angle * Math.PI / 180);
+      y = radius * Math.sin(angle * Math.PI / 180);
+      graphics.lineTo(center.x + x, center.y + y);
+      angle += angleStep;
+    }
   };
 
   /**
@@ -171,7 +188,7 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof 
       setCtxColor(getRgbStr(color));
       const vertices = reifyArray(vertices_p, vertexCount, sizeOfB2Vec, b2Vec2);
       drawPolygon(vertices, false);
-      console.log(`DrawPolygon`, getRgbStr(color).green, vertices[0].y)
+      // console.log(`DrawPolygon`, getRgbStr(color).green, vertices[0].y)
     },
     /**
      * @param {number} vertices_p pointer to Array<{@link Box2D.b2Vec2}>
@@ -184,8 +201,6 @@ export const makeDebugDraw = (graphics: Graphics, pixelsPerMeter, box2D: typeof 
       setCtxColor(getRgbStr(color));
       const vertices = reifyArray(vertices_p, vertexCount, sizeOfB2Vec, b2Vec2);
       drawPolygon(vertices, true);
-      graphics.fill(Color4B(255, 0, 0, 0.1))
-      graphics.stroke(getRgbStr(color))
     },
     /**
      * @param {number} center_p pointer to {@link Box2D.b2Vec2}

@@ -33,7 +33,7 @@ const maxTimeStep = 1 / 60;
 const velocityIterations = 1;
 const positionIterations = 1;
 const metadata: { [key: number]: NodeComp } = {}
-const pixelsPerMeter = 32;
+const pixelsPerMeter = 1;
 
 export class PhysicsSystem implements System {
   world: Box2D.b2World
@@ -129,6 +129,7 @@ export class PhysicsSystem implements System {
       this.graphics.clear()
       this.world.DebugDraw();
       this.graphics.fill();
+      // this.graphics.stroke();
       // console.log('GetBodyCount', this.world.GetBodyCount());
     }
   }
