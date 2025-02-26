@@ -1,4 +1,4 @@
-import { addGameCanvasTo, app, loadScene, setupResolution, startGameSystems } from 'safex'
+import { addGameCanvasTo, app, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from 'safex'
 
 import Box2DFactory from 'box2d-wasm'
 import { PhysicsSystem } from './box2d-wasm'
@@ -22,16 +22,16 @@ async function start() {
 }
 start()
 
-// if (module.hot) {
-//   module.hot.dispose(() => {
-//     try {
-//       extensions.remove(ResizePlugin)
-//       extensions.remove(TickerPlugin)
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   })
-//   module.hot.accept(() => {
-//     console.log('hot accept is needed')
-//   })
-// }
+if (module.hot) {
+  module.hot.dispose(() => {
+    try {
+      extensions.remove(ResizePlugin)
+      extensions.remove(TickerPlugin)
+    } catch (error) {
+      console.log(error)
+    }
+  })
+  module.hot.accept(() => {
+    console.log('hot accept is needed')
+  })
+}

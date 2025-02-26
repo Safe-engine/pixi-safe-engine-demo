@@ -7,8 +7,8 @@
   ],
   "type": "module",
   "scripts": {
-    "start": "parcel src/index.html -p 8080",
-    "dev": "parcel src/index.html -p 8080 --no-cache --no-hmr",
+    "start": "parcel src/index.html -p 8080 --no-cache --no-hmr",
+    "dev": "parcel src/index.html -p 8080",
     "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",
     "fix": "eslint ./src --ext .ts --fix"
   },
