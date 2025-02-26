@@ -1,4 +1,4 @@
-import { addGameCanvasTo, app, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from 'safex'
+import { addGameCanvasTo, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from 'safex'
 
 import Box2DFactory from 'box2d-wasm'
 import { PhysicsSystem } from './box2d-wasm'
@@ -11,11 +11,6 @@ async function start() {
   box2D = await Box2DFactory();
   // console.log('box2d started', box2D)
   await addGameCanvasTo()
-  Object.assign(app.canvas.style, {
-    width: `${window.innerWidth}px`,
-    height: `${window.innerHeight}px`,
-    overflow: 'visible',
-  })
   setupResolution(designedResolution)
   startGameSystems([PhysicsSystem])
   loadScene(Boot)
