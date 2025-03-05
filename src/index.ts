@@ -7,6 +7,7 @@ import { settings } from './settings'
 
 export let box2D
 const { designedResolution } = settings
+
 async function start() {
   box2D = await Box2DFactory();
   // console.log('box2d started', box2D)

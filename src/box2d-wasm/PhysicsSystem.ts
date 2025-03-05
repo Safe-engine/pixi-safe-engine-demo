@@ -6,7 +6,7 @@ import {
 } from 'entityx-ts';
 
 import { app, GameWorld, Graphics, instantiate, NodeComp } from 'safex';
-import { box2D } from '../game';
+import { box2D } from '..';
 import { makeContactListener } from './ContactListener';
 import {
   BoxColliderPhysics,
