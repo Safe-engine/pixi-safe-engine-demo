@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from 'safex'
+import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender } from 'safex'
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
@@ -6,6 +6,7 @@ import { CollidersScene } from './Colliders'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './Graphics'
+import { GridScene } from './Grid'
 import { LabelScene } from './Label'
 import { PhysicsScene } from './Physics'
 import { SpineScene } from './SpineScene'
@@ -16,7 +17,7 @@ export class Home extends ComponentX {
   score = 0
   hero: Hero
 
-  static cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Label', 'Graphics', 'Collider', 'Physics', 'Game']
+  static cases = Object.keys(Scenes).filter(key => isNaN(Number(key)));
 
   start() {
     console.log('you win')
@@ -27,31 +28,34 @@ export class Home extends ComponentX {
     const id = event.node.getData<Integer>('id')
     console.log('Clicked', id, Scenes[id])
     if (id === Scenes.Spine) {
-      SpineScene.create()
+      loadScene(SpineScene)
     }
     if (id === Scenes.DragonBones) {
-      DragonBonesScene.create()
+      loadScene(DragonBonesScene)
     }
     if (id === Scenes.TouchEvents) {
-      TouchEventsScene.create()
+      loadScene(TouchEventsScene)
     }
     if (id === Scenes.Sprite) {
-      SpriteScene.create()
+      loadScene(SpriteScene)
     }
     if (id === Scenes.Label) {
-      LabelScene.create()
+      loadScene(LabelScene)
     }
     if (id === Scenes.Graphics) {
-      GraphicsScene.create()
+      loadScene(GraphicsScene)
     }
     if (id === Scenes.Collider) {
-      CollidersScene.create()
+      loadScene(CollidersScene)
     }
     if (id === Scenes.Physics) {
-      PhysicsScene.create()
+      loadScene(PhysicsScene)
+    }
+    if (id === Scenes.Grid) {
+      loadScene(GridScene)
     }
     if (id === Scenes.Game) {
-      Game.create()
+      loadScene(Game)
     }
   }
 

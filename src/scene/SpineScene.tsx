@@ -8,7 +8,7 @@ export class SpineScene extends ComponentX {
   //   console.log(Assets.cache.get(sp_spineboy_pro.skeleton));
   //   console.log(Assets.cache.get(sp_spineboy_pro.atlas));
   // }
-  static create() {
+  render() {
     return (
       <SceneComponent>
         <LabelComp node={{ x: 106, y: 240 }} string="Hello safex spine" font={defaultFont} />
