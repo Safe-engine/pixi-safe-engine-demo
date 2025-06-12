@@ -59,7 +59,7 @@ export class Home extends ComponentX {
         <LabelComp node={{ position: Vec2(406, 140), color: CYAN }} string="hello safex" font={defaultFont} />
         {
           Home.cases.map((name, j = 1) => (
-            <SpriteRender node={{ position: Vec2(200, 120 + 150 * j), width: 200, height: 60 }} spriteFrame={sf_button}  >
+            <SpriteRender node={{ position: Vec2(200, 120 + 150 * j) }} spriteFrame={sf_button}  >
               <ButtonComp onPress={this.onPress} />
               <LabelComp node={{ position: Vec2(20, 10), color: ORANGE }} string={name} font={defaultFont} size={48} />
               <ExtraDataComp key="id" value={j} />

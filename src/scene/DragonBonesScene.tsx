@@ -9,7 +9,7 @@ export class DragonBonesScene extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ position: Vec2(106, 240) }} string="Hello safex dragon bones" font={defaultFont} />
-        <DragonBonesComp $ref={this.dragon} node={{ position: Vec2(406, 1140) }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
+        <DragonBonesComp $ref={this.dragon} node={{ position: Vec2(406, 540) }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
       </SceneComponent>
     )
   }

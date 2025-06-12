@@ -1,3 +1,4 @@
+import { SharedDragonBonesManager } from '@safe-engine/cocos'
 import * as DragonBonesAssets from '../assets/DragonBonesAssets'
 import * as FontAssets from '../assets/FontAssets'
 // import * as JsonAssets from '../assets/JsonAssets'
@@ -11,8 +12,8 @@ export function loadAssets(cb: (progress: number) => void) {
   Object.values(SpineAssets).map(({ skeleton, atlas }) => {
     keys.push(skeleton, atlas)
   });
-  Object.values(DragonBonesAssets).map(({ skeleton, atlas }) => {
-    keys.push(skeleton, atlas)
+  Object.values(DragonBonesAssets).map(({ skeleton, atlas, texture }) => {
+    SharedDragonBonesManager.loadAssetsOnce(skeleton, atlas, texture)
   })
   // console.log('keys', keys)
   cc.loader.load(
@@ -45,7 +46,6 @@ export function loadAssets(cb: (progress: number) => void) {
       // })
       // JsonCache.load()
       setTimeout(cb, 500, 1)
-      // cb(1)
     },
   )
 }

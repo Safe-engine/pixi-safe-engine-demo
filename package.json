@@ -7,8 +7,9 @@
   ],
   "type": "module",
   "scripts": {
-    "export": "safex build -p ios",
     "start": "parcel src/index.html -p 8080",
+    "sync-res": "bun ./node_modules/safex-sync-res/src/index.ts",
+    "predev": "bun run sync-res",
     "dev": "parcel src/index.html -p 8080 --no-cache",
     "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",
     "fix": "eslint ./src --ext .ts --fix"
@@ -38,6 +39,7 @@
     "parcel": "^2.13.3",
     "parcel-plugin-clean-easy": "^1.0.2",
     "parcel-reporter-static-files-copy": "^1.5.3",
+    "safex-sync-res": "^1.0.3",
     "typescript": "^5.7.3"
   },
   "parcelCleanPaths": [
