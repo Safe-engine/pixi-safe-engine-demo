@@ -17,9 +17,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cocos-html5-ts": "^*",
-    "@safex/cocos": "workspace:*",
-    "safex": "npm:@safex/cocos",
+    "cocos-html5-ts": "*",
+    "@safe-engine/cocos": "workspace:*",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

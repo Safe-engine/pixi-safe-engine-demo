@@ -1,13 +1,9 @@
-import { CollideSystem, GameWorld, initWorld } from 'safex'
+import { CollideSystem, GameWorld, GUISystem, initWorld, loadScene } from '@safe-engine/cocos'
 
+import { defaultFont } from './assets'
 import { Loading } from './scene/Loading'
 import { settings } from './settings'
-// if (module.hot) {
-//   module.hot.accept(() => {
-//     // console.log('hot')
-//     cc.game.onStart()
-//   })
-// }
+
 class BootScene extends cc.Scene {
   constructor() {
     // 1. super init first
@@ -21,7 +17,9 @@ class BootScene extends cc.Scene {
     const collideSystem = GameWorld.Instance.systems.get(CollideSystem)
     collideSystem.colliderMatrix = colliderMatrix
     collideSystem.toggleDebugDraw(true)
-    Loading.create()
+    const guiSystem = GameWorld.Instance.systems.get(GUISystem)
+    guiSystem.defaultFont = defaultFont
+    loadScene(Loading)
   }
 
   update(dt) {

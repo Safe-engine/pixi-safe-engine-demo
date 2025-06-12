@@ -1,4 +1,4 @@
-import { ComponentX, LabelComp, SceneComponent, SpineSkeleton } from "safex";
+import { ComponentX, LabelComp, SceneComponent, SpineSkeleton, Vec2 } from "@safe-engine/cocos";
 import { defaultFont, sp_spineboy_pro } from "../assets";
 
 export class SpineScene extends ComponentX {
@@ -10,8 +10,8 @@ export class SpineScene extends ComponentX {
   static create() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex spine" font={defaultFont} />
-        <SpineSkeleton node={{ x: 306, y: 1140 }} data={sp_spineboy_pro} animation="run" loop={true} />
+        <LabelComp node={{ position: Vec2(106, 240) }} string="Hello safex spine" font={defaultFont} />
+        <SpineSkeleton node={{ position: Vec2(306, 1140) }} data={sp_spineboy_pro} animation="run" loop={true} />
       </SceneComponent>
     )
   }

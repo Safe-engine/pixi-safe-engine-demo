@@ -1,7 +1,6 @@
-import { BoxCollider, ButtonComp, ComponentX, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from 'safex'
+import { BoxCollider, ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpineSkeleton, SpriteRender, Vec2 } from '@safe-engine/cocos'
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { Hero } from '../components/Hero'
-import { Monster } from '../components/Monster'
 import { Home } from './Home'
 
 export class Game extends ComponentX {
@@ -30,24 +29,23 @@ export class Game extends ComponentX {
   onPress(event: ButtonComp) {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
-    Home.create()
+    loadScene(Home)
   }
 
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Game" font={defaultFont} />
-        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={sf_crash} >
+        <LabelComp node={{ position: Vec2(106, 240) }} string="Game" font={defaultFont} />
+        <SpriteRender node={{ position: Vec2(200, 420), anchorY: 1 }} spriteFrame={sf_crash} >
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>
-        <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref={this.hero} node={{ x: 550, y: 430 }} gameNode={this.node} >
-          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
+        <Hero $ref={this.hero} node={{ position: Vec2(550, 430) }} gameNode={this.node} >
+          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <Hero $ref={this.hero} node={{ x: 550, y: 130, rotation: 180 }}>
-          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
+        <Hero $ref={this.hero} node={{ position: Vec2(550, 130), rotation: 180 }}>
+          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_spineboy_pro} animation="idle" loop={true} />
+        <SpineSkeleton node={{ position: Vec2(306, 940) }} data={sp_spineboy_pro} animation="idle" loop={true} />
       </SceneComponent>
     )
   }
