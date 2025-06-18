@@ -1,1 +1,0 @@
-export const sp_spineboy_pro = {"skeleton":"Spine/spineboy_pro/spineboy-pro.json","atlas":"Spine/spineboy_pro/spineboy-pma.atlas"}

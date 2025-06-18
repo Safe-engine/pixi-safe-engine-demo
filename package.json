@@ -1,6 +1,6 @@
 {
   "name": "pixi-safe-engine-demo",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "show case and code examples",
   "workspaces": [
     "packages/*"
@@ -18,35 +18,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cocos-html5-ts": "*",
+    "cocos-html5-ts": "^1.1.6",
     "@safe-engine/cocos": "workspace:*",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/plugin-syntax-jsx": "^7.25.9",
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.18.0",
-    "@parcel/config-default": "^2.13.3",
-    "@types/lodash": "^4.17.14",
-    "@typescript-eslint/eslint-plugin": "^8.20.0",
-    "@typescript-eslint/parser": "^8.20.0",
+    "@babel/core": "^7.27.4",
+    "@babel/plugin-syntax-jsx": "^7.27.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.29.0",
+    "@parcel/config-default": "^2.15.2",
+    "@types/lodash": "^4.17.18",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
     "babel-plugin-safe-x-transform": "workspace:*",
-    "eslint": "^9.18.0",
-    "eslint-config-prettier": "^10.0.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-lodash-import-method": "^0.0.3",
-    "eslint-plugin-prettier": "^5.2.3",
-    "parcel": "^2.13.3",
-    "parcel-plugin-clean-easy": "^1.0.2",
-    "parcel-reporter-static-files-copy": "^1.5.3",
-    "safex-sync-res": "^1.0.3",
-    "typescript": "^5.7.3"
-  },
-  "parcelCleanPaths": [
-    "dist"
-  ],
-  "staticFiles": {
-    "staticPath": "res",
-    "watcherGlob": "**"
+    "eslint-plugin-prettier": "^5.5.0",
+    "parcel": "^2.15.2",
+    "safex-sync-res": "^1.1.1",
+    "typescript": "^5.8.3"
   }
 }
