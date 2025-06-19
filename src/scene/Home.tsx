@@ -4,6 +4,7 @@ import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
+import { InputTestScene } from './InputTestScene'
 import { SpineScene } from './SpineScene'
 
 export class Home extends ComponentX {
@@ -21,7 +22,7 @@ export class Home extends ComponentX {
     const id = event.node.getData<Integer>('id')
     console.log('Clicked', id, Scenes[id])
     if (id === Scenes.Spine) {
-      SpineScene.create()
+      loadScene(SpineScene)
     }
     if (id === Scenes.DragonBones) {
       loadScene(DragonBonesScene)
@@ -33,7 +34,7 @@ export class Home extends ComponentX {
       // Sprite.create()
     }
     if (id === Scenes.Button) {
-      // Button.create()
+      loadScene(InputTestScene)
     }
     if (id === Scenes.Graphics) {
       // Graphics.create()
