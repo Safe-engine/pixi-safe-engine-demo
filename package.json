@@ -18,28 +18,28 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cocos-html5-ts": "^1.1.6",
+    "cocos-html5-ts": "^1.1.8",
     "@safe-engine/cocos": "workspace:*",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.4",
+    "@babel/core": "^7.27.7",
     "@babel/plugin-syntax-jsx": "^7.27.1",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
-    "@parcel/config-default": "^2.15.2",
-    "@types/lodash": "^4.17.18",
-    "@typescript-eslint/eslint-plugin": "^8.34.1",
-    "@typescript-eslint/parser": "^8.34.1",
+    "@parcel/config-default": "^2.15.4",
+    "@types/lodash": "^4.17.19",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
     "babel-plugin-safe-x-transform": "workspace:*",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-lodash-import-method": "^0.0.3",
-    "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-prettier": "^5.5.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "parcel": "^2.15.2",
-    "safex-sync-res": "^1.1.1",
+    "parcel": "^2.15.4",
+    "safex-sync-res": "^1.2.3",
     "typescript": "^5.8.3"
   }
 }
