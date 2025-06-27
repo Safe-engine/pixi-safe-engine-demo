@@ -19,14 +19,11 @@ export function getWorldPosition(node: NodeComp): Vec2 {
 
 // Thêm hàm tính điểm trên đường cong Bezier bậc 2 của cocos2d-x
 export function bezierAt(a: Float, b: Float, c: Float, t: Float): Float {
-  return Math.pow(1 - t, 2) * a +
-    2 * t * (1 - t) * b +
-    Math.pow(t, 2) * c
+  return Math.pow(1 - t, 2) * a + 2 * t * (1 - t) * b + Math.pow(t, 2) * c
 }
 
 export function validNode(node: NodeComp): boolean {
-  if (node && node.active)
-    return true
+  if (node && node.active) return true
   return false
 }
 

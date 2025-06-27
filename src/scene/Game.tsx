@@ -1,4 +1,15 @@
-import { BoxCollider, ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpineSkeleton, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import {
+  BoxCollider,
+  ButtonComp,
+  ComponentX,
+  LabelComp,
+  loadScene,
+  SceneComponent,
+  SpineSkeleton,
+  SpriteRender,
+  Vec2,
+} from '@safe-engine/cocos'
+
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { Hero } from '../components/Hero'
 import { Home } from './Home'
@@ -26,7 +37,7 @@ export class Game extends ComponentX {
   }
 
   // onUpdate(dt: number) {}
-  onPress(event: ButtonComp) {
+  onPress() {
     console.log('Clicked')
     // this.uiRef.showDialog(true)
     loadScene(Home)
@@ -36,10 +47,10 @@ export class Game extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ position: Vec2(106, 240) }} string="Game" font={defaultFont} />
-        <SpriteRender node={{ position: Vec2(200, 420), anchorY: 1 }} spriteFrame={sf_crash} >
+        <SpriteRender node={{ position: Vec2(200, 420), anchorY: 1 }} spriteFrame={sf_crash}>
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>
-        <Hero $ref={this.hero} node={{ position: Vec2(550, 430) }} gameNode={this.node} >
+        <Hero $ref={this.hero} node={{ position: Vec2(550, 430) }} gameNode={this.node}>
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
         <Hero $ref={this.hero} node={{ position: Vec2(550, 130), rotation: 180 }}>

@@ -43,10 +43,13 @@ function onStart() {
   initWorld()
   cc.director.runScene(new BootScene())
 }
-cc.game.run({
-  "debugMode": 1,
-  "showFPS": false,
-  "frameRate": 60,
-  "id": "gameCanvas",
-  "renderMode": 0
-}, onStart)
+cc.game.run(
+  {
+    debugMode: 1,
+    showFPS: false,
+    frameRate: 60,
+    id: 'gameCanvas',
+    renderMode: 0,
+  },
+  onStart,
+)

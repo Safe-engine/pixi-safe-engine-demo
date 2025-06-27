@@ -12,7 +12,7 @@
     "predev": "bun run sync-res",
     "dev": "parcel src/index.html -p 8080 --no-cache",
     "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",
-    "fix": "eslint ./src --ext .ts --fix"
+    "fix": "eslint ./src --fix"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,8 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-lodash-import-method": "^0.0.3",
     "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "parcel": "^2.15.2",
     "safex-sync-res": "^1.1.1",
     "typescript": "^5.8.3"
