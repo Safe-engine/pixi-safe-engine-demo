@@ -1,6 +1,6 @@
-import { addGameCanvasTo, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from 'safex'
-
+import { addGameCanvasTo, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from '@safe-engine/pixi'
 import Box2DFactory from 'box2d-wasm'
+
 import { PhysicsSystem } from './box2d-wasm'
 import { Boot } from './scene/Boot'
 import { settings } from './settings'

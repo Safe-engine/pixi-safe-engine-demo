@@ -1,6 +1,7 @@
-import { BoxCollider, Collider, ComponentX, DragonBones, LabelComp, SceneComponent, SpriteRender, v2 } from "safex";
-import { db_mecha_1004_d, defaultFont, sf_crash } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { BoxCollider, Collider, ComponentX, DragonBones, LabelComp, SceneComponent, SpriteRender, v2 } from '@safe-engine/pixi';
+
+import { db_mecha_1004_d, defaultFont, sf_crash } from '../assets';
+import { BackButton } from '../components/BackButton';
 
 export class CollidersScene extends ComponentX {
 

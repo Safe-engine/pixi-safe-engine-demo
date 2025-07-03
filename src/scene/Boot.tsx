@@ -1,4 +1,4 @@
-import { Assets, ComponentX, loadScene, SceneComponent, Texture } from 'safex';
+import { Assets, ComponentX, loadScene, SceneComponent, Texture } from '@safe-engine/pixi';
 
 import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets';
 import { Loading } from './Loading';

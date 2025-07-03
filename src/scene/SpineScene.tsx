@@ -1,6 +1,7 @@
-import { ComponentX, LabelComp, SceneComponent, SpineSkeleton } from "safex";
-import { defaultFont, sp_spineboy_pro } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { ComponentX, LabelComp, SceneComponent, SpineSkeleton } from '@safe-engine/pixi';
+
+import { defaultFont, sp_spineboy_pro } from '../assets';
+import { BackButton } from '../components/BackButton';
 
 export class SpineScene extends ComponentX {
   // start() {

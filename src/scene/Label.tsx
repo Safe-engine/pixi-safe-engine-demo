@@ -1,10 +1,10 @@
-import { ComponentX, LabelComp, LabelOutlineComp, LabelShadowComp, RichTextComp, SceneComponent } from "safex";
-import { defaultFont } from "../assets";
-import { BackButton } from "../components/BackButton";
-import { CYAN, DARK_GREEN, ORANGE, RED, YELLOW } from "../helper/constant";
+import { ComponentX, LabelComp, LabelOutlineComp, LabelShadowComp, RichTextComp, SceneComponent } from '@safe-engine/pixi';
+
+import { defaultFont } from '../assets';
+import { BackButton } from '../components/BackButton';
+import { CYAN, DARK_GREEN, ORANGE, RED, YELLOW } from '../helper/constant';
 
 export class LabelScene extends ComponentX {
-
 
   render() {
     return (

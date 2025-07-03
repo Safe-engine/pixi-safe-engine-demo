@@ -1,4 +1,5 @@
-import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender } from 'safex'
+import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'

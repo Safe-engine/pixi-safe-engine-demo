@@ -1,5 +1,5 @@
+import { NoRenderComponentX } from '@safe-engine/pixi'
 import { BodyType, Vec2 } from 'planck'
-import { NoRenderComponentX } from 'safex'
 import { PhysicsSprite } from './PhysicsSprite'
 
 interface RigidBodyProps {

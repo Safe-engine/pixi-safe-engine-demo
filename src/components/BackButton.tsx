@@ -1,6 +1,7 @@
-import { ButtonComp, ComponentX, instantiate, SpriteRender } from "safex";
-import { sf_home } from "../assets/TextureAssets";
-import { Home } from "../scene/Home";
+import { ButtonComp, ComponentX, instantiate, SpriteRender } from '@safe-engine/pixi';
+
+import { sf_home } from '../assets/TextureAssets';
+import { Home } from '../scene/Home';
 
 export class BackButton extends ComponentX {
 

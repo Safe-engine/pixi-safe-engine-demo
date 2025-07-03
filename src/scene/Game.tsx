@@ -1,4 +1,5 @@
-import { BoxCollider, ButtonComp, ComponentX, instantiate, LabelComp, SceneComponent, SpineSkeleton, SpriteRender, v2 } from 'safex'
+import { BoxCollider, ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpineSkeleton, SpriteRender, v2 } from '@safe-engine/pixi'
+
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { Hero } from '../components/Hero'
@@ -17,7 +18,7 @@ export class Game extends ComponentX {
   // onUpdate(dt: number) {}
   onPress(event: ButtonComp) {
     console.log('Clicked')
-    instantiate(Home)
+    loadScene(Home)
   }
 
   render() {

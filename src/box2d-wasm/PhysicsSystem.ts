@@ -5,7 +5,7 @@ import {
   System
 } from 'entityx-ts';
 
-import { app, GameWorld, Graphics, instantiate, NodeComp } from 'safex';
+import { app, GameWorld, Graphics, instantiate, NodeComp } from '@safe-engine/pixi';
 import { box2D } from '..';
 import { makeContactListener } from './ContactListener';
 import {

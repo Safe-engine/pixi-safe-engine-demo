@@ -1,6 +1,7 @@
-import { ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from "safex";
-import { defaultFont, sf_crash } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { ComponentX, ExtraDataComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi';
+
+import { defaultFont, sf_crash } from '../assets';
+import { BackButton } from '../components/BackButton';
 
 export class GridScene extends ComponentX {
   render() {

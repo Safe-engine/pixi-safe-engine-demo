@@ -1,6 +1,7 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
-import { db_mecha_1004_d, defaultFont } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { ComponentX, DragonBones, LabelComp, SceneComponent } from '@safe-engine/pixi';
+
+import { db_mecha_1004_d, defaultFont } from '../assets';
+import { BackButton } from '../components/BackButton';
 
 export class DragonBonesScene extends ComponentX {
 

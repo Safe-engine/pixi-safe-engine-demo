@@ -1,7 +1,8 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent, SpriteRender, Vec2 } from "safex";
-import { db_mecha_1004_d, defaultFont, sf_button } from "../assets";
-import { BoxColliderPhysics, RigidBody } from "../box2d-wasm";
-import { BackButton } from "../components/BackButton";
+import { ComponentX, DragonBones, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi';
+
+import { db_mecha_1004_d, defaultFont, sf_button } from '../assets';
+import { BoxColliderPhysics, RigidBody } from '../box2d-wasm';
+import { BackButton } from '../components/BackButton';
 
 export class PhysicsScene extends ComponentX {
 

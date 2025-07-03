@@ -1,13 +1,14 @@
-import { ButtonComp, ComponentX, LabelComp, SceneComponent, SpriteRender } from "safex";
-import { defaultFont, sf_button, sf_crash } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { ButtonComp, ComponentX, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi';
+
+import { defaultFont, sf_button, sf_crash } from '../assets';
+import { BackButton } from '../components/BackButton';
 
 export class SpriteScene extends ComponentX {
 
   sprite: SpriteRender
 
   onPress = () => {
-    console.log("Button pressed")
+    console.log('Button pressed')
     this.sprite.spriteFrame = sf_button
   }
 
