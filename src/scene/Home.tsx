@@ -68,9 +68,9 @@ export class Home extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ position: Vec2(406, 140), color: CYAN }} string="hello safex" font={defaultFont} />
+        <LabelComp node={{ xy: [406, 140], color: CYAN }} string="hello safex" font={defaultFont} />
         {Home.cases.map((name, j = 1) => (
-          <SpriteRender node={{ position: Vec2(200, 120 + 150 * j) }} spriteFrame={sf_button}>
+          <SpriteRender node={{ xy: [200, 120 + 150 * j] }} spriteFrame={sf_button}>
             <ButtonComp onPress={this.onPress} />
             <LabelComp node={{ position: Vec2(20, 10), color: ORANGE }} string={name} font={defaultFont} size={48} />
             <ExtraDataComp key="id" value={j} />
