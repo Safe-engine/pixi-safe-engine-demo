@@ -19,3 +19,4 @@ node_modules/
 build/
 assets/
 .safex
+parcel-bundle-reports

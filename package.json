@@ -11,7 +11,7 @@
     "sync-res": "bun ./node_modules/safex-sync-res/src/index.ts",
     "predev": "bun run sync-res",
     "dev": "parcel src/index.html -p 8080 --no-cache",
-    "build": "parcel build src/index.html --no-cache --no-optimize --no-content-hash",
+    "build": "parcel build src/index.html",
     "fix": "eslint ./src --fix"
   },
   "keywords": [],
@@ -20,19 +20,19 @@
   "dependencies": {
     "cocos-html5-ts": "^1.1.8",
     "@safe-engine/cocos": "workspace:*",
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.7",
+    "@babel/core": "^7.28.0",
     "@babel/plugin-syntax-jsx": "^7.27.1",
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.29.0",
+    "@eslint/js": "^9.30.1",
     "@parcel/config-default": "^2.15.4",
-    "@types/lodash": "^4.17.19",
-    "@typescript-eslint/eslint-plugin": "^8.35.0",
-    "@typescript-eslint/parser": "^8.35.0",
+    "@types/lodash-es": "^4.17.12",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
     "babel-plugin-safe-x-transform": "workspace:*",
-    "eslint": "^9.29.0",
+    "eslint": "^9.30.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-lodash-import-method": "^0.0.3",
     "eslint-plugin-prettier": "^5.5.1",
