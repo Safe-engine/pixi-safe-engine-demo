@@ -16,6 +16,7 @@ import { CYAN, ORANGE, Scenes } from '../helper/constant'
 import Button from './Button'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
+import { GraphicsScene } from './GraphicsScene'
 import { InputTestScene } from './InputTestScene'
 import { SpineScene } from './SpineScene'
 
@@ -49,7 +50,7 @@ export class Home extends ComponentX {
       loadScene(Button)
     }
     if (id === Scenes.Graphics) {
-      // Graphics.create()
+      loadScene(GraphicsScene)
     }
     if (id === Scenes.Collider) {
       // Collider.create()

@@ -11,8 +11,8 @@ export class GraphicsScene extends ComponentX {
     this.graphics.drawCircle(Vec2(400, 500), 50, PI_2, 64, true, 11, YELLOW)
     const points = [
       { x: 540, y: 1040 },
-      { x: 540, y: 1240 },
-      { x: 740, y: 1240 },
+      { x: 540, y: 640 },
+      { x: 840, y: 940 },
       { x: 740, y: 1040 },
     ].map(Vec2)
     // this.graphics.drawPoly(points, true, BLUE)
