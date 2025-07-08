@@ -13,6 +13,7 @@ import {
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
+import Button from './Button'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { InputTestScene } from './InputTestScene'
@@ -42,10 +43,10 @@ export class Home extends ComponentX {
       // TouchEvents.create()
     }
     if (id === Scenes.Sprite) {
-      // Sprite.create()
+      loadScene(InputTestScene)
     }
     if (id === Scenes.Button) {
-      loadScene(InputTestScene)
+      loadScene(Button)
     }
     if (id === Scenes.Graphics) {
       // Graphics.create()

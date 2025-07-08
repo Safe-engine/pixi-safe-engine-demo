@@ -7,10 +7,10 @@
   ],
   "type": "module",
   "scripts": {
-    "start": "parcel src/index.html -p 8080",
+    "start": "parcel src/index.html -p 8089",
     "sync-res": "bun ./node_modules/safex-sync-res/src/index.ts",
     "predev": "bun run sync-res",
-    "dev": "parcel src/index.html -p 8080 --no-cache",
+    "dev": "parcel src/index.html -p 8090 --no-cache",
     "build": "parcel build src/index.html",
     "fix": "eslint ./src --fix"
   },
