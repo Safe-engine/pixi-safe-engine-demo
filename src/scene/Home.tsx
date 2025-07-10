@@ -11,7 +11,6 @@ import {
 } from '@safe-engine/cocos'
 
 import { defaultFont, sf_button } from '../assets'
-import { Hero } from '../components/Hero'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
 import Button from './Button'
 import { DragonBonesScene } from './DragonBonesScene'
@@ -21,9 +20,6 @@ import { InputTestScene } from './InputTestScene'
 import { SpineScene } from './SpineScene'
 
 export class Home extends ComponentX {
-  score = 0
-  hero: Hero
-
   static readonly cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Button', 'Graphics', 'Collider', 'Physics', 'Game']
 
   onStart() {
