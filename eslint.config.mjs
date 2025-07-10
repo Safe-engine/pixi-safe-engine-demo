@@ -6,7 +6,6 @@ import js from '@eslint/js'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import prettierConfig from 'eslint-config-prettier'
-import lodashImportMethod from 'eslint-plugin-lodash-import-method'
 import prettierPlugin from 'eslint-plugin-prettier'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
@@ -43,7 +42,6 @@ export default [
   prettierConfig,
   {
     plugins: {
-      'lodash-import-method': lodashImportMethod,
       'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
       prettier: prettierPlugin,
@@ -60,7 +58,6 @@ export default [
       'unused-imports/no-unused-imports': 'warn',
       '@typescript-eslint/no-inferrable-types': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
-      'lodash-import-method/submodule': 'error',
       'prettier/prettier': [
         'error',
         {
