@@ -1,14 +1,6 @@
-import {
-  BoxCollider,
-  ButtonComp,
-  ComponentX,
-  LabelComp,
-  loadScene,
-  SceneComponent,
-  SpineSkeleton,
-  SpriteRender,
-  Vec2,
-} from '@safe-engine/cocos'
+import { ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
+import { BoxCollider } from '@safe-engine/cocos/src/collider/CollideComponent'
 
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { Hero } from '../components/Hero'

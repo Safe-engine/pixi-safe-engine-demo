@@ -1,14 +1,5 @@
-import {
-  ButtonComp,
-  Collider,
-  ComponentX,
-  ExtraDataComp,
-  LabelComp,
-  loadScene,
-  SceneComponent,
-  SpriteRender,
-  Vec2,
-} from '@safe-engine/cocos'
+import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { Collider } from '@safe-engine/cocos/dist/collider/CollideComponent'
 
 import { defaultFont, sf_button } from '../assets'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'

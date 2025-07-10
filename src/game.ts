@@ -1,4 +1,8 @@
-import { CollideSystem, GameWorld, GUISystem, initWorld, loadScene, startGame } from '@safe-engine/cocos'
+import { GameWorld, GUISystem, initWorld, loadScene, startGame } from '@safe-engine/cocos'
+import { setupCollider } from '@safe-engine/cocos/dist/collider'
+import { CollideSystem } from '@safe-engine/cocos/dist/collider/CollideSystem'
+import { setupDragonBones } from '@safe-engine/cocos/dist/dragonbones'
+import { setupSpine } from '@safe-engine/cocos/dist/spine'
 
 import { defaultFont } from './assets'
 import { Loading } from './scene/Loading'
@@ -10,6 +14,9 @@ import { settings } from './settings'
 //   })
 // }
 initWorld()
+setupCollider()
+setupDragonBones(GameWorld.Instance)
+setupSpine(GameWorld.Instance)
 const { colliderMatrix, designedResolution } = settings
 const collideSystem = GameWorld.Instance.systems.get(CollideSystem)
 collideSystem.colliderMatrix = colliderMatrix

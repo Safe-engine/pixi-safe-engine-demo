@@ -7,18 +7,17 @@
   ],
   "type": "module",
   "scripts": {
-    "start": "parcel src/index.html -p 8089",
+    "start": "parcel src/index.html -p 8089 --no-cache",
     "sync-res": "bun ./node_modules/safex-sync-res/src/index.ts",
     "predev": "bun run sync-res",
-    "dev": "parcel src/index.html -p 8090 --no-cache",
-    "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html -p 8090",
+    "build": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer",
     "fix": "eslint ./src --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cocos-html5-ts": "^1.1.8",
     "@safe-engine/cocos": "workspace:*",
     "lodash-es": "^4.17.21"
   },
@@ -28,6 +27,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.30.1",
     "@parcel/config-default": "^2.15.4",
+    "@parcel/reporter-bundle-analyzer": "^2.15.4",
     "@types/lodash-es": "^4.17.12",
     "@typescript-eslint/eslint-plugin": "^8.35.1",
     "@typescript-eslint/parser": "^8.35.1",

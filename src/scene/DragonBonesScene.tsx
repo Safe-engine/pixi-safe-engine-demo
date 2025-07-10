@@ -1,4 +1,5 @@
-import { ComponentX, DragonBonesComp, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
+import { ComponentX, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
+import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 
 import { db_mecha_1004d_show, defaultFont } from '../assets'
 

@@ -1,4 +1,5 @@
-import { ComponentX, LabelComp, SceneComponent, SpineSkeleton, Vec2 } from '@safe-engine/cocos'
+import { ComponentX, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
+import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
 
 import { defaultFont, sp_spineboy_pro } from '../assets'
 
