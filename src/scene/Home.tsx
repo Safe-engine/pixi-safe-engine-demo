@@ -8,6 +8,7 @@ import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './GraphicsScene'
 import { InputTestScene } from './InputTestScene'
+import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
 
 export class Home extends ComponentX {
@@ -43,7 +44,7 @@ export class Home extends ComponentX {
       // Collider.create()
     }
     if (id === Scenes.Physics) {
-      // Physics.create()
+      loadScene(PhysicsScene)
     }
     if (id === Scenes.Game) {
       loadScene(Game)
