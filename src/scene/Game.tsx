@@ -45,7 +45,7 @@ export class Game extends ComponentX {
         <Hero $ref={this.hero} node={{ position: Vec2(550, 430) }} gameNode={this.node}>
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
-        <Hero $ref={this.hero} node={{ position: Vec2(550, 130), rotation: 180 }}>
+        <Hero $ref={this.hero} node={{ position: Vec2(550, 130), rotation: 180 }} gameNode={this.node}>
           <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
         </Hero>
         <SpineSkeleton node={{ position: Vec2(306, 940) }} data={sp_spineboy_pro} animation="idle" loop={true} />

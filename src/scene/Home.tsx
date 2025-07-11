@@ -3,10 +3,9 @@ import { Collider } from '@safe-engine/cocos/dist/collider/CollideComponent'
 
 import { defaultFont, sf_button } from '../assets'
 import { CYAN, ORANGE, Scenes } from '../helper/constant'
-import Button from './Button'
+import ButtonScene from './ButtonScene'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
-import { GraphicsScene } from './GraphicsScene'
 import { InputTestScene } from './InputTestScene'
 import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
@@ -35,10 +34,10 @@ export class Home extends ComponentX {
       loadScene(InputTestScene)
     }
     if (id === Scenes.Button) {
-      loadScene(Button)
+      loadScene(ButtonScene)
     }
     if (id === Scenes.Graphics) {
-      loadScene(GraphicsScene)
+      // loadScene(GraphicsScene)
     }
     if (id === Scenes.Collider) {
       // Collider.create()

@@ -2,7 +2,7 @@ import { ButtonComp, ComponentX, ExtraDataComp, SceneComponent, SpriteRender } f
 
 import { sf_crash } from '../assets'
 
-export default class Button extends ComponentX {
+export default class ButtonScene extends ComponentX {
   start() {
     // TODO: implement start logic
   }
