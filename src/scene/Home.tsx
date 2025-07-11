@@ -9,6 +9,7 @@ import { Game } from './Game'
 import { InputTestScene } from './InputTestScene'
 import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
+import SpriteTest from './SpriteTest'
 
 export class Home extends ComponentX {
   static readonly cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Button', 'Graphics', 'Collider', 'Physics', 'Game']
@@ -28,10 +29,10 @@ export class Home extends ComponentX {
       loadScene(DragonBonesScene)
     }
     if (id === Scenes.TouchEvents) {
-      // TouchEvents.create()
+      loadScene(InputTestScene)
     }
     if (id === Scenes.Sprite) {
-      loadScene(InputTestScene)
+      loadScene(SpriteTest)
     }
     if (id === Scenes.Button) {
       loadScene(ButtonScene)

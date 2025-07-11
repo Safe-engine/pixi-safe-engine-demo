@@ -3,7 +3,7 @@
     "prefix": "classsr",
     "body": [
       "import { ComponentX, NodeRender, SpriteRender } from \"@safe-engine/cocos\"\n",
-      "export default class ${TM_FILENAME_BASE}  extends ComponentX {",
+      "export default class ${TM_FILENAME_BASE} extends ComponentX {",
       "  start() {",
       "    // TODO: implement start logic",
       "  }",
