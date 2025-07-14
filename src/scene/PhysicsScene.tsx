@@ -11,7 +11,6 @@ import {
   SceneComponent,
   SpriteRender,
   StaticBody,
-  Vec2,
 } from '@safe-engine/cocos'
 
 import { defaultFont, sf_button, sf_crash } from '../assets'
@@ -38,9 +37,33 @@ export class PhysicsScene extends ComponentX {
           <RigidBody type={DynamicBody}></RigidBody>
           <PhysicsCircleCollider radius={150}></PhysicsCircleCollider>
         </SpriteRender>
+        <SpriteRender node={{ xy: [660, 1530] }} spriteFrame={sf_button}>
+          <RigidBody type={DynamicBody}></RigidBody>
+          {/* <PhysicsCollider offset={Vec2(-85, -26)} /> */}
+          <PhysicsPolygonCollider
+            points={[
+              [0, 1],
+              [0, 50],
+              [169, 51],
+              [170, 1],
+            ]}
+          ></PhysicsPolygonCollider>
+        </SpriteRender>
         <SpriteRender node={{ xy: [860, 1230] }} spriteFrame={sf_crash}>
           <RigidBody type={DynamicBody}></RigidBody>
-          <PhysicsPolygonCollider points={[Vec2(0, 0), Vec2(100, 100), Vec2(200, 100)]}></PhysicsPolygonCollider>
+          <PhysicsPolygonCollider
+            points={[
+              [46, 1],
+              [0, 39],
+              [1, 82],
+              [44, 119],
+              [87, 122],
+              [157, 95],
+              [158, 52],
+              [121, 7],
+              [69, 2],
+            ]}
+          ></PhysicsPolygonCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [540, 500] }} spriteFrame={sf_button}>
           <RigidBody type={StaticBody}></RigidBody>
