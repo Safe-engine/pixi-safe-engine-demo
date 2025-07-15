@@ -29,16 +29,16 @@ export class PhysicsScene extends ComponentX {
         <BackButton />
         <SpriteRender node={{ xy: [560, 1030] }} spriteFrame={sf_button}>
           <RigidBody type={DynamicBody} onBeginContact={this.onCollisionEnter}></RigidBody>
-          <PhysicsBoxCollider height={56} width={150}></PhysicsBoxCollider>
+          <PhysicsBoxCollider height={56} width={150} offset={[-100, -20]}></PhysicsBoxCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [360, 1130] }} spriteFrame={sf_crash}>
           <RigidBody type={DynamicBody}></RigidBody>
-          <PhysicsCircleCollider radius={150}></PhysicsCircleCollider>
+          <PhysicsCircleCollider radius={150} offset={[-100, -20]}></PhysicsCircleCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [660, 1530] }} spriteFrame={sf_button}>
           <RigidBody type={DynamicBody}></RigidBody>
-          {/* <PhysicsCollider offset={Vec2(-85, -26)} /> */}
           <PhysicsPolygonCollider
+            offset={[-100, -20]}
             points={[
               [0, 1],
               [0, 50],
