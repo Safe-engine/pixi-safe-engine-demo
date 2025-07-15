@@ -35,7 +35,7 @@ initBox2d(() => {
       setupDragonBones(GameWorld.Instance)
       setupSpine(GameWorld.Instance)
       setupCollider(colliderMatrix, true)
-      setupPhysics(GameWorld.Instance)
+      setupPhysics(GameWorld.Instance, true)
       loadAll([sf_progress_bar], (p) => {
         if (p >= 1) loadScene(Loading)
       })

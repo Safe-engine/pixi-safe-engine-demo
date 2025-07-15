@@ -5,7 +5,6 @@ import {
   LabelComp,
   PhysicsBoxCollider,
   PhysicsCircleCollider,
-  PhysicsCollider,
   PhysicsPolygonCollider,
   RigidBody,
   SceneComponent,
@@ -19,7 +18,7 @@ import { BackButton } from '../components/BackButton'
 export class PhysicsScene extends ComponentX {
   dragon: DragonBonesComp
 
-  onCollisionEnter(other: PhysicsCollider) {
+  onCollisionEnter(other: RigidBody) {
     console.log('box contact', other.props.tag)
   }
 
@@ -29,8 +28,7 @@ export class PhysicsScene extends ComponentX {
         <LabelComp node={{ xy: [106, 240] }} string="Hello safex physics" font={defaultFont} />
         <BackButton />
         <SpriteRender node={{ xy: [560, 1030] }} spriteFrame={sf_button}>
-          <RigidBody type={DynamicBody}></RigidBody>
-          <PhysicsCollider onBeginContact={this.onCollisionEnter} />
+          <RigidBody type={DynamicBody} onBeginContact={this.onCollisionEnter}></RigidBody>
           <PhysicsBoxCollider height={56} width={150}></PhysicsBoxCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [360, 1130] }} spriteFrame={sf_crash}>
