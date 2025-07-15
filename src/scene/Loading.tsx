@@ -1,6 +1,6 @@
 import { ComponentX, loadScene, ProgressTimerComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 
-import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets'
+import { sf_progress_bar, sf_progress_bg } from '../assets'
 import { loadAssets } from '../binding/loader'
 import { Home } from './Home'
 
@@ -25,10 +25,8 @@ export class Loading extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <SpriteRender node={{ position: Vec2(0, 0) }} spriteFrame={sf_bitmap_2_yellow}>
-          <SpriteRender node={{ position: Vec2(40, 150) }} spriteFrame={sf_crash}>
-            <ProgressTimerComp $ref={this.loadingSprite} node={{ position: Vec2(10, 1118) }} spriteFrame={sf_progress_bar} fillRange={0} />
-          </SpriteRender>
+        <SpriteRender node={{ position: Vec2(540, 250), opacity: 100 }} spriteFrame={sf_progress_bg}>
+          <ProgressTimerComp $ref={this.loadingSprite} node={{ position: Vec2(181, 30) }} spriteFrame={sf_progress_bar} fillRange={0} />
         </SpriteRender>
       </SceneComponent>
     )

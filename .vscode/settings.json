@@ -7,8 +7,8 @@
     "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": [
-    "safex"
-  ],
-  "livePreview.defaultPreviewPath": "/parcel-bundle-reports/default.html"
+  "files.associations": {
+    "*.dbclient-js": "javascript",
+    "__node_handle": "cpp"
+  }
 }

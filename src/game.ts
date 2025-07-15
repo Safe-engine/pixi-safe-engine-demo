@@ -2,6 +2,7 @@ import {
   GameWorld,
   initBox2d,
   initWorld,
+  loadAll,
   loadScene,
   setupCollider,
   setupDragonBones,
@@ -10,7 +11,7 @@ import {
   startGame,
 } from '@safe-engine/cocos'
 
-import { defaultFont } from './assets'
+import { defaultFont, sf_progress_bar } from './assets'
 import { Loading } from './scene/Loading'
 import { colliderMatrix, designedResolution } from './settings'
 // if (module.hot) {
@@ -35,7 +36,9 @@ initBox2d(() => {
       setupSpine(GameWorld.Instance)
       setupCollider(colliderMatrix, true)
       setupPhysics(GameWorld.Instance)
-      loadScene(Loading)
+      loadAll([sf_progress_bar], (p) => {
+        if (p >= 1) loadScene(Loading)
+      })
     },
   )
 })
