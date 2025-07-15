@@ -10,6 +10,7 @@ import {
   SceneComponent,
   SpriteRender,
   StaticBody,
+  Vec2,
 } from '@safe-engine/cocos'
 
 import { defaultFont, sf_button, sf_crash } from '../assets'
@@ -17,9 +18,11 @@ import { BackButton } from '../components/BackButton'
 
 export class PhysicsScene extends ComponentX {
   dragon: DragonBonesComp
+  body: RigidBody
 
   onCollisionEnter(other: RigidBody) {
     console.log('box contact', other.props.tag)
+    this.body.position = Vec2(600, 1800)
   }
 
   render() {
@@ -32,7 +35,7 @@ export class PhysicsScene extends ComponentX {
           <PhysicsBoxCollider height={56} width={150} offset={[-100, -20]}></PhysicsBoxCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [360, 1130] }} spriteFrame={sf_crash}>
-          <RigidBody type={DynamicBody}></RigidBody>
+          <RigidBody $ref={this.body} type={DynamicBody}></RigidBody>
           <PhysicsCircleCollider radius={150} offset={[-100, -20]}></PhysicsCircleCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [660, 1530] }} spriteFrame={sf_button}>
