@@ -1,15 +1,5 @@
-import {
-  GameWorld,
-  initBox2d,
-  initWorld,
-  loadAll,
-  loadScene,
-  setupCollider,
-  setupDragonBones,
-  setupPhysics,
-  setupSpine,
-  startGame,
-} from '@safe-engine/cocos'
+import { GameWorld, initWorld, loadAll, loadScene, setupCollider, setupDragonBones, setupSpine, startGame } from '@safe-engine/cocos'
+import { initBox2d, setupPhysics } from '@safe-engine/cocos/dist/box2d-wasm'
 
 import { defaultFont, sf_progress_bar } from './assets'
 import { Loading } from './scene/Loading'

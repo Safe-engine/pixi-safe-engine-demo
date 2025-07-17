@@ -1,17 +1,12 @@
+import { ComponentX, DragonBonesComp, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 import {
-  ComponentX,
-  DragonBonesComp,
   DynamicBody,
-  LabelComp,
   PhysicsBoxCollider,
   PhysicsCircleCollider,
   PhysicsPolygonCollider,
   RigidBody,
-  SceneComponent,
-  SpriteRender,
   StaticBody,
-  Vec2,
-} from '@safe-engine/cocos'
+} from '@safe-engine/cocos/dist/box2d-wasm'
 
 import { defaultFont, sf_button, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
@@ -20,10 +15,19 @@ export class PhysicsScene extends ComponentX {
   dragon: DragonBonesComp
   body: RigidBody
 
+  start() {
+    this.body.applyLinearImpulseToCenter(Vec2(1000, -10000))
+    console.log(this.body.linearVelocity)
+  }
+
   onCollisionEnter(other: RigidBody) {
     console.log('box contact', other.props.tag)
-    this.body.position = Vec2(600, 1800)
+    // this.body.position = Vec2(600, 1800)
   }
+
+  // update() {
+  //   console.log('update', this.body.linearVelocity)
+  // }
 
   render() {
     return (
