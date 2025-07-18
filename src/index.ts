@@ -1,33 +1,33 @@
-import { addGameCanvasTo, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from '@safe-engine/pixi'
-import Box2DFactory from 'box2d-wasm'
+import { GameWorld, loadScene, setupCollider, setupDragonBones, setupRichText, setupSpine, startGame, Vec2 } from '@safe-engine/pixi'
 
-import { PhysicsSystem } from './box2d-wasm'
+import { initBox2d, setupPhysics } from '@safe-engine/pixi/src/box2d-wasm'
+import { defaultFont } from './assets'
 import { Boot } from './scene/Boot'
-import { settings } from './settings'
-
-export let box2D
-const { designedResolution } = settings
+import { colliderMatrix, designedResolution } from './settings'
 
 async function start() {
-  box2D = await Box2DFactory();
   // console.log('box2d started', box2D)
-  await addGameCanvasTo()
-  setupResolution(designedResolution)
-  startGameSystems([PhysicsSystem])
+  await initBox2d()
+  await startGame(defaultFont, designedResolution)
+  setupRichText()
+  setupSpine()
+  setupDragonBones()
+  setupCollider(colliderMatrix, true)
+  setupPhysics(GameWorld.Instance, false, Vec2(0, -98))
   loadScene(Boot)
 }
 start()
 
-if (module.hot) {
-  module.hot.dispose(() => {
-    try {
-      extensions.remove(ResizePlugin)
-      extensions.remove(TickerPlugin)
-    } catch (error) {
-      console.log(error)
-    }
-  })
-  module.hot.accept(() => {
-    console.log('hot accept is needed')
-  })
-}
+// if (module.hot) {
+//   module.hot.dispose(() => {
+//     try {
+//       extensions.remove(ResizePlugin)
+//       extensions.remove(TickerPlugin)
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   })
+//   module.hot.accept(() => {
+//     console.log('hot accept is needed')
+//   })
+// }

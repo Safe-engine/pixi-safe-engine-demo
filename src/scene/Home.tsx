@@ -63,12 +63,12 @@ export class Home extends ComponentX {
   render() {
     return (
       <SceneComponent  >
-        <LabelComp node={{ x: 406, y: 140, color: CYAN }} string="hello safex" font={defaultFont} />
+        <LabelComp node={{ xy: [406, 140], color: CYAN }} string="hello safex" font={defaultFont} />
         {
           Home.cases.map((name, j = 1) => (
-            <SpriteRender node={{ x: 200, y: 120 + 150 * j, width: 200, height: 60 }} spriteFrame={sf_button}  >
+            <SpriteRender node={{ xy: [200, 120 + 150 * j], width: 200, height: 60 }} spriteFrame={sf_button}  >
               <ButtonComp onPress={this.onPress} />
-              <LabelComp node={{ x: 20, y: 10, color: ORANGE }} string={name} font={defaultFont} size={48} />
+              <LabelComp node={{ xy: [20, 10], color: ORANGE }} string={name} font={defaultFont} size={48} />
               <ExtraDataComp key="id" value={j} />
             </SpriteRender>
           ))

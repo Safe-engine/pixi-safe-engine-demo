@@ -8,18 +8,18 @@ export class CollidersScene extends ComponentX {
   dragon: DragonBones
 
   onCollisionEnter(other: Collider) {
-    console.log(other.tag)
+    console.log(other.props.tag)
   }
 
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex Collide" font={defaultFont} />
+        <LabelComp node={{ xy: [106, 240] }} string="Hello safex Collide" font={defaultFont} />
         <BackButton />
-        <DragonBones $ref={this.dragon} node={{ x: 640, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} >
+        <DragonBones $ref={this.dragon} node={{ xy: [640, 1140] }} data={db_mecha_1004_d} animation="idle" playTimes={3} >
           <BoxCollider height={200} width={200} offset={v2(-100, -200)}></BoxCollider>
         </DragonBones>
-        <SpriteRender node={{ x: 640, y: 360 }} spriteFrame={sf_crash} >
+        <SpriteRender node={{ xy: [640, 360] }} spriteFrame={sf_crash} >
           <BoxCollider height={100} width={100}></BoxCollider>
         </SpriteRender>
       </SceneComponent>

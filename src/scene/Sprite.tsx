@@ -15,9 +15,9 @@ export class SpriteScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex Sprite" font={defaultFont} />
+        <LabelComp node={{ xy: [106, 240] }} string="Hello safex Sprite" font={defaultFont} />
         <BackButton />
-        <SpriteRender $ref={this.sprite} node={{ x: 500, y: 600 }} spriteFrame={sf_crash}>
+        <SpriteRender $ref={this.sprite} node={{ xy: [500, 600] }} spriteFrame={sf_crash}>
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>
       </SceneComponent>

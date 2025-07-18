@@ -24,19 +24,19 @@ export class Game extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Game" font={defaultFont} />
+        <LabelComp node={{ xy: [106, 240] }} string="Game" font={defaultFont} />
         <BackButton />
-        <SpriteRender node={{ x: 200, y: 420, anchorY: 1 }} spriteFrame={sf_crash} >
+        <SpriteRender node={{ xy: [200, 420], anchorY: 1 }} spriteFrame={sf_crash} >
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>
-        <Monster node={{ x: 10, y: 240 }}></Monster>
-        <Hero $ref={this.hero} node={{ x: 550, y: 430 }} gameNode={this.node} >
+        <Monster node={{ xy: [10, 240] }}></Monster>
+        <Hero $ref={this.hero} node={{ xy: [550, 430] }} gameNode={this.node} >
           <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
-        <Hero $ref={this.hero} node={{ x: 550, y: 130, rotation: 180 }}>
+        <Hero $ref={this.hero} node={{ xy: [550, 130], rotation: 180 }}>
           <BoxCollider width={100} height={100} offset={v2(10, 10)} />
         </Hero>
-        <SpineSkeleton node={{ x: 306, y: 940 }} data={sp_spineboy_pro} animation="idle" loop={true} />
+        <SpineSkeleton node={{ xy: [306, 940] }} data={sp_spineboy_pro} animation="idle" loop={true} />
       </SceneComponent>
     )
   }

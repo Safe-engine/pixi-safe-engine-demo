@@ -1,6 +1,6 @@
 import { ComponentX, FederatedPointerEvent, LabelComp, SceneComponent, SpriteRender, TouchEventRegister } from '@safe-engine/pixi';
 
-import { defaultFont, sf_bg_home } from '../assets';
+import { sf_bg_home } from '../assets';
 import { BackButton } from '../components/BackButton';
 
 export class TouchEventsScene extends ComponentX {
@@ -21,9 +21,9 @@ export class TouchEventsScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex touch events" font={defaultFont} />
-        <BackButton />
+        <LabelComp node={{ xy: [106, 240] }} string="Hello safex touch events" />
         <SpriteRender spriteFrame={sf_bg_home}>
+          <BackButton />
           <TouchEventRegister
             onTouchStart={this.onTouchStart}
             onTouchEnd={this.onTouchEnd}
