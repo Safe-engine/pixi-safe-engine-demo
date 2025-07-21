@@ -1,4 +1,14 @@
-import { GameWorld, loadScene, setupCollider, setupDragonBones, setupRichText, setupSpine, startGame, Vec2 } from '@safe-engine/pixi'
+import {
+  Assets,
+  GameWorld,
+  loadScene,
+  setupCollider,
+  setupDragonBones,
+  setupRichText,
+  setupSpine,
+  startGame,
+  Vec2,
+} from '@safe-engine/pixi'
 
 import { initBox2d, setupPhysics } from '@safe-engine/pixi/src/box2d-wasm'
 import { defaultFont } from './assets'
@@ -8,7 +18,7 @@ import { colliderMatrix, designedResolution } from './settings'
 async function start() {
   // console.log('box2d started', box2D)
   await initBox2d()
-  await startGame(defaultFont, designedResolution)
+  await startGame(defaultFont, designedResolution, Assets)
   setupRichText()
   setupSpine()
   setupDragonBones()

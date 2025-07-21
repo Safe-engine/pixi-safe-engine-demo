@@ -34,7 +34,6 @@
     "babel-plugin-safe-x-transform": "workspace:*",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-lodash-import-method": "^0.0.3",
     "eslint-plugin-prettier": "^5.2.3",
     "parcel": "^2.13.3",
     "parcel-plugin-clean-easy": "^1.0.2",

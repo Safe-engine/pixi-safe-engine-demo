@@ -1,15 +1,14 @@
-import { ComponentX, FederatedPointerEvent, LabelComp, SceneComponent, SpriteRender, TouchEventRegister } from '@safe-engine/pixi';
+import { ComponentX, LabelComp, SceneComponent, SpriteRender, Touch, TouchEventRegister } from '@safe-engine/pixi'
 
-import { sf_bg_home } from '../assets';
-import { BackButton } from '../components/BackButton';
+import { sf_bg_home } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export class TouchEventsScene extends ComponentX {
-
   onTouchStart(event) {
     console.log('onTouchStart')
   }
-  onTouchMove(event: FederatedPointerEvent) {
-    console.log('onTouchMove', event.global)
+  onTouchMove(event: Touch) {
+    console.log('onTouchMove', event.getLocation())
   }
   onTouchEnd(event) {
     console.log('onTouchEnd')
@@ -27,8 +26,9 @@ export class TouchEventsScene extends ComponentX {
           <TouchEventRegister
             onTouchStart={this.onTouchStart}
             onTouchEnd={this.onTouchEnd}
-            onTouchCancel={this.onTouchCancel}  // Not supported on iOS
-            onTouchMove={this.onTouchMove} />
+            onTouchCancel={this.onTouchCancel} // Not supported on iOS
+            onTouchMove={this.onTouchMove}
+          />
         </SpriteRender>
       </SceneComponent>
     )
