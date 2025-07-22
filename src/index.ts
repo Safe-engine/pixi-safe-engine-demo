@@ -23,7 +23,7 @@ async function start() {
   setupSpine()
   setupDragonBones()
   setupCollider(colliderMatrix, true)
-  setupPhysics(GameWorld.Instance, false, Vec2(0, -98))
+  setupPhysics(GameWorld.Instance, true, Vec2(0, 98))
   loadScene(Boot)
 }
 start()
