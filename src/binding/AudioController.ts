@@ -1,3 +1,4 @@
+import { Assets } from '@safe-engine/pixi'
 import { button_sfx } from '../assets/AudioAssets'
 
 export default class AudioController {
@@ -11,7 +12,13 @@ export default class AudioController {
   }
 
   playEffectSound(type: any) {
-    type.play()
+    const audioResource = Assets.get(type)
+    // console.log('playEffectSound', type, audioResource)
+    if (audioResource) {
+      audioResource.play()
+    } else {
+      console.warn(`Audio resource for ${type} not found`)
+    }
   }
 
   playButtonClickSound() {

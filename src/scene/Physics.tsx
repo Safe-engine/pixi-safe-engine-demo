@@ -1,11 +1,10 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi';
+import { ComponentX, DragonBones, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi'
 
-import { BoxColliderPhysics, RigidBody } from '@safe-engine/pixi/src/box2d-wasm';
-import { db_mecha_1004_d, defaultFont, sf_button } from '../assets';
-import { BackButton } from '../components/BackButton';
+import { BoxColliderPhysics, RigidBody } from '@safe-engine/pixi/src/box2d-wasm'
+import { db_mecha_1004d_show, defaultFont, sf_button } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export class PhysicsScene extends ComponentX {
-
   dragon: DragonBones
 
   render() {
@@ -13,7 +12,7 @@ export class PhysicsScene extends ComponentX {
       <SceneComponent>
         <LabelComp node={{ xy: [106, 240] }} string="Hello safex physics" font={defaultFont} />
         <BackButton />
-        <DragonBones $ref={this.dragon} node={{ xy: [640, 1140] }} data={db_mecha_1004_d} animation="idle" playTimes={3} >
+        <DragonBones $ref={this.dragon} node={{ xy: [640, 1140] }} data={db_mecha_1004d_show} animation="idle" playTimes={3}>
           <RigidBody type="dynamic" friction={0.5} restitution={0.5}></RigidBody>
           {/* <CircleColliderPhysics radius={50} /> */}
           <BoxColliderPhysics width={500} height={600} offset={Vec2(-4, -100)} />

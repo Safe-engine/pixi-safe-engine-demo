@@ -24,19 +24,17 @@ export function loadAssets(cb: (progress: number) => void) {
     Assets.add({ alias: atlas, src: atlas })
     keys.push(skeleton, atlas)
   })
+  Object.keys(AudioAssets).map((key) => {
+    keys.push(AudioAssets[key])
+  })
+  Object.values(DragonBonesAssets).map((value) => {
+    // console.log(key, value)
+    const { skeleton, atlas, texture } = value
+    keys.push(skeleton, atlas, texture)
+  })
   return Promise.all([
     Assets.loadBundle('fonts'),
     Assets.load(keys),
-    ...Object.keys(AudioAssets).map((key) => {
-      return Assets.load(AudioAssets[key]).then((audioResource) => {
-        AudioAssets[key] = audioResource
-      })
-    }),
-    ...Object.entries(DragonBonesAssets).map(([key, value]) => {
-      // console.log(key, value)
-      const { skeleton, atlas } = value
-      return Assets.load([skeleton, atlas])
-    }),
     // ...Object.values(JsonAssets).map(loadJsonAsync),
   ]).then(() => {
     return Assets.load<Texture>(Object.values(TextureAssets), cb)
