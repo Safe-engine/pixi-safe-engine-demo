@@ -10,6 +10,10 @@ export class PhysicsScene extends ComponentX {
     this.body.applyForceToCenter(Vec2(100, 1000))
   }
 
+  onBeginContact(other: RigidBody) {
+    console.log('onBeginContact', other)
+  }
+
   render() {
     return (
       <SceneComponent>
@@ -25,7 +29,7 @@ export class PhysicsScene extends ComponentX {
           <PhysicsBoxCollider height={60} width={1200}></PhysicsBoxCollider>
         </SpriteRender>
         <SpriteRender node={{ xy: [60, 1230] }} spriteFrame={sf_button}>
-          <RigidBody type={DynamicBody}></RigidBody>
+          <RigidBody type={DynamicBody} onBeginContact={this.onBeginContact}></RigidBody>
           <PhysicsBoxCollider height={56} width={150}></PhysicsBoxCollider>
         </SpriteRender>
       </SceneComponent>
