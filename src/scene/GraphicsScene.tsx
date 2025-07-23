@@ -16,9 +16,8 @@ export class GraphicsScene extends ComponentX {
       { x: 740, y: 1040 },
     ].map(Vec2)
     // this.graphics.drawPoly(points, true, BLUE)
-    const graphics = this.graphics.node.instance
-    graphics.drawPoly(points)
-    graphics.drawRect(Vec2(600, 610), Vec2(200, 345))
+    this.graphics.drawPoly(points)
+    this.graphics.drawRect(Vec2(600, 610), Vec2(200, 345))
   }
 
   render() {

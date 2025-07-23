@@ -1,11 +1,12 @@
 import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2, WHITE } from '@safe-engine/cocos'
-import { Collider } from '@safe-engine/cocos/dist/collider/CollideComponent'
 
 import { defaultFont, sf_button } from '../assets'
 import { CYAN, Scenes } from '../helper/constant'
 import ButtonScene from './ButtonScene'
+import { CollidersScene } from './CollidersScene'
 import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
+import { GraphicsScene } from './GraphicsScene'
 import { InputTestScene } from './InputTestScene'
 import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
@@ -38,10 +39,10 @@ export class Home extends ComponentX {
       loadScene(ButtonScene)
     }
     if (id === Scenes.Graphics) {
-      // loadScene(GraphicsScene)
+      loadScene(GraphicsScene)
     }
     if (id === Scenes.Collider) {
-      // Collider.create()
+      loadScene(CollidersScene)
     }
     if (id === Scenes.Physics) {
       loadScene(PhysicsScene)
@@ -49,10 +50,6 @@ export class Home extends ComponentX {
     if (id === Scenes.Game) {
       loadScene(Game)
     }
-  }
-
-  onCollisionEnter(other: Collider) {
-    console.log(other.props.tag)
   }
 
   render() {
