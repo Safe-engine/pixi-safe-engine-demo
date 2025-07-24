@@ -9,12 +9,7 @@ export class GraphicsScene extends ComponentX {
     this.graphics.drawRect(Vec2(100, 300), Vec2(200, 500), PURPLE)
     this.graphics.drawCircle(Vec2(400, 500), 50, Math.PI * 0.5, 64, true, 11, YELLOW)
     this.graphics.drawCircle(Vec2(400, 600), 50, (Math.PI * 2) / 3, 64, true, 11, YELLOW)
-    const points = [
-      { x: 540, y: 1040 },
-      { x: 540, y: 640 },
-      { x: 840, y: 940 },
-      { x: 740, y: 1040 },
-    ].map(Vec2)
+    const points: Vec2[] = [Vec2(540, 1040), Vec2(540, 640), Vec2(840, 940), Vec2(740, 1040)]
     // this.graphics.drawPoly(points, true, BLUE)
     this.graphics.drawPoly(points)
     this.graphics.drawRect(Vec2(600, 610), Vec2(200, 345))

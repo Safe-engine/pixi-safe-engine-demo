@@ -1,7 +1,18 @@
-import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2, WHITE } from '@safe-engine/cocos'
+import {
+  ButtonComp,
+  ComponentX,
+  ExtraDataComp,
+  LabelComp,
+  loadScene,
+  RichTextComp,
+  SceneComponent,
+  SpriteRender,
+  Vec2,
+  WHITE,
+} from '@safe-engine/cocos'
 
 import { defaultFont, sf_button } from '../assets'
-import { CYAN, Scenes } from '../helper/constant'
+import { Scenes } from '../helper/constant'
 import ButtonScene from './ButtonScene'
 import { CollidersScene } from './CollidersScene'
 import { DragonBonesScene } from './DragonBonesScene'
@@ -55,7 +66,12 @@ export class Home extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ xy: [406, 140], color: CYAN }} string="hello safex" font={defaultFont} />
+        <RichTextComp
+          node={{ xy: [406, 140] }}
+          font={defaultFont}
+          size={72}
+          string="<color=#ff00ff>hello</color> <color=#00ff00>safex</color>"
+        />
         {Home.cases.map((name, j = 1) => (
           <SpriteRender node={{ xy: [200, 120 + 150 * j] }} spriteFrame={sf_button}>
             <ButtonComp onPress={this.onPress} />

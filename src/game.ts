@@ -1,4 +1,4 @@
-import { GameWorld, loadAll, loadScene, setupCollider, setupDragonBones, setupSpine, startGame } from '@safe-engine/cocos'
+import { GameWorld, loadAll, loadScene, setupCollider, setupDragonBones, setupRichText, setupSpine, startGame } from '@safe-engine/cocos'
 import { initBox2d, setupPhysics } from '@safe-engine/cocos/dist/box2d-wasm'
 
 import { defaultFont, sf_progress_bar } from './assets'
@@ -16,6 +16,7 @@ initBox2d().then(async () => {
   setupSpine(GameWorld.Instance)
   setupCollider(colliderMatrix, true)
   setupPhysics(GameWorld.Instance, true)
+  setupRichText()
   loadAll([sf_progress_bar], (p) => {
     if (p >= 1) loadScene(Loading)
   })
