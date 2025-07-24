@@ -16,7 +16,7 @@ export class PhysicsScene extends ComponentX {
   body: RigidBody
 
   start() {
-    this.body.applyLinearImpulseToCenter(Vec2(1000, -10000))
+    this.body.applyLinearImpulse(Vec2(1000, -10000))
     console.log(this.body.linearVelocity)
   }
 
