@@ -1,22 +1,15 @@
-import {
-  Assets,
-  GameWorld,
-  loadScene,
-  setupCollider,
-  setupDragonBones,
-  setupRichText,
-  setupSpine,
-  startGame,
-  Vec2,
-} from '@safe-engine/pixi'
+import { Assets, GameWorld, loadScene, startGame, Texture, Vec2 } from '@safe-engine/pixi'
 
+import { setupCollider } from '@safe-engine/pixi/dist/collider'
+import { setupDragonBones } from '@safe-engine/pixi/dist/dragonbones'
+import { setupRichText } from '@safe-engine/pixi/dist/richtext'
+import { setupSpine } from '@safe-engine/pixi/dist/spine'
 import { initBox2d, setupPhysics } from '@safe-engine/pixi/src/box2d-wasm'
-import { defaultFont } from './assets'
-import { Boot } from './scene/Boot'
+import { defaultFont, sf_progress_bar, sf_progress_bg } from './assets'
+import { Loading } from './scene/Loading'
 import { colliderMatrix, designedResolution } from './settings'
 
 async function start() {
-  // console.log('box2d started', box2D)
   await initBox2d()
   await startGame(defaultFont, designedResolution, Assets)
   setupRichText()
@@ -24,20 +17,7 @@ async function start() {
   setupDragonBones()
   setupCollider(colliderMatrix, true)
   setupPhysics(GameWorld.Instance, true, Vec2(0, 98))
-  loadScene(Boot)
+  await Assets.load<Texture>([sf_progress_bar, sf_progress_bg])
+  loadScene(Loading)
 }
 start()
-
-// if (module.hot) {
-//   module.hot.dispose(() => {
-//     try {
-//       extensions.remove(ResizePlugin)
-//       extensions.remove(TickerPlugin)
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   })
-//   module.hot.accept(() => {
-//     console.log('hot accept is needed')
-//   })
-// }

@@ -1,5 +1,7 @@
-import { BoxCollider, ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpineSkeleton, SpriteRender, v2 } from '@safe-engine/pixi'
+import { ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
+import { BoxCollider } from '@safe-engine/pixi/dist/collider'
+import { SpineSkeleton } from '@safe-engine/pixi/dist/spine'
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { Hero } from '../components/Hero'
@@ -26,15 +28,15 @@ export class Game extends ComponentX {
       <SceneComponent>
         <LabelComp node={{ xy: [106, 240] }} string="Game" font={defaultFont} />
         <BackButton />
-        <SpriteRender node={{ xy: [200, 420], anchorY: 1 }} spriteFrame={sf_crash} >
+        <SpriteRender node={{ xy: [200, 420], anchorY: 1 }} spriteFrame={sf_crash}>
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>
         <Monster node={{ xy: [10, 240] }}></Monster>
-        <Hero $ref={this.hero} node={{ xy: [550, 430] }} gameNode={this.node} >
-          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
+        <Hero $ref={this.hero} node={{ xy: [550, 430] }} gameNode={this.node}>
+          <BoxCollider width={100} height={100} offset={[10, 10]} />
         </Hero>
         <Hero $ref={this.hero} node={{ xy: [550, 130], rotation: 180 }}>
-          <BoxCollider width={100} height={100} offset={v2(10, 10)} />
+          <BoxCollider width={100} height={100} offset={[10, 10]} />
         </Hero>
         <SpineSkeleton node={{ xy: [306, 940] }} data={sp_spineboy_pro} animation="idle" loop={true} />
       </SceneComponent>
