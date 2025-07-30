@@ -1,6 +1,7 @@
 import { ButtonComp, ComponentX, InputComp, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 
 import { sf_button } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export class InputTestScene extends ComponentX {
   captchaInput: InputComp
@@ -25,6 +26,7 @@ export class InputTestScene extends ComponentX {
           <LabelComp string="Submit" />
           <ButtonComp onPress={this.onSubmitCaptcha} />
         </SpriteRender>
+        <BackButton />
       </SceneComponent>
     )
   }

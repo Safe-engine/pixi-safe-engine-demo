@@ -3,6 +3,7 @@ import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
 import { BoxCollider } from '@safe-engine/cocos/src/collider/CollideComponent'
 
 import { defaultFont, sf_crash, sp_spineboy_pro } from '../assets'
+import { BackButton } from '../components/BackButton'
 import { Hero } from '../components/Hero'
 import { Home } from './Home'
 
@@ -43,12 +44,13 @@ export class Game extends ComponentX {
           <ButtonComp onPress={this.onPress} />
         </SpriteRender>
         <Hero $ref={this.hero} node={{ position: Vec2(550, 430) }} gameNode={this.node}>
-          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+          <BoxCollider width={100} height={100} offset={[10, 10]} />
         </Hero>
-        <Hero $ref={this.hero} node={{ position: Vec2(550, 130), rotation: 180 }} gameNode={this.node}>
-          <BoxCollider width={100} height={100} offset={Vec2(10, 10)} />
+        <Hero $ref={this.hero} node={{ xy: [550, 130], rotation: 180 }} gameNode={this.node}>
+          <BoxCollider width={100} height={100} offset={[10, 10]} />
         </Hero>
         <SpineSkeleton node={{ position: Vec2(306, 940) }} data={sp_spineboy_pro} animation="idle" loop={true} />
+        <BackButton />
       </SceneComponent>
     )
   }

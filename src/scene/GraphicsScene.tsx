@@ -1,5 +1,6 @@
 import { ComponentX, GraphicsRender, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
 
+import { BackButton } from '../components/BackButton'
 import { CYAN, PINK, PURPLE, YELLOW } from '../helper/constant'
 
 export class GraphicsScene extends ComponentX {
@@ -20,6 +21,7 @@ export class GraphicsScene extends ComponentX {
       <SceneComponent>
         <LabelComp node={{ xy: [106, 240] }} string="Hello safex Graphics" />
         <GraphicsRender $ref={this.graphics} fillColor={CYAN} strokeColor={PINK} lineWidth={5} />
+        <BackButton />
       </SceneComponent>
     )
   }

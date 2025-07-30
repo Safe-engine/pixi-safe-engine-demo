@@ -12,8 +12,8 @@ import { colliderMatrix, designedResolution } from './settings'
 // }
 initBox2d().then(async () => {
   await startGame(defaultFont, designedResolution)
-  setupDragonBones(GameWorld.Instance)
-  setupSpine(GameWorld.Instance)
+  setupDragonBones()
+  setupSpine()
   setupCollider(colliderMatrix, true)
   setupPhysics(GameWorld.Instance, true)
   setupRichText()

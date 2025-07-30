@@ -67,7 +67,7 @@ export class Home extends ComponentX {
     return (
       <SceneComponent>
         <RichTextComp
-          node={{ xy: [406, 140] }}
+          node={{ xy: [640, 140] }}
           font={defaultFont}
           size={72}
           string="<color=#ff00ff>hello</color> <color=#00ff00>safex</color>"

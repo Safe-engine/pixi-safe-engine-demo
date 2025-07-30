@@ -1,6 +1,7 @@
 import { ButtonComp, ComponentX, ExtraDataComp, SceneComponent, SpriteRender } from '@safe-engine/cocos'
 
 import { sf_crash } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export default class ButtonScene extends ComponentX {
   start() {
@@ -16,6 +17,7 @@ export default class ButtonScene extends ComponentX {
           <ButtonComp onPress={this.onPress} />
           <ExtraDataComp value={12} key="id" />
         </SpriteRender>
+        <BackButton />
       </SceneComponent>
     )
   }
