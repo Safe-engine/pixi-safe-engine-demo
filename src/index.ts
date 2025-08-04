@@ -1,4 +1,4 @@
-import { Assets, GameWorld, loadScene, startGame, Texture, Vec2 } from '@safe-engine/pixi'
+import { Assets, GameWorld, loadScene, setupGUI, startGame, Texture, Vec2 } from '@safe-engine/pixi'
 
 import { setupCollider } from '@safe-engine/pixi/dist/collider'
 import { setupDragonBones } from '@safe-engine/pixi/dist/dragonbones'
@@ -12,6 +12,7 @@ import { colliderMatrix, designedResolution } from './settings'
 async function start() {
   await initBox2d()
   await startGame(defaultFont, designedResolution, Assets)
+  setupGUI()
   setupRichText()
   setupSpine()
   setupDragonBones()
