@@ -5,7 +5,6 @@ import { loadAssets } from '../binding/loader'
 import { Home } from './Home'
 
 export class Loading extends ComponentX {
-  score = 0
   loadingSprite: ProgressTimerComp
 
   async start() {
@@ -16,7 +15,7 @@ export class Loading extends ComponentX {
 
   onProgress(p: number) {
     // console.log('onProgress', p)
-    this.loadingSprite.setFillRange(p)
+    this.loadingSprite.fillRange = p
   }
 
   render() {
