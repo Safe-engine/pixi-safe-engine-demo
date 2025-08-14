@@ -9,17 +9,14 @@ export class Loading extends ComponentX {
   loadingSprite: ProgressTimerComp
 
   async start() {
-    await loadAssets(this.onProgress.bind(this))
+    await loadAssets(this.onProgress.bind(this), () => {
+      loadScene(Home)
+    })
   }
 
   onProgress(p: number) {
     // console.log('onProgress', p)
     this.loadingSprite.setFillRange(p)
-    if (p === 1) {
-      setTimeout(() => {
-        loadScene(Home)
-      })
-    }
   }
 
   render() {

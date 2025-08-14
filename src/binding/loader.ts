@@ -9,7 +9,7 @@ import * as TextureAssets from '../assets/TextureAssets'
 
 extensions.add(HowlerLoaderParser)
 
-export function loadAssets(cb: (progress: number) => void) {
+export function loadAssets(cb: (progress: number) => void, onCompleted: () => void) {
   // load the texture we need
   const fontBundle = {}
   Object.keys(FontAssets).forEach((key) => {
@@ -36,8 +36,9 @@ export function loadAssets(cb: (progress: number) => void) {
     Assets.loadBundle('fonts'),
     Assets.load(keys),
     // ...Object.values(JsonAssets).map(loadJsonAsync),
-  ]).then(() => {
-    return Assets.load<Texture>(Object.values(TextureAssets), cb)
+  ]).then(async () => {
+    await Assets.load<Texture>(Object.values(TextureAssets), cb)
+    onCompleted()
   })
 }
 
