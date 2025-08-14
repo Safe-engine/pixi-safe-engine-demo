@@ -1,6 +1,7 @@
-import { GameWorld, loadAll, loadScene, setupCollider, setupDragonBones, setupRichText, setupSpine, startGame } from '@safe-engine/cocos'
+import { GameWorld, loadAll, loadScene, setupCollider, setupRichText, setupSpine, startGame } from '@safe-engine/cocos'
 import { initBox2d, setupPhysics } from '@safe-engine/cocos/dist/box2d-wasm'
 
+import { setupDragonBones } from '@safe-engine/cocos/dist/dragonbones'
 import { defaultFont, sf_progress_bar, sf_progress_bg } from './assets'
 import { Loading } from './scene/Loading'
 import { colliderMatrix, designedResolution } from './settings'
@@ -17,7 +18,7 @@ initBox2d().then(async () => {
   setupCollider(colliderMatrix, true)
   setupPhysics(GameWorld.Instance, true)
   setupRichText()
-  loadAll([sf_progress_bar, sf_progress_bg], (p) => {
-    if (p >= 1) loadScene(Loading)
+  loadAll([sf_progress_bar, sf_progress_bg], null, () => {
+    loadScene(Loading)
   })
 })

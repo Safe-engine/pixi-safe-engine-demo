@@ -9,7 +9,7 @@ import * as SpineAssets from '../assets/SpineAssets'
 import * as TextureAssets from '../assets/TextureAssets'
 // import JsonCache from '../data/JsonCache'
 
-export function loadAssets(cb: (progress: number) => void) {
+export function loadAssets(cb: (progress: number) => void, onCompleted: () => void) {
   // load the texture we need
   const keys = []
   Object.values(SpineAssets).map(({ skeleton, atlas }) => {
@@ -26,13 +26,5 @@ export function loadAssets(cb: (progress: number) => void) {
     // ...Object.values(JsonAssets),
     ...Object.values(FontAssets),
   ]
-  loadAll(assets, (p) => {
-    if (p >= 1) {
-      // Object.values(SpriteSheetAssets).forEach((spriteSheet) => {
-      //   cc.spriteFrameCache.addSpriteFrames(spriteSheet)
-      // })
-      // JsonCache.load()
-    }
-    cb(p)
-  })
+  loadAll(assets, cb, onCompleted)
 }
