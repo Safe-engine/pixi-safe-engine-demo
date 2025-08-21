@@ -1,5 +1,6 @@
-import { BoxCollider, Collider, ComponentX, DragonBonesComp, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/cocos'
+import { BoxCollider, Collider, ComponentX, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/cocos'
 
+import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 import { db_mecha_1004d_show, defaultFont, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
 

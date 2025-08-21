@@ -1,4 +1,4 @@
-import { ComponentX, DragonBonesComp, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { ComponentX, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 import {
   DynamicBody,
   PhysicsBoxCollider,
@@ -8,6 +8,7 @@ import {
   StaticBody,
 } from '@safe-engine/cocos/dist/box2d-wasm'
 
+import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 import { defaultFont, sf_button, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
 
