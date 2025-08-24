@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "preserve",
-    "target": "es5",
+    "target": "esnext",
     "esModuleInterop": true,
     "lib": [
       "es2017",
