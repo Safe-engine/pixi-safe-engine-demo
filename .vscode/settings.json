@@ -6,8 +6,5 @@
     "source.addMissingImports.ts": "always",
     "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit"
-  },
-  "cSpell.words": [
-    "safex"
-  ]
+  }
 }

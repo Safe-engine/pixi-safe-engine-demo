@@ -1,6 +1,6 @@
-import { ComponentX, instantiate, SpriteRender } from "safex"
-import { sf_dialog_name } from "../assets/TextureAssets"
+import { ComponentX, instantiate, SpriteRender } from '@safe-engine/pixi'
 
+import { sf_dialog_name } from '../assets/TextureAssets'
 
 export class Monster extends ComponentX {
   hp = 100
@@ -17,7 +17,7 @@ export class Monster extends ComponentX {
   render() {
     const sprite = instantiate(SpriteRender, {
       spriteFrame: sf_dialog_name,
-    }) as SpriteRender
+    })
     const monster = sprite.addComponent<Monster>(this)
     monster.sprite = sprite
     return this

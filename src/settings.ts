@@ -4,10 +4,8 @@ export enum Group {
   Bullet,
 }
 
-export const settings = {
-  colliderMatrix: [[true], [false, false, true], [false, true]],
-  designedResolution: {
-    width: 1080,
-    height: 1920,
-  },
+export const colliderMatrix = [[true], [false, false, true], [false, true]]
+export const designedResolution = {
+  width: 1080,
+  height: 1920,
 }

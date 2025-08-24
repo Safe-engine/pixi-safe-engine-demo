@@ -1,6 +1,8 @@
-import { ComponentX, LabelComp, SceneComponent, SpineSkeleton } from "safex";
-import { defaultFont, sp_spineboy_pro } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { ComponentX, LabelComp, SceneComponent } from '@safe-engine/pixi'
+
+import { SpineSkeleton } from '@safe-engine/pixi/dist/spine'
+import { sp_spineboy_pro } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export class SpineScene extends ComponentX {
   // start() {
@@ -11,9 +13,9 @@ export class SpineScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex spine" font={defaultFont} />
+        <LabelComp node={{ xy: [106, 240] }} string="Hello safex spine" />
         <BackButton />
-        <SpineSkeleton node={{ x: 306, y: 1140 }} data={sp_spineboy_pro} animation="run" loop={true} />
+        <SpineSkeleton node={{ xy: [306, 1140] }} data={sp_spineboy_pro} animation="run" loop={true} />
       </SceneComponent>
     )
   }

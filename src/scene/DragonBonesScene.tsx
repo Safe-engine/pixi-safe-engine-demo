@@ -1,17 +1,18 @@
-import { ComponentX, DragonBones, LabelComp, SceneComponent } from "safex";
-import { db_mecha_1004_d, defaultFont } from "../assets";
-import { BackButton } from "../components/BackButton";
+import { ComponentX, LabelComp, SceneComponent } from '@safe-engine/pixi'
+
+import { DragonBonesComp } from '@safe-engine/pixi/dist/dragonbones'
+import { db_mecha_1004d_show, defaultFont } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export class DragonBonesScene extends ComponentX {
-
-  dragon: DragonBones
+  dragon: DragonBonesComp
 
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ x: 106, y: 240 }} string="Hello safex dragon bones" font={defaultFont} />
+        <LabelComp node={{ xy: [106, 240] }} string="Hello safex dragon bones" font={defaultFont} />
         <BackButton />
-        <DragonBones $ref={this.dragon} node={{ x: 640, y: 1140 }} data={db_mecha_1004_d} animation="idle" playTimes={3} />
+        <DragonBonesComp $ref={this.dragon} node={{ xy: [640, 1140] }} data={db_mecha_1004d_show} animation="idle" playTimes={3} />
       </SceneComponent>
     )
   }

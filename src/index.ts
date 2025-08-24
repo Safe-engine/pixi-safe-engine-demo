@@ -1,33 +1,22 @@
-import { addGameCanvasTo, extensions, loadScene, ResizePlugin, setupResolution, startGameSystems, TickerPlugin } from 'safex'
-
-import Box2DFactory from 'box2d-wasm'
-import { PhysicsSystem } from './box2d-wasm'
-import { Boot } from './scene/Boot'
-import { settings } from './settings'
-
-export let box2D
-const { designedResolution } = settings
+import { Assets, loadScene, setupGUI, startGame, Texture } from '@safe-engine/pixi'
+import { setupCollider } from '@safe-engine/pixi/dist/collider'
+import { setupDragonBones } from '@safe-engine/pixi/dist/dragonbones'
+import { setupRichText } from '@safe-engine/pixi/dist/richtext'
+import { setupSpine } from '@safe-engine/pixi/dist/spine'
+import { defaultFont, sf_progress_bar, sf_progress_bg } from './assets'
+import { Loading } from './scene/Loading'
+import { colliderMatrix, designedResolution } from './settings'
 
 async function start() {
-  box2D = await Box2DFactory();
-  // console.log('box2d started', box2D)
-  await addGameCanvasTo()
-  setupResolution(designedResolution)
-  startGameSystems([PhysicsSystem])
-  loadScene(Boot)
+  // await initBox2d()
+  await startGame(defaultFont, designedResolution, Assets)
+  setupGUI()
+  setupRichText()
+  setupSpine()
+  setupDragonBones()
+  setupCollider(colliderMatrix, true)
+  // setupPhysics(GameWorld.Instance, true, Vec2(0, 98))
+  await Assets.load<Texture>([sf_progress_bar, sf_progress_bg])
+  loadScene(Loading)
 }
 start()
-
-if (module.hot) {
-  module.hot.dispose(() => {
-    try {
-      extensions.remove(ResizePlugin)
-      extensions.remove(TickerPlugin)
-    } catch (error) {
-      console.log(error)
-    }
-  })
-  module.hot.accept(() => {
-    console.log('hot accept is needed')
-  })
-}
