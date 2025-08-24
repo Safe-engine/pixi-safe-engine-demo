@@ -25,20 +25,20 @@
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
+    "@babel/core": "^7.28.3",
     "@babel/plugin-syntax-jsx": "^7.27.1",
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.31.0",
+    "@eslint/js": "^9.34.0",
     "@parcel/config-default": "^2.15.4",
     "@types/lodash-es": "^4.17.12",
-    "@typescript-eslint/eslint-plugin": "^8.38.0",
-    "@typescript-eslint/parser": "^8.38.0",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "@typescript-eslint/parser": "^8.40.0",
     "babel-plugin-safe-x-transform": "workspace:*",
-    "eslint": "^9.31.0",
+    "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.3",
+    "eslint-plugin-prettier": "^5.5.4",
     "parcel": "^2.15.4",
-    "safex-sync-res": "^1.2.3",
-    "typescript": "^5.8.3"
+    "safex-sync-res": "^1.2.8",
+    "typescript": "^5.9.2"
   }
 }
