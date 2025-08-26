@@ -13,8 +13,8 @@ export class SpineScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ position: Vec2(106, 240) }} string="Hello safex spine" font={defaultFont} />
-        <SpineSkeleton node={{ position: Vec2(306, 1140) }} data={sp_spineboy_pro} animation="run" loop={true} />
+        <LabelComp node={{ position: Vec2(541, 278) }} string="Hello safex spine" font={defaultFont} />
+        <SpineSkeleton node={{ position: Vec2(541, 1155) }} data={sp_spineboy_pro} animation="run" loop={true} />
         <BackButton />
       </SceneComponent>
     )
