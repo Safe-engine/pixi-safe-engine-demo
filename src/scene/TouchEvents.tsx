@@ -20,13 +20,13 @@ export class TouchEventsScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ xy: [106, 240] }} string="Hello safex touch events" />
-        <SpriteRender spriteFrame={sf_bg_home}>
+        <LabelComp node={{ xy: [563, 160] }} string="Hello safex touch events" />
+        <SpriteRender spriteFrame={sf_bg_home} node={{ xy: [524, 996] }}>
           <BackButton />
           <TouchEventRegister
             onTouchStart={this.onTouchStart}
             onTouchEnd={this.onTouchEnd}
-            onTouchCancel={this.onTouchCancel} // Not supported on iOS
+            onTouchCancel={this.onTouchCancel}
             onTouchMove={this.onTouchMove}
           />
         </SpriteRender>

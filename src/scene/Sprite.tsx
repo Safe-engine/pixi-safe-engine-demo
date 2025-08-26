@@ -1,10 +1,9 @@
-import { ButtonComp, ComponentX, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi';
+import { ButtonComp, ComponentX, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
-import { defaultFont, sf_button, sf_crash } from '../assets';
-import { BackButton } from '../components/BackButton';
+import { defaultFont, sf_button, sf_crash } from '../assets'
+import { BackButton } from '../components/BackButton'
 
 export class SpriteScene extends ComponentX {
-
   sprite: SpriteRender
 
   onPress = () => {
@@ -15,7 +14,7 @@ export class SpriteScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ xy: [106, 240] }} string="Hello safex Sprite" font={defaultFont} />
+        <LabelComp node={{ xy: [506, 333] }} string="Hello safex Sprite" font={defaultFont} />
         <BackButton />
         <SpriteRender $ref={this.sprite} node={{ xy: [500, 600] }} spriteFrame={sf_crash}>
           <ButtonComp onPress={this.onPress} />
