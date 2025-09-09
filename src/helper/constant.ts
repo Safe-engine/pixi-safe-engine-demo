@@ -39,4 +39,5 @@ export enum Scenes {
   Collider,
   Physics,
   Game,
+  MotionStreak,
 }

@@ -19,12 +19,24 @@ import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './GraphicsScene'
 import { InputTestScene } from './InputTestScene'
+import MotionStreakTest from './MotionStreakTest'
 import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
 import SpriteTest from './SpriteTest'
 
 export class Home extends ComponentX {
-  static readonly cases = ['Spine', 'Dragon Bones', 'Touch Events', 'Sprite', 'Button', 'Graphics', 'Collider', 'Physics', 'Game']
+  static readonly cases = [
+    'Spine',
+    'Dragon Bones',
+    'Touch Events',
+    'Sprite',
+    'Button',
+    'Graphics',
+    'Collider',
+    'Physics',
+    'Game',
+    'MotionStreak',
+  ]
 
   onStart() {
     console.log('you win')
@@ -60,6 +72,9 @@ export class Home extends ComponentX {
     }
     if (id === Scenes.Game) {
       loadScene(Game)
+    }
+    if (id === Scenes.MotionStreak) {
+      loadScene(MotionStreakTest)
     }
   }
 
