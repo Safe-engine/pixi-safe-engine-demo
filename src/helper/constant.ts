@@ -40,4 +40,5 @@ export enum Scenes {
   Physics,
   Game,
   Grid,
+  Inputs,
 }

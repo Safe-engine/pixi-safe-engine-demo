@@ -7,6 +7,7 @@ import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './Graphics'
 import { GridScene } from './Grid'
+import { InputTestScene } from './InputTestScene'
 import { LabelScene } from './Label'
 import { PhysicsScene } from './Physics'
 import { SpineScene } from './SpineScene'
@@ -53,6 +54,9 @@ export class Home extends ComponentX {
     }
     if (id === Scenes.Game) {
       loadScene(Game)
+    }
+    if (id === Scenes.Inputs) {
+      loadScene(InputTestScene)
     }
   }
 
