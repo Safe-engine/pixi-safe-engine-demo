@@ -1,10 +1,10 @@
-import { ComponentX, MotionStreak, SceneComponent } from '@safe-engine/cocos'
+import { ComponentX, MotionStreakComp, SceneComponent } from '@safe-engine/cocos'
 import { sf_streak } from '../assets'
 import { BackButton } from '../components/BackButton'
 
 export default class MotionStreakTest extends ComponentX {
-  streak: MotionStreak
-  streak2: MotionStreak
+  streak: MotionStreakComp
+  streak2: MotionStreakComp
 
   update() {
     this.streak.node.posY += 10
@@ -21,8 +21,8 @@ export default class MotionStreakTest extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <MotionStreak $ref={this.streak} spriteFrame={sf_streak} node={{ posX: 540 }} />
-        <MotionStreak $ref={this.streak2} spriteFrame={sf_streak} node={{ posX: 340 }} />
+        <MotionStreakComp $ref={this.streak} spriteFrame={sf_streak} node={{ posX: 540 }} />
+        <MotionStreakComp $ref={this.streak2} spriteFrame={sf_streak} node={{ posX: 340 }} />
         <BackButton />
       </SceneComponent>
     )
