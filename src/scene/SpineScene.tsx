@@ -5,16 +5,17 @@ import { defaultFont, sp_spineboy_pro } from '../assets'
 import { BackButton } from '../components/BackButton'
 
 export class SpineScene extends ComponentX {
-  // start() {
-  //   console.log(sp_spineboy_pro)
-  //   console.log(Assets.cache.get(sp_spineboy_pro.skeleton));
-  //   console.log(Assets.cache.get(sp_spineboy_pro.atlas));
-  // }
+  skeleton: SpineSkeleton
+  start() {
+    console.log(sp_spineboy_pro)
+    console.log(this.skeleton)
+  }
+
   render() {
     return (
       <SceneComponent>
         <LabelComp node={{ position: Vec2(541, 278) }} string="Hello safex spine" font={defaultFont} />
-        <SpineSkeleton node={{ position: Vec2(541, 1155) }} data={sp_spineboy_pro} animation="run" loop={true} />
+        <SpineSkeleton $ref={this.skeleton} node={{ position: Vec2(541, 1155) }} data={sp_spineboy_pro} animation="run" loop={true} />
         <BackButton />
       </SceneComponent>
     )

@@ -1,8 +1,9 @@
 import { loadAll } from '@safe-engine/cocos'
 // import * as JsonAssets from '../assets/JsonAssets'
 // import * as SpriteSheetAssets from '../assets/SpriteSheetAssets'
-import { SharedDragonBonesManager } from '@safe-engine/cocos/dist/dragonbones/PixiDragonBonesSprite'
 
+import { loadDragonBonesAssets } from '@safe-engine/cocos/dist/dragonbones'
+import { loadSpineAssets } from '@safe-engine/cocos/dist/spine/PixiSpineSprite'
 import * as DragonBonesAssets from '../assets/DragonBonesAssets'
 import * as FontAssets from '../assets/FontAssets'
 import * as SpineAssets from '../assets/SpineAssets'
@@ -11,16 +12,13 @@ import * as TextureAssets from '../assets/TextureAssets'
 
 export function loadAssets(cb: (progress: number) => void, onCompleted: () => void) {
   // load the texture we need
-  const keys = []
-  Object.values(SpineAssets).map(({ skeleton, atlas }) => {
-    keys.push(skeleton, atlas)
+  Object.values(SpineAssets).map(({ skeleton, atlas, texture }) => {
+    loadSpineAssets(skeleton, atlas, texture)
   })
   Object.values(DragonBonesAssets).map(({ skeleton, atlas, texture }) => {
-    SharedDragonBonesManager.loadAssetsOnce(skeleton, atlas, texture)
+    loadDragonBonesAssets(skeleton, atlas, texture)
   })
-  // console.log('keys', keys)
   const assets = [
-    ...keys,
     ...Object.values(TextureAssets),
     // ...Object.values(SpriteSheetAssets),
     // ...Object.values(JsonAssets),
