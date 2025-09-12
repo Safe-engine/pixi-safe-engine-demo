@@ -38,11 +38,11 @@ export class Home extends ComponentX {
     'MotionStreak',
   ]
 
-  onStart() {
+  start() {
     console.log('you win')
+    // loadScene(SpriteTest)
   }
 
-  // onUpdate(dt: number) {}
   onPress(event: ButtonComp) {
     const id = event.node.getData<Integer>('id')
     console.log('Clicked', id, Scenes[id])
