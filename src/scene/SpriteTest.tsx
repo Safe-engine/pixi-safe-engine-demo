@@ -6,9 +6,11 @@ import {
   MaskRender,
   NodeComp,
   NodeRender,
+  RED,
   SceneComponent,
   Size,
   SpriteRender,
+  Vec2,
 } from '@safe-engine/cocos'
 
 import { sf_crash, sf_dialog_name, sf_progress_bar } from '../assets'
@@ -24,7 +26,11 @@ export default class SpriteTest extends ComponentX {
   start() {
     this.nextCase()
     this.nextCase()
-    this.stencil.node.instance.drawDot(cc.p(50, 50), 450, cc.color(255, 255, 255, 255))
+    this.stencil.drawDot(Vec2(50, 50), 450)
+  }
+
+  onPressNext() {
+    this.nextCase()
   }
 
   nextCase() {
@@ -38,7 +44,7 @@ export default class SpriteTest extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp string="Next Test" node={{ xy: [540, 200] }}>
-          <ButtonComp onPress={this.nextCase} />
+          <ButtonComp onPress={this.onPressNext} />
         </LabelComp>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Sprite Test loop" node={{ xy: [540, 2000] }} />
@@ -62,7 +68,7 @@ export default class SpriteTest extends ComponentX {
             </MaskRender>
           </SpriteRender>
           <MaskRender spriteFrame={sf_dialog_name} node={{ xy: [330, 1500], scale: 2 }}>
-            <GraphicsRender $ref={this.stencil} lineWidth={5} strokeColor={cc.Color.RED} fillColor={WHITE} node={{ xy: [100, 100] }} />
+            <GraphicsRender $ref={this.stencil} lineWidth={5} strokeColor={RED} fillColor={WHITE} node={{ xy: [100, 100] }} />
             <SpriteRender spriteFrame={sf_progress_bar} node={{ xy: [1, 10] }}></SpriteRender>
           </MaskRender>
         </NodeRender>

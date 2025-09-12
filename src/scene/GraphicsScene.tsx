@@ -13,7 +13,7 @@ export class GraphicsScene extends ComponentX {
     const points: Vec2[] = [Vec2(40, 1040), Vec2(540, 640), Vec2(840, 940), Vec2(740, 1040)]
     this.graphics.drawPoly(points, BLUE, 20)
     this.graphics.drawRect(Vec2(200, 1610), Vec2(500, 1845), ORANGE)
-    this.graphics.drawDot(300, 1500, 50)
+    this.graphics.drawDot(Vec2(300, 1500), 50)
   }
 
   render() {

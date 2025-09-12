@@ -28,7 +28,7 @@ export class Home extends ComponentX {
   static readonly cases = [
     'Spine',
     'Dragon Bones',
-    'Touch Events',
+    'Input Test',
     'Sprite',
     'Button',
     'Graphics',
