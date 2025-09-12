@@ -26,7 +26,7 @@ export default class SpriteTest extends ComponentX {
   start() {
     this.nextCase()
     this.nextCase()
-    this.stencil.drawDot(Vec2(50, 50), 450)
+    this.stencil.drawDot(Vec2(50, 50), 1450)
   }
 
   onPressNext() {
@@ -63,11 +63,11 @@ export default class SpriteTest extends ComponentX {
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Sprite Mask" node={{ xy: [540, 2000] }} />
           <SpriteRender spriteFrame={sf_crash} node={{ xy: [330, 500] }}>
-            <MaskRender $ref={this.mask} spriteFrame={sf_dialog_name} node={{ xy: [330, 800], w: 200, h: 200, scale: 2 }}>
+            <MaskRender $ref={this.mask} spriteFrame={sf_dialog_name} node={{ xy: [330, 800], scale: 2 }}>
               <SpriteRender spriteFrame={sf_crash} node={{ xy: [0, 10] }}></SpriteRender>
             </MaskRender>
           </SpriteRender>
-          <MaskRender spriteFrame={sf_dialog_name} node={{ xy: [330, 1500], scale: 2 }}>
+          <MaskRender cropSize={Size(200, 50)} node={{ xy: [330, 1500], scale: 2 }}>
             <GraphicsRender $ref={this.stencil} lineWidth={5} strokeColor={RED} fillColor={WHITE} node={{ xy: [100, 100] }} />
             <SpriteRender spriteFrame={sf_progress_bar} node={{ xy: [1, 10] }}></SpriteRender>
           </MaskRender>
