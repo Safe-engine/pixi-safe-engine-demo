@@ -19,6 +19,7 @@ import { DragonBonesScene } from './DragonBonesScene'
 import { Game } from './Game'
 import { GraphicsScene } from './GraphicsScene'
 import { InputTestScene } from './InputTestScene'
+import { LabelScene } from './Label'
 import MotionStreakTest from './MotionStreakTest'
 import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
@@ -31,6 +32,7 @@ export class Home extends ComponentX {
     'Input Test',
     'Sprite',
     'Button',
+    'Label',
     'Graphics',
     'Collider',
     'Physics',
@@ -60,6 +62,9 @@ export class Home extends ComponentX {
     }
     if (id === Scenes.Button) {
       loadScene(ButtonScene)
+    }
+    if (id === Scenes.Label) {
+      loadScene(LabelScene)
     }
     if (id === Scenes.Graphics) {
       loadScene(GraphicsScene)

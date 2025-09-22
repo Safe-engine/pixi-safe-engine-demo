@@ -35,6 +35,7 @@ export enum Scenes {
   TouchEvents,
   Sprite,
   Button,
+  Label,
   Graphics,
   Collider,
   Physics,
