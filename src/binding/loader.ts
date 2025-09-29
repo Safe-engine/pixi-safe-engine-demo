@@ -12,12 +12,8 @@ import * as TextureAssets from '../assets/TextureAssets'
 
 export function loadAssets(cb: (progress: number) => void, onCompleted: () => void) {
   // load the texture we need
-  Object.values(SpineAssets).map(({ skeleton, atlas, texture }) => {
-    loadSpineAssets(skeleton, atlas, texture)
-  })
-  Object.values(DragonBonesAssets).map(({ skeleton, atlas, texture }) => {
-    loadDragonBonesAssets(skeleton, atlas, texture)
-  })
+  Object.values(SpineAssets).map(loadSpineAssets)
+  Object.values(DragonBonesAssets).map(loadDragonBonesAssets)
   const assets = [
     ...Object.values(TextureAssets),
     // ...Object.values(SpriteSheetAssets),
