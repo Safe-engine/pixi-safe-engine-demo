@@ -14,7 +14,6 @@ initBox2d().then(async () => {
   setupCollider(colliderMatrix, true)
   setupPhysics(GameWorld.Instance, true)
   setupRichText()
-  loadAll([sf_progress_bar, sf_progress_bg], null, () => {
-    loadScene(Loading)
-  })
+  await loadAll([sf_progress_bar, sf_progress_bg])
+  loadScene(Loading)
 })

@@ -21,11 +21,11 @@ export default class SpriteTest extends ComponentX {
   $cases: NodeComp[] = []
   stencil: GraphicsRender
   mask: MaskRender
-  indexCase = 0
+  indexCase = 2
 
   start() {
     this.nextCase()
-    this.nextCase()
+    // this.nextCase()
     this.stencil.drawDot(Vec2(50, 50), 1450)
   }
 
