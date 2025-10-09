@@ -1,7 +1,8 @@
-import { Assets, GameWorld, loadScene, setupGUI, startGame, Texture, Vec2 } from '@safe-engine/pixi'
+import { Assets, GameWorld, loadScene, startGame, Texture, Vec2 } from '@safe-engine/pixi'
 
 import { setupCollider } from '@safe-engine/pixi/dist/collider'
 import { setupDragonBones } from '@safe-engine/pixi/dist/dragonbones'
+import { setupGUI } from '@safe-engine/pixi/dist/gui'
 import { setupRichText } from '@safe-engine/pixi/dist/richtext'
 import { setupSpine } from '@safe-engine/pixi/dist/spine'
 import { initBox2d, setupPhysics } from '@safe-engine/pixi/src/box2d-wasm'
