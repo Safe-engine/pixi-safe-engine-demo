@@ -48,7 +48,7 @@ export default class SpriteTest extends ComponentX {
         </LabelComp>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Sprite Test loop" node={{ xy: [540, 2000] }} />
-          {Array(4).map((i = 1) => (
+          {Array(4).map((_, i = 1) => (
             <SpriteRender spriteFrame={sf_crash} node={{ xy: [115, 350 + i * 275] }} />
           ))}
         </NodeRender>

@@ -20,7 +20,7 @@ export class LabelScene extends ComponentX {
           size={64}
         />
         <RichTextComp node={{ xy: [354, 340], w: 200, color: ORANGE }} string="RichTextComp normal" size={60} />
-        <LabelComp node={{ xy: [706, 440], w: 300, h: 300, color: YELLOW }} string="Yellow label with long content" />
+        <LabelComp node={{ xy: [706, 440], w: 300, h: 300, color: YELLOW }} string="Yellow label with long content" size={32} />
         <LabelComp node={{ xy: [306, 840] }} string="Yellow outline label" outline={[YELLOW, 5]}></LabelComp>
         <LabelComp node={{ xy: [406, 1240] }} string="Yellow shadow label" shadow={[RED, 12, Size(10, 10)]}></LabelComp>
       </SceneComponent>

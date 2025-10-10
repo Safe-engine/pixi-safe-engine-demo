@@ -33,18 +33,18 @@ export class PhysicsScene extends ComponentX {
   render() {
     return (
       <SceneComponent>
-        <LabelComp node={{ xy: [106, 240] }} string="Hello safex physics" font={defaultFont} />
+        <LabelComp node={{ xy: [541, 1755] }} string="Hello safex physics" font={defaultFont} />
         <BackButton />
         <SpriteRender node={{ xy: [560, 1030] }} spriteFrame={sf_button}>
-          <RigidBody type={DynamicBody} onBeginContact={this.onCollisionEnter}></RigidBody>
-          <PhysicsBoxCollider height={56} width={150} offset={[-100, -20]}></PhysicsBoxCollider>
+          <RigidBody type={DynamicBody} onBeginContact={this.onCollisionEnter} />
+          <PhysicsBoxCollider height={56} width={150} offset={[-100, -20]} />
         </SpriteRender>
         <SpriteRender node={{ xy: [360, 1130] }} spriteFrame={sf_crash}>
-          <RigidBody $ref={this.body} type={DynamicBody}></RigidBody>
-          <PhysicsCircleCollider radius={150} offset={[-100, -20]}></PhysicsCircleCollider>
+          <RigidBody $ref={this.body} type={DynamicBody} />
+          <PhysicsCircleCollider radius={150} offset={[-100, -20]} />
         </SpriteRender>
         <SpriteRender node={{ xy: [660, 1530] }} spriteFrame={sf_button}>
-          <RigidBody type={DynamicBody}></RigidBody>
+          <RigidBody type={DynamicBody} />
           <PhysicsPolygonCollider
             offset={[-100, -20]}
             points={[
@@ -53,10 +53,10 @@ export class PhysicsScene extends ComponentX {
               [169, 51],
               [170, 1],
             ]}
-          ></PhysicsPolygonCollider>
+          />
         </SpriteRender>
         <SpriteRender node={{ xy: [860, 1230] }} spriteFrame={sf_crash}>
-          <RigidBody type={DynamicBody}></RigidBody>
+          <RigidBody type={DynamicBody} />
           <PhysicsPolygonCollider
             points={[
               [46, 1],
@@ -69,11 +69,11 @@ export class PhysicsScene extends ComponentX {
               [121, 7],
               [69, 2],
             ]}
-          ></PhysicsPolygonCollider>
+          />
         </SpriteRender>
         <SpriteRender node={{ xy: [540, 500] }} spriteFrame={sf_button}>
-          <RigidBody type={StaticBody}></RigidBody>
-          <PhysicsBoxCollider height={60} width={1200}></PhysicsBoxCollider>
+          <RigidBody type={StaticBody} />
+          <PhysicsBoxCollider height={60} width={1200} />
         </SpriteRender>
       </SceneComponent>
     )
