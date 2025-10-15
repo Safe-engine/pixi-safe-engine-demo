@@ -8,11 +8,10 @@ import {
   SceneComponent,
   SpriteRender,
   Vec2,
-  WHITE,
 } from '@safe-engine/cocos'
 
 import { defaultFont, sf_button } from '../assets'
-import { Scenes } from '../helper/constant'
+import { Scenes, WHITE } from '../helper/constant'
 import ButtonScene from './ButtonScene'
 import { CollidersScene } from './CollidersScene'
 import { DragonBonesScene } from './DragonBonesScene'

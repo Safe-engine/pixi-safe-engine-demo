@@ -1,7 +1,7 @@
-import { BLUE, ComponentX, GraphicsRender, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
+import { ComponentX, GraphicsRender, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
 
 import { BackButton } from '../components/BackButton'
-import { CYAN, ORANGE, PINK, PURPLE, YELLOW } from '../helper/constant'
+import { BLUE, CYAN, ORANGE, PINK, PURPLE, YELLOW } from '../helper/constant'
 
 export class GraphicsScene extends ComponentX {
   graphics: GraphicsRender

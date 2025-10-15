@@ -6,7 +6,6 @@ import {
   MaskRender,
   NodeComp,
   NodeRender,
-  RED,
   SceneComponent,
   Size,
   SpriteRender,
@@ -15,7 +14,7 @@ import {
 
 import { sf_crash, sf_dialog_name, sf_progress_bar } from '../assets'
 import { BackButton } from '../components/BackButton'
-import { WHITE } from '../helper/constant'
+import { RED, WHITE } from '../helper/constant'
 
 export default class SpriteTest extends ComponentX {
   $cases: NodeComp[] = []
@@ -74,7 +73,7 @@ export default class SpriteTest extends ComponentX {
         </NodeRender>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Tiled Sprite" node={{ xy: [540, 2000] }} />
-          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [330, 1200] }}></SpriteRender>
+          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [630, 200] }}></SpriteRender>
         </NodeRender>
         <BackButton />
       </SceneComponent>
