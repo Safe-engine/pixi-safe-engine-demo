@@ -6,7 +6,7 @@ import {
   PhysicsPolygonCollider,
   RigidBody,
   StaticBody,
-} from '@safe-engine/cocos/dist/box2d-wasm'
+} from '@safe-engine/cocos/dist/chipmunk'
 
 import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 import { defaultFont, sf_button, sf_crash, sf_dialog_name } from '../assets'
@@ -19,17 +19,18 @@ export class PhysicsScene extends ComponentX {
   start() {
     this.body.applyLinearImpulse(Vec2(10, 100))
     console.log(this.body.linearVelocity)
-    this.body.applyTorque(1000)
+    this.body.applyTorque(10)
   }
 
   onCollisionEnter(other: RigidBody) {
     console.log('box contact', other.props.tag)
     // this.body.position = Vec2(600, 1800)
+    other.node.destroy()
   }
 
-  // update() {
-  //   console.log('update', this.body.linearVelocity)
-  // }
+  update() {
+    // console.log('update', this.body.node.rotation)
+  }
 
   render() {
     return (
