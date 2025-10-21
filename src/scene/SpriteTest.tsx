@@ -73,7 +73,7 @@ export default class SpriteTest extends ComponentX {
         </NodeRender>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Tiled Sprite" node={{ xy: [540, 2000] }} />
-          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [630, 200] }}></SpriteRender>
+          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [330, 800] }}></SpriteRender>
         </NodeRender>
         <BackButton />
       </SceneComponent>
