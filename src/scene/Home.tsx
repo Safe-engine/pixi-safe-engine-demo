@@ -6,6 +6,9 @@ import {
   loadScene,
   RichTextComp,
   SceneComponent,
+  ScrollViewComp,
+  ScrollViewDirection,
+  Size,
   SpriteRender,
   Vec2,
 } from '@safe-engine/cocos'
@@ -91,13 +94,15 @@ export class Home extends ComponentX {
           size={72}
           string="<color=#ff00ff>hello</color> <color=#00ff00>safex</color>"
         />
-        {Home.cases.map((name, j = 1) => (
-          <SpriteRender node={{ xy: [200, 120 + 150 * j] }} spriteFrame={sf_button}>
-            <ButtonComp onPress={this.onPress} />
-            <LabelComp node={{ position: Vec2(90, 30), color: WHITE }} string={name} font={defaultFont} size={48} />
-            <ExtraDataComp key="id" value={j} />
-          </SpriteRender>
-        ))}
+        <ScrollViewComp contentSize={Size(1080, 2120)} viewSize={Size(1080, 1920)} direction={ScrollViewDirection.VERTICAL}>
+          {Home.cases.map((name, j = 1) => (
+            <SpriteRender node={{ xy: [200, 220 + 150 * j] }} spriteFrame={sf_button}>
+              <ButtonComp onPress={this.onPress} />
+              <LabelComp node={{ position: Vec2(90, 30), color: WHITE }} string={name} font={defaultFont} size={48} />
+              <ExtraDataComp key="id" value={j} />
+            </SpriteRender>
+          ))}
+        </ScrollViewComp>
       </SceneComponent>
     )
   }
