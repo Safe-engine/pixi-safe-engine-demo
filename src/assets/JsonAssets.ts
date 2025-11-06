@@ -1,0 +1,1 @@
+export const map_1_json = 'Map/map1.json'

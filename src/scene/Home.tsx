@@ -12,6 +12,7 @@ import { LabelScene } from './Label'
 import { PhysicsScene } from './Physics'
 import { SpineScene } from './SpineScene'
 import { SpriteScene } from './Sprite'
+import { TiledMapScene } from './TiledMapScene'
 import { TouchEventsScene } from './TouchEvents'
 
 export class Home extends ComponentX {
@@ -58,6 +59,9 @@ export class Home extends ComponentX {
     if (id === Scenes.Game) {
       loadScene(Game)
     }
+    if (id === Scenes.TiledMap) {
+      loadScene(TiledMapScene)
+    }
   }
 
   render() {
@@ -65,7 +69,7 @@ export class Home extends ComponentX {
       <SceneComponent>
         <LabelComp node={{ xy: [406, 140], color: CYAN }} string="hello safex" font={defaultFont} />
         {Home.cases.map((name, j = 1) => (
-          <SpriteRender node={{ xy: [200, 120 + 150 * j], width: 200, height: 60 }} spriteFrame={sf_button}>
+          <SpriteRender node={{ xy: [200, 120 + 150 * j], w: 200, h: 60 }} spriteFrame={sf_button}>
             <ButtonComp onPress={this.onPress} />
             <LabelComp node={{ xy: [20, 10], color: ORANGE }} string={name} font={defaultFont} size={48} />
             <ExtraDataComp key="id" value={j} />

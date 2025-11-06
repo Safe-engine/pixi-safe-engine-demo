@@ -1,5 +1,6 @@
 export * from './TextureAssets'
 export * from './FontAssets'
 export * from './AudioAssets'
+export * from './JsonAssets'
 export * from './SpineAssets'
 export * from './DragonBonesAssets'

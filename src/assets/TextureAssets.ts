@@ -1,3 +1,4 @@
+export const sf_tileset = 'Map/tileset.png'
 export const sf_dialog_name = 'Texture/dialog-name.png'
 export const sf_home = 'Texture/home.png'
 export const sf_progress_bar = 'Texture/progress_bar.png'
