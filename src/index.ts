@@ -1,4 +1,4 @@
-import { Assets, GameWorld, loadScene, startGame, Texture, Vec2 } from '@safe-engine/pixi'
+import { Assets, loadScene, startGame, Texture, Vec2 } from '@safe-engine/pixi'
 
 import { initBox2d, setupPhysics } from '@safe-engine/pixi/dist/box2d-wasm'
 import { setupCollider } from '@safe-engine/pixi/dist/collider'
@@ -19,7 +19,7 @@ async function start() {
   setupSpine()
   setupDragonBones()
   setupCollider(colliderMatrix, true)
-  setupPhysics(GameWorld.Instance, true, Vec2(0, 98))
+  setupPhysics(colliderMatrix, true, Vec2(0, 98))
   setupTiledMap()
   await Assets.load<Texture>([sf_progress_bar, sf_progress_bg])
   loadScene(Loading)
