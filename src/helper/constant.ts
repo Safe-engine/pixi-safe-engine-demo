@@ -41,4 +41,5 @@ export enum Scenes {
   Physics,
   Game,
   MotionStreak,
+  Tiled,
 }

@@ -26,6 +26,7 @@ import MotionStreakTest from './MotionStreakTest'
 import { PhysicsScene } from './PhysicsScene'
 import { SpineScene } from './SpineScene'
 import SpriteTest from './SpriteTest'
+import { TiledMapScene } from './TiledMapScene'
 
 export class Home extends ComponentX {
   static readonly cases = [
@@ -40,6 +41,7 @@ export class Home extends ComponentX {
     'Physics',
     'Game',
     'MotionStreak',
+    'Tiled Map',
   ]
 
   start() {
@@ -83,6 +85,9 @@ export class Home extends ComponentX {
     if (id === Scenes.MotionStreak) {
       loadScene(MotionStreakTest)
     }
+    if (id === Scenes.Tiled) {
+      loadScene(TiledMapScene)
+    }
   }
 
   render() {
@@ -94,7 +99,7 @@ export class Home extends ComponentX {
           size={72}
           string="<color=#ff00ff>hello</color> <color=#00ff00>safex</color>"
         />
-        <ScrollViewComp contentSize={Size(1080, 2120)} viewSize={Size(1080, 1920)} direction={ScrollViewDirection.VERTICAL}>
+        <ScrollViewComp contentSize={Size(1080, 2120)} viewSize={Size(1080, 2220)} direction={ScrollViewDirection.VERTICAL}>
           {Home.cases.map((name, j = 1) => (
             <SpriteRender node={{ xy: [200, 220 + 150 * j] }} spriteFrame={sf_button}>
               <ButtonComp onPress={this.onPress} />
