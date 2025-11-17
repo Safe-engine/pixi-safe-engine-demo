@@ -10,7 +10,7 @@ export class TiledMapScene extends ComponentX {
 
   start() {
     // console.log('TiledMapScene started', this.tiledMapComp.node.instance)
-    const { x, y } = this.tiledMapComp.getPositionAt(4, 7)
+    const { x, y } = this.tiledMapComp.getLayer('map').getPositionAt(4, 7)
     this.spriteRender.node.position = Vec2(x, y)
   }
 
