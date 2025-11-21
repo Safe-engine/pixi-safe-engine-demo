@@ -1,10 +1,10 @@
-import { ComponentX, GraphicsRender, LabelComp, SceneComponent, Vec2 } from '@safe-engine/pixi'
+import { GraphicsRender, LabelComp, SceneComponent, Vec2 } from '@safe-engine/pixi'
 
 import { defaultFont } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { CYAN, PINK, PURPLE, YELLOW } from '../helper/constant'
 
-export class GraphicsScene extends ComponentX {
+export class GraphicsScene extends SceneComponent {
   graphics: GraphicsRender
 
   start() {

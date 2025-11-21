@@ -1,10 +1,10 @@
-import { ComponentX, loadScene, ProgressTimerComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { loadScene, ProgressTimerComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
 import { sf_bitmap_2_yellow, sf_crash, sf_progress_bar } from '../assets'
 import { loadAssets } from '../binding/loader'
 import { Home } from './Home'
 
-export class Loading extends ComponentX {
+export class Loading extends SceneComponent {
   loadingSprite: ProgressTimerComp
 
   async start() {

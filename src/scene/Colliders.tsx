@@ -1,11 +1,11 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { LabelComp, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
 import { BoxCollider, Collider } from '@safe-engine/pixi/dist/collider'
 import { DragonBonesComp } from '@safe-engine/pixi/dist/dragonbones'
 import { db_mecha_1004d_show, defaultFont, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class CollidersScene extends ComponentX {
+export class CollidersScene extends SceneComponent {
   dragon: DragonBonesComp
 
   onCollisionEnter(other: Collider) {

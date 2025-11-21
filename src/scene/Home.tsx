@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { ButtonComp, ExtraDataComp, LabelComp, loadScene, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
 import { defaultFont, sf_button } from '../assets'
 import { Hero } from '../components/Hero'
@@ -15,7 +15,7 @@ import { SpriteScene } from './Sprite'
 import { TiledMapScene } from './TiledMapScene'
 import { TouchEventsScene } from './TouchEvents'
 
-export class Home extends ComponentX {
+export class Home extends SceneComponent {
   score = 0
   hero: Hero
 

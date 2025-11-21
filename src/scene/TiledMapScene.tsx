@@ -1,10 +1,10 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi'
+import { LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi'
 
 import { TiledMapComp } from '@safe-engine/pixi/dist/tiledmap/TiledMapComp'
 import { map_1_json, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class TiledMapScene extends ComponentX {
+export class TiledMapScene extends SceneComponent {
   tiledMapComp: TiledMapComp
   spriteRender: SpriteRender
 

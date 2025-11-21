@@ -1,10 +1,10 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi'
+import { LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/pixi'
 import { DragonBonesComp } from '@safe-engine/pixi/dist/dragonbones'
 import { DynamicBody, PhysicsBoxCollider, RigidBody } from '@safe-engine/pixi/src/box2d-wasm'
 import { db_mecha_1004d_show, defaultFont, sf_button } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class PhysicsScene extends ComponentX {
+export class PhysicsScene extends SceneComponent {
   body: RigidBody
 
   start() {

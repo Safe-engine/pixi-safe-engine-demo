@@ -1,10 +1,10 @@
-import { ComponentX, LabelComp, SceneComponent } from '@safe-engine/pixi'
+import { LabelComp, SceneComponent } from '@safe-engine/pixi'
 
 import { RichTextComp } from '@safe-engine/pixi/dist/richtext'
 import { BackButton } from '../components/BackButton'
 import { CYAN, DARK_GREEN, ORANGE, RED, YELLOW } from '../helper/constant'
 
-export class LabelScene extends ComponentX {
+export class LabelScene extends SceneComponent {
   render() {
     return (
       <SceneComponent>

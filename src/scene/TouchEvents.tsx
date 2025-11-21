@@ -1,9 +1,9 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender, Touch, TouchEventRegister } from '@safe-engine/pixi'
+import { LabelComp, SceneComponent, SpriteRender, Touch, TouchEventRegister } from '@safe-engine/pixi'
 
 import { sf_bg_home } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class TouchEventsScene extends ComponentX {
+export class TouchEventsScene extends SceneComponent {
   onTouchStart(event) {
     console.log('onTouchStart')
   }

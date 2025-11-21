@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, instantiate, SpriteRender } from '@safe-engine/pixi'
+import { ButtonComp, ComponentX, loadScene, SpriteRender } from '@safe-engine/pixi'
 
 import { sf_home } from '../assets/TextureAssets'
 import AudioController from '../binding/AudioController'
@@ -7,7 +7,7 @@ import { Home } from '../scene/Home'
 export class BackButton extends ComponentX {
   onPress() {
     AudioController.Instance.playButtonClickSound()
-    instantiate(Home)
+    loadScene(Home)
   }
   render() {
     return (

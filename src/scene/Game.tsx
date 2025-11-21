@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpriteRender } from '@safe-engine/pixi'
+import { ButtonComp, LabelComp, loadScene, SceneComponent, SpriteRender } from '@safe-engine/pixi'
 
 import { BoxCollider } from '@safe-engine/pixi/dist/collider'
 import { SpineSkeleton } from '@safe-engine/pixi/dist/spine'
@@ -8,7 +8,7 @@ import { Hero } from '../components/Hero'
 import { Monster } from '../components/Monster'
 import { Home } from './Home'
 
-export class Game extends ComponentX {
+export class Game extends SceneComponent {
   score = 0
   // uiRef: UIController = null
   hero: Hero
