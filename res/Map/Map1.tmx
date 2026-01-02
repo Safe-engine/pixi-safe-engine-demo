@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="hexagonal" renderorder="right-down" width="8" height="80" tilewidth="120" tileheight="67" infinite="0" hexsidelength="0" staggeraxis="y" staggerindex="odd" parallaxoriginx="7" parallaxoriginy="0" nextlayerid="7" nextobjectid="9">
+<map version="1.9" tiledversion="1.9.0" orientation="staggered" renderorder="right-down" width="8" height="80" tilewidth="120" tileheight="67" infinite="0" staggeraxis="y" staggerindex="odd" parallaxoriginx="7" parallaxoriginy="0" nextlayerid="7" nextobjectid="9">
  <editorsettings>
   <chunksize width="20" height="23"/>
  </editorsettings>
