@@ -1,7 +1,7 @@
 import { ButtonComp, ComponentX, LabelComp, SceneComponent } from '@safe-engine/cocos'
 import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
 
-import { defaultFont, sp_spineboy_pro } from '../assets'
+import { defaultFont, sp_spineboy_pma } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { LIME, ORANGE } from '../helper/constant'
 
@@ -38,7 +38,7 @@ export class SpineScene extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ xy: [526, 1698] }} string="Hello safex spine" font={defaultFont} />
-        <SpineSkeleton $ref={this.skeleton} node={{ xy: [521, 575] }} data={sp_spineboy_pro} animation="run" loop={true} />
+        <SpineSkeleton $ref={this.skeleton} node={{ xy: [521, 575] }} data={sp_spineboy_pma} animation="run" loop={true} />
         <LabelComp $ref={this.animName} string="Anim Name" node={{ xy: [560, 495], w: 500, color: LIME }} />
         <BackButton />
         <LabelComp string="Next Anim" node={{ xy: [540, 265], color: ORANGE }}>
