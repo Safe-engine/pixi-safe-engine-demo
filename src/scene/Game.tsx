@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2, WidgetComp } from '@safe-engine/cocos'
 import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
 import { BoxCollider } from '@safe-engine/cocos/src/collider/CollideComponent'
 
@@ -40,8 +40,9 @@ export class Game extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ position: Vec2(106, 240) }} string="Game" font={defaultFont} />
-        <SpriteRender node={{ position: Vec2(200, 420), anchorY: 1 }} spriteFrame={sf_crash}>
+        <SpriteRender node={{ anchorY: 0.5 }} spriteFrame={sf_crash}>
           <ButtonComp onPress={this.onPress} />
+          <WidgetComp top={20} right={10} />
         </SpriteRender>
         <Hero $ref={this.hero} node={{ position: Vec2(550, 430) }} gameNode={this.node}>
           <BoxCollider width={100} height={100} offset={[10, 10]} />
