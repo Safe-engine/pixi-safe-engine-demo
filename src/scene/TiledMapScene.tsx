@@ -19,7 +19,7 @@ export class TiledMapScene extends ComponentX {
       <SceneComponent>
         <LabelComp node={{ xy: [540, 140] }} string="Hello safex tiled" />
         <BackButton />
-        <TiledMapComp $ref={this.tiledMapComp} node={{ xy: [110, 120] }} mapFile={map_1_json}>
+        <TiledMapComp $ref={this.tiledMapComp} node={{ xy: [110, 2620] }} mapFile={map_1_json}>
           <SpriteRender $ref={this.spriteRender} spriteFrame={sf_crash}></SpriteRender>
         </TiledMapComp>
       </SceneComponent>
