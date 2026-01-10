@@ -22,10 +22,11 @@ export class SpineScene extends ComponentX {
   animIndex = 0
   skeleton: SpineSkeleton
   animName: LabelComp
-  // start() {
-  //   console.log(sp_spineboy_pro)
-  //   console.log(this.skeleton)
-  // }
+  start() {
+    console.log(this.skeleton)
+    // this.skeleton.setSkeletonData(sp_icon_ready)
+    // this.skeleton.setAnimation('animation')
+  }
 
   nextAnim() {
     this.animIndex++
@@ -38,7 +39,7 @@ export class SpineScene extends ComponentX {
     return (
       <SceneComponent>
         <LabelComp node={{ xy: [526, 1698] }} string="Hello safex spine" font={defaultFont} />
-        <SpineSkeleton $ref={this.skeleton} node={{ xy: [521, 575] }} data={sp_spineboy_pma} animation="run" loop={true} />
+        <SpineSkeleton $ref={this.skeleton} node={{ xy: [521, 575] }} data={sp_spineboy_pma} loop={true} />
         <LabelComp $ref={this.animName} string="Anim Name" node={{ xy: [560, 495], w: 500, color: LIME }} />
         <BackButton />
         <LabelComp string="Next Anim" node={{ xy: [540, 265], color: ORANGE }}>
