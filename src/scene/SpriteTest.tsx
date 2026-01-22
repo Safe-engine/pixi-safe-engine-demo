@@ -2,6 +2,7 @@ import {
   ButtonComp,
   ComponentX,
   GraphicsRender,
+  GridLayoutComp,
   LabelComp,
   MaskRender,
   NodeComp,
@@ -12,7 +13,7 @@ import {
   Vec2,
 } from '@safe-engine/cocos'
 
-import { sf_crash, sf_dialog_name, sf_progress_bar } from '../assets'
+import { sf_crash, sf_dialog_name, sf_progress_bar, sf_streak } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { RED, WHITE } from '../helper/constant'
 
@@ -48,8 +49,14 @@ export default class SpriteTest extends ComponentX {
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Sprite Test loop" node={{ xy: [540, 2000] }} />
           {Array(4).map((_, i = 1) => (
-            <SpriteRender spriteFrame={sf_crash} node={{ xy: [115, 350 + i * 275] }} />
+            <SpriteRender spriteFrame={sf_streak} node={{ xy: [115, 350 + i * 275] }} />
           ))}
+          <NodeRender node={{ xy: [540, 960] }}>
+            {Array(6).map(() => (
+              <SpriteRender spriteFrame={sf_crash} />
+            ))}
+            <GridLayoutComp columns={2} />
+          </NodeRender>
         </NodeRender>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="9-slice Sprite" node={{ xy: [540, 2000] }} />
@@ -73,7 +80,9 @@ export default class SpriteTest extends ComponentX {
         </NodeRender>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Tiled Sprite" node={{ xy: [540, 2000] }} />
-          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [330, 800] }}></SpriteRender>
+          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [330, 800] }}>
+            <SpriteRender spriteFrame={sf_dialog_name} node={{ xy: [1, 10] }}></SpriteRender>
+          </SpriteRender>
         </NodeRender>
         <BackButton />
       </SceneComponent>
