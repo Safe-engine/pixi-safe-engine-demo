@@ -79,7 +79,7 @@ export default class SpriteTest extends SceneComponent {
         </NodeRender>
         <NodeRender $pushNode={this.$cases}>
           <LabelComp string="Tiled Sprite" node={{ xy: [540, 2000] }} />
-          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(400, 800)} node={{ xy: [330, 800] }}>
+          <SpriteRender spriteFrame={sf_crash} tiledSize={Size(480, 900)} node={{ xy: [480, 800] }}>
             <SpriteRender spriteFrame={sf_dialog_name} node={{ xy: [1, 10] }}></SpriteRender>
           </SpriteRender>
         </NodeRender>

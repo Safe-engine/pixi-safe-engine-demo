@@ -12,7 +12,7 @@ import {
   Vec2,
 } from '@safe-engine/cocos'
 
-import { defaultFont, sf_base, sf_button } from '../assets'
+import { defaultFont, sf_base, sf_button, sf_crash } from '../assets'
 import { BLUE, Scenes, WHITE } from '../helper/constant'
 import ButtonScene from './ButtonScene'
 import { CollidersScene } from './CollidersScene'
@@ -92,7 +92,8 @@ export class Home extends SceneComponent {
   render() {
     return (
       <SceneComponent>
-        <SpriteRender node={{ xy: [540, 960], color: BLUE }} spriteFrame={sf_base} tiledSize={Size(1080, 2160)}></SpriteRender>
+        <SpriteRender node={{ xy: [540, 960], color: BLUE }} spriteFrame={sf_base} tiledSize={Size(1080, 1920)}></SpriteRender>
+        <SpriteRender spriteFrame={sf_crash} />
         <RichTextComp
           node={{ xy: [640, 140] }}
           font={defaultFont}
