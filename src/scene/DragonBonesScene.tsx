@@ -1,10 +1,10 @@
-import { ComponentX, LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
+import { LabelComp, SceneComponent, Vec2 } from '@safe-engine/cocos'
 import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 
 import { db_mecha_1004d_show, defaultFont } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class DragonBonesScene extends ComponentX {
+export class DragonBonesScene extends SceneComponent {
   dragon: DragonBonesComp
 
   render() {

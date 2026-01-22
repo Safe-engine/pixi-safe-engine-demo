@@ -1,9 +1,9 @@
-import { ButtonComp, ComponentX, InputComp, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { ButtonComp, InputComp, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 
 import { sf_button } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class InputTestScene extends ComponentX {
+export class InputTestScene extends SceneComponent {
   captchaInput: InputComp
 
   async onSubmitCaptcha() {

@@ -1,6 +1,5 @@
 import {
   ButtonComp,
-  ComponentX,
   ExtraDataComp,
   LabelComp,
   loadScene,
@@ -13,8 +12,8 @@ import {
   Vec2,
 } from '@safe-engine/cocos'
 
-import { defaultFont, sf_button } from '../assets'
-import { Scenes, WHITE } from '../helper/constant'
+import { defaultFont, sf_base, sf_button } from '../assets'
+import { BLUE, Scenes, WHITE } from '../helper/constant'
 import ButtonScene from './ButtonScene'
 import { CollidersScene } from './CollidersScene'
 import { DragonBonesScene } from './DragonBonesScene'
@@ -28,7 +27,7 @@ import { SpineScene } from './SpineScene'
 import SpriteTest from './SpriteTest'
 import { TiledMapScene } from './TiledMapScene'
 
-export class Home extends ComponentX {
+export class Home extends SceneComponent {
   static readonly cases = [
     'Spine',
     'Dragon Bones',
@@ -93,6 +92,7 @@ export class Home extends ComponentX {
   render() {
     return (
       <SceneComponent>
+        <SpriteRender node={{ xy: [540, 960], color: BLUE }} spriteFrame={sf_base} tiledSize={Size(1080, 2160)}></SpriteRender>
         <RichTextComp
           node={{ xy: [640, 140] }}
           font={defaultFont}

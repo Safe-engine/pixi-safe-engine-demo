@@ -1,11 +1,11 @@
-import { ButtonComp, ComponentX, LabelComp, SceneComponent } from '@safe-engine/cocos'
+import { ButtonComp, LabelComp, SceneComponent } from '@safe-engine/cocos'
 import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
 
 import { defaultFont, sp_spineboy_pma } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { LIME, ORANGE } from '../helper/constant'
 
-export class SpineScene extends ComponentX {
+export class SpineScene extends SceneComponent {
   private static readonly anims = [
     'aim',
     'death',

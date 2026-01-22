@@ -1,9 +1,9 @@
-import { ComponentX, LabelComp, RichTextComp, SceneComponent, Size } from '@safe-engine/cocos'
+import { LabelComp, RichTextComp, SceneComponent, Size } from '@safe-engine/cocos'
 
 import { BackButton } from '../components/BackButton'
 import { CYAN, ORANGE, RED, YELLOW } from '../helper/constant'
 
-export class LabelScene extends ComponentX {
+export class LabelScene extends SceneComponent {
   render() {
     return (
       <SceneComponent>

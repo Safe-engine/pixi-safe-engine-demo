@@ -1,10 +1,10 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 
 import { TiledMapComp } from '@safe-engine/cocos/dist/fasttiled/TiledMapComp'
 import { map_1_json, sf_crash, sf_dialog_name } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class TiledMapScene extends ComponentX {
+export class TiledMapScene extends SceneComponent {
   tiledMapComp: TiledMapComp
   spriteRender: SpriteRender
   spriteRender2: SpriteRender

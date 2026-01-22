@@ -1,4 +1,4 @@
-import { ButtonComp, ComponentX, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2, WidgetComp } from '@safe-engine/cocos'
+import { ButtonComp, LabelComp, loadScene, SceneComponent, SpriteRender, Vec2, WidgetComp } from '@safe-engine/cocos'
 import { SpineSkeleton } from '@safe-engine/cocos/dist/spine'
 import { BoxCollider } from '@safe-engine/cocos/src/collider/CollideComponent'
 
@@ -7,7 +7,7 @@ import { BackButton } from '../components/BackButton'
 import { Hero } from '../components/Hero'
 import { Home } from './Home'
 
-export class Game extends ComponentX {
+export class Game extends SceneComponent {
   score = 0
   // uiRef: UIController = null
   hero: Hero

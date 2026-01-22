@@ -1,10 +1,10 @@
-import { BoxCollider, Collider, ComponentX, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/cocos'
+import { BoxCollider, Collider, LabelComp, SceneComponent, SpriteRender } from '@safe-engine/cocos'
 
 import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 import { db_mecha_1004d_show, defaultFont, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class CollidersScene extends ComponentX {
+export class CollidersScene extends SceneComponent {
   dragon: DragonBonesComp
 
   onCollisionEnter(other: Collider) {

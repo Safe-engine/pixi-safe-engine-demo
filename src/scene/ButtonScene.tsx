@@ -1,9 +1,9 @@
-import { ButtonComp, ComponentX, ExtraDataComp, SceneComponent, SpriteRender, SpriteTypes } from '@safe-engine/cocos'
+import { ButtonComp, ExtraDataComp, SceneComponent, SpriteRender } from '@safe-engine/cocos'
 
 import { sf_btn_other_button_square_01_yellow, sf_crash } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export default class ButtonScene extends ComponentX {
+export default class ButtonScene extends SceneComponent {
   start() {
     // TODO: implement start logic
   }
@@ -19,7 +19,6 @@ export default class ButtonScene extends ComponentX {
         </SpriteRender>
         <SpriteRender
           spriteFrame={sf_btn_other_button_square_01_yellow}
-          type={SpriteTypes.SLICED}
           capInsets={[31, 84, 2, 2]}
           node={{ xy: [480, 560], w: 400, h: 180, scale: 2 }}
         >

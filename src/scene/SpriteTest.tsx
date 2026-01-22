@@ -1,6 +1,5 @@
 import {
   ButtonComp,
-  ComponentX,
   GraphicsRender,
   GridLayoutComp,
   LabelComp,
@@ -17,7 +16,7 @@ import { sf_crash, sf_dialog_name, sf_progress_bar, sf_streak } from '../assets'
 import { BackButton } from '../components/BackButton'
 import { RED, WHITE } from '../helper/constant'
 
-export default class SpriteTest extends ComponentX {
+export default class SpriteTest extends SceneComponent {
   $cases: NodeComp[] = []
   stencil: GraphicsRender
   mask: MaskRender

@@ -1,8 +1,8 @@
-import { ComponentX, MotionStreakComp, SceneComponent } from '@safe-engine/cocos'
+import { MotionStreakComp, SceneComponent } from '@safe-engine/cocos'
 import { sf_streak } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export default class MotionStreakTest extends ComponentX {
+export default class MotionStreakTest extends SceneComponent {
   streak: MotionStreakComp
   streak2: MotionStreakComp
 

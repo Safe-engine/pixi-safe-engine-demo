@@ -1,4 +1,4 @@
-import { ComponentX, LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { LabelComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 import {
   DynamicBody,
   PhysicsBoxCollider,
@@ -12,7 +12,7 @@ import { DragonBonesComp } from '@safe-engine/cocos/dist/dragonbones'
 import { defaultFont, sf_button, sf_crash, sf_dialog_name } from '../assets'
 import { BackButton } from '../components/BackButton'
 
-export class PhysicsScene extends ComponentX {
+export class PhysicsScene extends SceneComponent {
   dragon: DragonBonesComp
   body: RigidBody
 

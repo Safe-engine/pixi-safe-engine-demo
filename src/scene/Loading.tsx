@@ -1,10 +1,10 @@
-import { ComponentX, loadScene, ProgressTimerComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
+import { loadScene, ProgressTimerComp, SceneComponent, SpriteRender, Vec2 } from '@safe-engine/cocos'
 
 import { sf_progress_bar, sf_progress_bg } from '../assets'
 import { loadAssets } from '../binding/loader'
 import { Home } from './Home'
 
-export class Loading extends ComponentX {
+export class Loading extends SceneComponent {
   score = 0
   loadingSprite: ProgressTimerComp
 
